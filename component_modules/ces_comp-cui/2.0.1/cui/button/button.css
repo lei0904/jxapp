@@ -1,0 +1,79 @@
+.cui-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 8px;
+    border: 0;
+    box-sizing: border-box;
+    color: inherit;
+    display: block;
+    font-size: 36px; /*px*/
+    height: 82px;
+    outline: 0;
+    overflow: hidden;
+    position: relative;
+    text-align: center
+}
+.cui-button::after {
+    background-color: #000;
+    content: " ";
+    opacity: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: absolute
+}
+.cui-button:not(.is-disabled):active::after {
+    opacity: .4
+}
+.cui-button.is-disabled {
+    opacity: .6
+}
+.cui-button-icon {
+    vertical-align: middle;
+    display: inline-block
+}
+.cui-button--default {
+    color: #656b79;
+    background-color: #f6f8fa;
+    box-shadow: 0 0 1px #b8bbbf; /*no*/
+}
+.cui-button--default.is-plain {
+    border: 1px solid #5a5a5a; /*no*/
+    background-color: transparent;
+    box-shadow: none;
+    color: #5a5a5a
+}
+.cui-button--primary {
+    color: #fff;
+    background-color: #26a2ff
+}
+.cui-button--primary.is-plain {
+    border: 1px solid #26a2ff; /*no*/
+    background-color: transparent;
+    color: #26a2ff
+}
+.cui-button--danger {
+    color: #fff;
+    background-color: #ef4f4f
+}
+.cui-button--danger.is-plain {
+    border: 1px solid #ef4f4f; /*no*/
+    background-color: transparent;
+    color: #ef4f4f
+}
+.cui-button--large {
+    display: block;
+    width: 100%
+}
+.cui-button--normal {
+    display: inline-block;
+    padding: 0 12px
+}
+.cui-button--small {
+    display: inline-block;
+    font-size: 28px; /*px*/
+    padding: 0 24px;
+    height: 66px
+}

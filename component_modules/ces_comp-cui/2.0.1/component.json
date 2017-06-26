@@ -1,0 +1,185 @@
+{
+  "version": "2.0.1",
+  "name": "cui",
+  "repo": "ces_comp/cui",
+  "description": "CES 基于 Vue2  前端UI组件",
+  "main": "cui/cui.js",
+  "files": [
+    "array-find-index/index.js",
+
+    "clickoutside/clickoutside.js",
+
+    "mixins/emitter.js",
+
+    "vue-event-bus/vue-event-bus.js",
+
+    "vue-lazyload/vue-lazyload.js",
+
+    "vue-popup/popup-manager.js",
+    "vue-popup/util.js",
+    "vue-popup/vue-popup.css",
+    "vue-popup/vue-popup.js",
+
+    "wind-dom/class.js",
+    "wind-dom/create.js",
+    "wind-dom/event.js",
+    "wind-dom/index.js",
+    "wind-dom/style.js",
+
+    "cui/cui_lib/style.css",
+    "cui/cui_lib/assets/100x100.png",
+    "cui/cui_lib/font/iconfont.ttf",
+    "cui/cui_lib/font/iconfont.css",
+    "cui/cui_lib/indexicon/font.css",
+    "cui/cui_lib/indexicon/fonts/indexicon.eot",
+    "cui/cui_lib/indexicon/fonts/indexicon.svg",
+    "cui/cui_lib/indexicon/fonts/indexicon.ttf",
+    "cui/cui_lib/indexicon/fonts/indexicon_ie8fix.eot",
+    "cui/cui_lib/indexicon/fonts/indexicon_iefix.eot",
+
+    "cui/actionsheet/actionsheet.css",
+    "cui/actionsheet/actionsheet.ftl",
+    "cui/actionsheet/actionsheet.js",
+
+    "cui/address-picker/address-picker.css",
+    "cui/address-picker/address-picker.ftl",
+    "cui/address-picker/address-picker.js",
+
+    "cui/badge/badge.css",
+    "cui/badge/badge.ftl",
+    "cui/badge/badge.js",
+
+    "cui/button/button.css",
+    "cui/button/button.ftl",
+    "cui/button/button.js",
+
+    "cui/cell/cell.css",
+    "cui/cell/cell.ftl",
+    "cui/cell/cell.js",
+
+    "cui/cell-swipe/cell-swipe.css",
+    "cui/cell-swipe/cell-swipe.ftl",
+    "cui/cell-swipe/cell-swipe.js",
+
+    "cui/checklist/checklist.css",
+    "cui/checklist/checklist.ftl",
+    "cui/checklist/checklist.js",
+
+    "cui/datetime-picker/datetime-picker.css",
+    "cui/datetime-picker/datetime-picker.ftl",
+    "cui/datetime-picker/datetime-picker.js",
+
+    "cui/field/field.css",
+    "cui/field/field.ftl",
+    "cui/field/field.js",
+
+    "cui/header/header.css",
+    "cui/header/header.ftl",
+    "cui/header/header.js",
+
+    "cui/index-list/index-list.css",
+    "cui/index-list/index-list.ftl",
+    "cui/index-list/index-list.js",
+
+    "cui/index-section/index-section.css",
+    "cui/index-section/index-section.ftl",
+    "cui/index-section/index-section.js",
+
+    "cui/indicator/indicator.css",
+    "cui/indicator/indicator.ftl",
+    "cui/indicator/indicator.js",
+
+    "cui/infinite-scroll/directive.js",
+    "cui/infinite-scroll/infinite-scroll.js",
+
+    "cui/lazyload/lazyload.js",
+
+    "cui/loadmore/loadmore.css",
+    "cui/loadmore/loadmore.ftl",
+    "cui/loadmore/loadmore.js",
+
+    "cui/message-box/message-box.css",
+    "cui/message-box/message-box.ftl",
+    "cui/message-box/message-box.js",
+
+    "cui/navbar/navbar.css",
+    "cui/navbar/navbar.ftl",
+    "cui/navbar/navbar.js",
+
+    "cui/picker/draggable.js",
+    "cui/picker/picker.css",
+    "cui/picker/picker.ftl",
+    "cui/picker/picker.js",
+    "cui/picker/picker-slot.ftl",
+    "cui/picker/picker-slot.js",
+    "cui/picker/translate.js",
+
+    "cui/popup/popup.css",
+    "cui/popup/popup.ftl",
+    "cui/popup/popup.js",
+
+    "cui/progress/progress.css",
+    "cui/progress/progress.ftl",
+    "cui/progress/progress.js",
+
+    "cui/radio/radio.css",
+    "cui/radio/radio.ftl",
+    "cui/radio/radio.js",
+
+    "cui/range/draggable.js",
+    "cui/range/range.css",
+    "cui/range/range.ftl",
+    "cui/range/range.js",
+
+    "cui/search/search.css",
+    "cui/search/search.ftl",
+    "cui/search/search.js",
+
+    "cui/spinner/spinner.css",
+    "cui/spinner/spinner.ftl",
+    "cui/spinner/spinner.js",
+    "cui/spinner/spinner/common.js",
+    "cui/spinner/spinner/double-bounce.ftl",
+    "cui/spinner/spinner/double-bounce.js",
+    "cui/spinner/spinner/fading-circle.ftl",
+    "cui/spinner/spinner/fading-circle.js",
+    "cui/spinner/spinner/snake.ftl",
+    "cui/spinner/spinner/snake.js",
+    "cui/spinner/spinner/triple-bounce.ftl",
+    "cui/spinner/spinner/triple-bounce.js",
+
+    "cui/swipe/swipe.css",
+    "cui/swipe/swipe.ftl",
+    "cui/swipe/swipe.js",
+    "cui/swipe/swipe-item.ftl",
+    "cui/swipe/swipe-item.js",
+
+    "cui/switch/switch.css",
+    "cui/switch/switch.ftl",
+    "cui/switch/switch.js",
+
+    "cui/tab-container/tab-container.css",
+    "cui/tab-container/tab-container.ftl",
+    "cui/tab-container/tab-container.js",
+
+    "cui/tab-container-item/tab-container-item.css",
+    "cui/tab-container-item/tab-container-item.ftl",
+    "cui/tab-container-item/tab-container-item.js",
+
+    "cui/tab-item/tab-item.css",
+    "cui/tab-item/tab-item.ftl",
+    "cui/tab-item/tab-item.js",
+
+    "cui/tabbar/tabbar.css",
+    "cui/tabbar/tabbar.ftl",
+    "cui/tabbar/tabbar.js",
+
+    "cui/toast/toast.css",
+    "cui/toast/toast.ftl",
+    "cui/toast/toast.js"
+  ],
+  "dependencies": {
+    "ces_comp/vue": "2.0.3",
+    "ces_comp/es6-promise": "3.3.1"
+  }
+}

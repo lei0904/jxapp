@@ -1,0 +1,41 @@
+.cui-tabbar {
+    position: relative;
+    background-color: #fafafa;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    text-align: center;
+}
+.cui-tabbar > .cui-tab-item.is-selected {
+    background-color: #eaeaea;
+    color: #26a2ff;
+}
+.cui-tabbar::after {
+    color: #d9d9d9;
+    content: " ";
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid;
+    top: 0;
+    left: 0;
+    position: absolute;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+/*@media screen and (-webkit-min-device-pixel-ratio: 2) {
+    .cui-tabbar::after {
+        -webkit-transform: scaleY(.5);
+        transform: scaleY(.5);
+    }
+}*/
+.cui-tabbar.is-fixed {
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    z-index: 1;
+}

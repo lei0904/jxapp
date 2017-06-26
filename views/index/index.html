@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="HandheldFriendly" content="true">
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="../lib/css/style.css">
+    <title>CUI APP</title>
+</head>
+<body>
+
+<div id="app" v-cloak>
+    <div class="login_bg"  id="login_bg">
+        <cui-header :title="title" id="header-div" ref="header">
+            <cui-button v-show="backable" icon="back" slot="left" @click.native="back"></cui-button>
+            <cui-button v-show="savable" @click.native="save" slot="right">保存</cui-button>
+            <cui-button v-show="searchable" @click.native="search" icon="search" slot="right"></cui-button>
+        </cui-header>
+
+        <transition :name="animate" mode="out-in">
+                <keep-alive exclude="meetingRoom">
+                    <router-view></router-view>
+                </keep-alive>
+        </transition>
+
+
+        <div class="main_nav" v-show="navable">
+            <router-link class="nav1" to="/index"><span>首页</span></router-link>
+            <router-link class="nav2" to="/recharge"><span>充值</span></router-link>
+            <router-link class="nav3" to="/information"><span>内容</span></router-link>
+            <router-link class="nav4" to="/personalCenter"><span>我的</span></router-link>
+        </div>
+    </div>
+</div>
+
+<script src="../lib/js/scrat.js"></script>
+<script src="../lib/js/flexible.js"></script>
+<script src="index.js"></script>
+</body>
+</html>

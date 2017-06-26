@@ -1,0 +1,65 @@
+.cui-indexlist {
+    width: 100%;
+    position: relative;
+    overflow: hidden
+}
+.cui-indexlist-content {
+    overflow: auto
+}
+.cui-indexlist-nav {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: 0;
+    background-color: #fff;
+    border-left: solid 1px #ddd;
+    text-align: center;
+    max-height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center
+}
+.cui-indexlist-navlist {
+    list-style: none;
+    max-height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column
+}
+.cui-indexlist-navitem {
+    padding: 4px 12px;
+    font-size: 24px; /*px*/
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none
+}
+.cui-indexlist-indicator {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    line-height: 100px;
+    background-color: rgba(0, 0, 0, .7);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 44px; /*px*/
+}
+

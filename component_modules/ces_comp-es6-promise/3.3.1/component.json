@@ -1,0 +1,7 @@
+{
+  "version": "3.3.1",
+  "name": "es6-promise",
+  "repo": "ces_comp/es6-promise",
+  "description": "es6 promise",
+  "main": "index.js"
+}

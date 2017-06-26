@@ -1,0 +1,27 @@
+.cui-loadmore {
+    overflow: hidden
+}
+.cui-loadmore-content {}
+.cui-loadmore-content.is-dropped {
+    -webkit-transition: .2s;
+    transition: .2s
+}
+.cui-loadmore-top, .cui-loadmore-bottom {
+    text-align: center;
+    height: 100px;
+    line-height: 100px
+}
+.cui-loadmore-top {
+    margin-top: -100px
+}
+.cui-loadmore-bottom {
+    margin-bottom: -100px
+}
+.cui-loadmore-spinner {
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle
+}
+.cui-loadmore-text {
+    vertical-align: middle
+}

@@ -1,0 +1,24 @@
+.cui-address-picker {
+    width: 100%;
+}
+.cui-address-picker .picker-slot-wrapper, .cui-address-picker .picker-item {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.cui-address-picker .picker-toolbar {
+    border-bottom: solid 1px #eaeaea;
+}
+.cui-address-picker-action {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    line-height: 80px;
+    font-size: 32px; /*px*/
+    color: #26a2ff;
+}
+.cui-address-picker-cancel {
+    float: left;
+}
+.cui-address-picker-confirm {
+    float: right;
+}

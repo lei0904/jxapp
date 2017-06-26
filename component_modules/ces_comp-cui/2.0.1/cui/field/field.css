@@ -1,0 +1,76 @@
+.cui-field {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.cui-field .cui-cell-title {
+    width: 210px;
+    -webkit-box-flex: 0;
+    -ms-flex: none;
+    flex: none;
+}
+.cui-field .cui-cell-value {
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    color: inherit;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+.cui-field.is-nolabel .cui-cell-title {
+    display: none;
+}
+.cui-field.is-textarea {
+    -webkit-box-align: inherit;
+    -ms-flex-align: inherit;
+    -ms-grid-row-align: inherit;
+    align-items: inherit;
+}
+.cui-field.is-textarea .cui-cell-title {
+    padding: 20px 0;
+}
+.cui-field.is-textarea .cui-cell-value {
+    padding: 10px 0;
+}
+.cui-field-core {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0;
+    border: 0;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    outline: 0;
+    line-height: 1.6;
+    font-size: inherit;
+    width: 100%;
+}
+.cui-field-clear {
+    opacity: .2;
+}
+.cui-field-state {
+    color: inherit;
+    margin-left: 40px;
+}
+.cui-field-state .cuiui {
+    font-size: 40px;
+}
+.cui-field-state.is-default {
+    margin-left: 0;
+}
+.cui-field-state.is-success {
+    color: #4caf50;
+}
+.cui-field-state.is-warning {
+    color: #ffc107;
+}
+.cui-field-state.is-error {
+    color: #f44336;
+}
+.cui-field-other {
+    top: 0;
+    right: 0;
+    position: absolute;
+}

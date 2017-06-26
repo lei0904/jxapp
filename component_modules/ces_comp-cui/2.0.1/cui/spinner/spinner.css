@@ -1,0 +1,226 @@
+.cui-spinner-snake {
+    -webkit-animation: cui-spinner-rotate 0.8s infinite linear;
+    animation: cui-spinner-rotate 0.8s infinite linear;
+    border: 8px solid transparent; /*px*/
+    border-radius: 50%;
+}
+@-webkit-keyframes cui-spinner-rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+@keyframes cui-spinner-rotate {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+.cui-spinner-double-bounce {
+    position: relative;
+}
+.cui-spinner-double-bounce-bounce1, .cui-spinner-double-bounce-bounce2 {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    opacity: 0.6;
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-animation: cui-spinner-double-bounce 2.0s infinite ease-in-out;
+    animation: cui-spinner-double-bounce 2.0s infinite ease-in-out;
+}
+.cui-spinner-double-bounce-bounce2 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}
+@-webkit-keyframes cui-spinner-double-bounce {
+    0%, 100% {
+        -webkit-transform: scale(0.0);
+        transform: scale(0.0);
+    }
+    50% {
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+    }
+}
+@keyframes cui-spinner-double-bounce {
+    0%, 100% {
+        -webkit-transform: scale(0.0);
+        transform: scale(0.0);
+    }
+    50% {
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+    }
+}
+
+.cui-spinner-triple-bounce {}
+.cui-spinner-triple-bounce-bounce1, .cui-spinner-triple-bounce-bounce2, .cui-spinner-triple-bounce-bounce3 {
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: cui-spinner-triple-bounce 1.4s infinite ease-in-out both;
+    animation: cui-spinner-triple-bounce 1.4s infinite ease-in-out both;
+}
+.cui-spinner-triple-bounce-bounce1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+}
+.cui-spinner-triple-bounce-bounce2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+}
+@-webkit-keyframes cui-spinner-triple-bounce {
+    0%, 80%, 100% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+    40% {
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+    }
+}
+@keyframes cui-spinner-triple-bounce {
+    0%, 80%, 100% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+    40% {
+        -webkit-transform: scale(1.0);
+        transform: scale(1.0);
+    }
+}
+
+.cui-spinner-fading-circle {
+    position: relative
+}
+.cui-spinner-fading-circle-circle {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute
+}
+.cui-spinner-fading-circle-circle::before {
+    content: " ";
+    display: block;
+    margin: 0 auto;
+    width: 15%;
+    height: 15%;
+    border-radius: 100%;
+    -webkit-animation: cui-fading-circle 1.2s infinite ease-in-out both;
+    animation: cui-fading-circle 1.2s infinite ease-in-out both
+}
+.cui-spinner-fading-circle-circle.is-circle2 {
+    -webkit-transform: rotate(30deg);
+    transform: rotate(30deg)
+}
+.cui-spinner-fading-circle-circle.is-circle2::before {
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s
+}
+.cui-spinner-fading-circle-circle.is-circle3 {
+    -webkit-transform: rotate(60deg);
+    transform: rotate(60deg)
+}
+.cui-spinner-fading-circle-circle.is-circle3::before {
+    -webkit-animation-delay: -1s;
+    animation-delay: -1s
+}
+.cui-spinner-fading-circle-circle.is-circle4 {
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg)
+}
+.cui-spinner-fading-circle-circle.is-circle4::before {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s
+}
+.cui-spinner-fading-circle-circle.is-circle5 {
+    -webkit-transform: rotate(120deg);
+    transform: rotate(120deg)
+}
+.cui-spinner-fading-circle-circle.is-circle5::before {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s
+}
+.cui-spinner-fading-circle-circle.is-circle6 {
+    -webkit-transform: rotate(150deg);
+    transform: rotate(150deg)
+}
+.cui-spinner-fading-circle-circle.is-circle6::before {
+    -webkit-animation-delay: -0.7s;
+    animation-delay: -0.7s
+}
+.cui-spinner-fading-circle-circle.is-circle7 {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg)
+}
+.cui-spinner-fading-circle-circle.is-circle7::before {
+    -webkit-animation-delay: -0.6s;
+    animation-delay: -0.6s
+}
+.cui-spinner-fading-circle-circle.is-circle8 {
+    -webkit-transform: rotate(210deg);
+    transform: rotate(210deg)
+}
+.cui-spinner-fading-circle-circle.is-circle8::before {
+    -webkit-animation-delay: -0.5s;
+    animation-delay: -0.5s
+}
+.cui-spinner-fading-circle-circle.is-circle9 {
+    -webkit-transform: rotate(240deg);
+    transform: rotate(240deg)
+}
+.cui-spinner-fading-circle-circle.is-circle9::before {
+    -webkit-animation-delay: -0.4s;
+    animation-delay: -0.4s
+}
+.cui-spinner-fading-circle-circle.is-circle10 {
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg)
+}
+.cui-spinner-fading-circle-circle.is-circle10::before {
+    -webkit-animation-delay: -0.3s;
+    animation-delay: -0.3s
+}
+.cui-spinner-fading-circle-circle.is-circle11 {
+    -webkit-transform: rotate(300deg);
+    transform: rotate(300deg)
+}
+.cui-spinner-fading-circle-circle.is-circle11::before {
+    -webkit-animation-delay: -0.2s;
+    animation-delay: -0.2s
+}
+.cui-spinner-fading-circle-circle.is-circle12 {
+    -webkit-transform: rotate(330deg);
+    transform: rotate(330deg)
+}
+.cui-spinner-fading-circle-circle.is-circle12::before {
+    -webkit-animation-delay: -0.1s;
+    animation-delay: -0.1s
+}
+@-webkit-keyframes cui-fading-circle {
+    0%, 39%, 100% {
+        opacity: 0
+    }
+    40% {
+        opacity: 1
+    }
+}
+@keyframes cui-fading-circle {
+    0%, 39%, 100% {
+        opacity: 0
+    }
+    40% {
+        opacity: 1
+    }
+}

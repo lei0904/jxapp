@@ -1,0 +1,112 @@
+.cui-msgbox {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate3d(-50%, -50%, 0);
+    transform: translate3d(-50%, -50%, 0);
+    background-color: #fff;
+    width: 85%;
+    border-radius: 6px;
+    font-size: 32px; /*px*/
+    -webkit-user-select: none;
+    overflow: hidden;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+.cui-msgbox-header {
+    padding: 30px 0 0;
+}
+.cui-msgbox-content {
+    padding: 20px 40px 30px;
+    border-bottom: 1px solid #ddd;
+    min-height: 72px;
+    position: relative;
+}
+.cui-msgbox-input {
+    padding-top: 30px;
+}
+.cui-msgbox-input input {
+    border: 1px solid #dedede; /*no*/
+    border-radius: 10px;
+    padding: 8px 10px;
+    width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+}
+.cui-msgbox-input input.invalid {
+    border-color: #ff4949;
+}
+.cui-msgbox-input input.invalid:focus {
+    border-color: #ff4949;
+}
+.cui-msgbox-errormsg {
+    color: red;
+    font-size: 24px; /*px*/
+    min-height: 36px;
+    margin-top: 4px;
+}
+.cui-msgbox-title {
+    text-align: center;
+    padding-left: 0;
+    margin-bottom: 0;
+    font-size: 32px; /*px*/
+    font-weight: 700;
+    color: #333;
+}
+.cui-msgbox-message {
+    color: #999;
+    margin: 0;
+    text-align: center;
+    line-height: 72px;
+}
+.cui-msgbox-btns {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 80px;
+    line-height: 80px;
+}
+.cui-msgbox-btn {
+    line-height: 70px;
+    display: block;
+    background-color: #fff;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    margin: 0;
+    border: 0;
+}
+.cui-msgbox-btn:focus {
+    outline: none;
+}
+.cui-msgbox-btn:active {
+    background-color: #fff;
+}
+.cui-msgbox-cancel {
+    width: 50%;
+    border-right: 1px solid #ddd; /*no*/
+}
+.cui-msgbox-cancel:active {
+    color: #000;
+}
+.cui-msgbox-confirm {
+    color: #26a2ff;
+    width: 50%;
+}
+.cui-msgbox-confirm:active {
+    color: #26a2ff;
+}
+.msgbox-bounce-enter {
+    opacity: 0;
+    -webkit-transform: translate3d(-50%, -50%, 0) scale(0.7);
+    transform: translate3d(-50%, -50%, 0) scale(0.7);
+}
+.msgbox-bounce-leave-active {
+    opacity: 0;
+    -webkit-transform: translate3d(-50%, -50%, 0) scale(0.9);
+    transform: translate3d(-50%, -50%, 0) scale(0.9);
+}

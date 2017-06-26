@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="HandheldFriendly" content="true">
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        /*.vuerify-invalid {
+            border-color: red!important;
+        }*/
+    </style>
+    <link rel="stylesheet" type="text/css" href="../lib/css/style.css">
+    <title>CUI APP</title>
+</head>
+<body>
+
+<div id="app" v-cloak>
+    <div class="login_bg">
+        <cui-header :title="title">
+            <cui-button v-show="backable" icon="back" slot="left" @click.native="back"></cui-button>
+            <cui-button v-show="savable" @click.native="save" slot="right">保存</cui-button>
+            <cui-button v-show="searchable" @click.native="search" icon="search" slot="right"></cui-button>
+        </cui-header>
+        <div class="login-form">
+            <div class="login_con clear">
+                <i class="user_icon icon"></i>
+                <input class="login_input login-user" v-model="user"  type="text" value="" placeholder="请输入用户名">
+            </div>
+            <div class="login_con clear">
+                <i class="password_icon icon"></i>
+                <input class="login_input login-password" v-model="password"   type="password" value="" placeholder="请输入登录密码">
+            </div>
+            <div class="login_con clear">
+                <i class="attr_icon icon"></i>
+                <cui-button @click.native="openAttr" class="login_button register_attr" size="large">{{ userAttr }}</cui-button>
+                <cui-data-picker
+                        ref="picker2"
+                        @confirm="attrChange"
+                        :show-key="'name'"
+                        :values="appRoles">
+                </cui-data-picker>
+            </div>
+            <!--<button class="login-form-button" id="login-button" name="login-button" @click="doLogin">登录</button>-->
+            <cui-button @click.native="doLogin" class="login-form-button" size="large">登录</cui-button>
+            <div class="bottom_con clear">
+                <span class="left"><a href="#" @click="register" >注册</a></span>
+                <span class="right"><a href="#" >忘记密码？</a></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../lib/js/scrat.js"></script>
+<script src="../lib/js/flexible.js"></script>
+<script src="index.js"></script>
+</body>
+</html>

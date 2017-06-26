@@ -1,0 +1,7 @@
+{
+  "version": "2.0.3",
+  "name": "vue",
+  "repo": "ces_comp/vue",
+  "description": "ces_comp vue",
+  "main": "vue.js"
+}

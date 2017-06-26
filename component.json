@@ -1,0 +1,20 @@
+{
+  "name": "jxapp",
+  "version": "1.0.0",
+  "dependencies": {
+    "ces_comp/vuerify": "0.4.0",
+    "ces_comp/v-vuerify": "0.3.0",
+    "ces_comp/v-vuerify-next": "0.2.0",
+    "ces_comp/simple-assign": "0.1.0",
+    "ces_comp/axios": "1.0.0",
+    "ces_comp/vue-axios": "1.0.0",
+    "ces_comp/ces-vue-axios": "1.0.0",
+    "ces_comp/es6-promise": "3.3.1",
+    "ces_comp/vue": "2.0.3",
+    "ces_comp/vue-resource": "1.0.3",
+    "ces_comp/vue-router": "2.0.0",
+    "ces_comp/ces-vue-resource": "1.0.0",
+    "ces_comp/cui": "2.0.1",
+    "ces_comp/ces": "1.0.0"
+  }
+}

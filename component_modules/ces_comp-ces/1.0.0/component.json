@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "name": "ces",
+  "repo": "ces_comp/ces",
+  "description": "CES 前端JS-SDK组件",
+  "main": "ces.js",
+  "files": [
+    "modules.js",
+
+    "core/ces.config.js",
+    "core/ces.jsbridge.js",
+    "core/ces.page.js",
+    "core/ces.webcache.js",
+
+    "plugins/cache.js",
+    "plugins/camera.js",
+    "plugins/ces.plugins.js",
+    "plugins/http.js",        
+    "plugins/scan.js",
+
+    "utils/ces.datetime.js",
+    "utils/ces.json.js",
+    "utils/ces.utils.js"
+  ]
+}

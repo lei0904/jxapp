@@ -1,0 +1,15 @@
+.cui-cell-swipe .cui-cell-wrapper, .cui-cell-swipe .cui-cell-left, .cui-cell-swipe .cui-cell-right {
+    -webkit-transition: -webkit-transform 150ms ease-in-out;
+    transition: -webkit-transform 150ms ease-in-out;
+    transition: transform 150ms ease-in-out;
+    transition: transform 150ms ease-in-out, -webkit-transform 150ms ease-in-out;
+}
+.cui-cell-swipe-buttongroup {
+    height: 100%;
+}
+.cui-cell-swipe-button {
+    height: 100%;
+    display: inline-block;
+    padding: 0 20px;
+    line-height: 96px;
+}

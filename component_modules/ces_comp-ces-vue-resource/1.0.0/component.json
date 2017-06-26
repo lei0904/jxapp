@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0",
+  "name": "ces-vue-resource",
+  "repo": "ces_comp/ces-vue-resource",
+  "description": "Ces Vue Http代理",
+  "main": "index.js",
+  "dependencies": {
+    "ces_comp/ces": "1.0.0",
+    "ces_comp/vue": "2.0.3",
+    "ces_comp/vue-resource": "1.0.3"
+  }
+}

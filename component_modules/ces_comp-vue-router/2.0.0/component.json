@@ -1,0 +1,10 @@
+{
+  "version": "2.0.0",
+  "name": "vue-router",
+  "repo": "ces_comp/vue-router",
+  "description": "ces_comp vue-router",
+  "main": "vue-router.js",
+  "dependencies": {
+    "ces_comp/vue": "2.0.3"
+  }
+}

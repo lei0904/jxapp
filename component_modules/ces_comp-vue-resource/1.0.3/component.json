@@ -1,0 +1,10 @@
+{
+  "version": "1.0.3",
+  "name": "vue-resource",
+  "repo": "ces_comp/vue-resource",
+  "description": "ces_comp vue-resource",
+  "main": "vue-resource.js",
+  "dependencies": {
+    "ces_comp/vue": "2.0.3"
+  }
+}

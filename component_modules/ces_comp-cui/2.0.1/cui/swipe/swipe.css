@@ -1,0 +1,41 @@
+.cui-swipe {
+    overflow: hidden;
+    position: relative;
+}
+.cui-swipe-items-wrap {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+.cui-swipe-items-wrap > div {
+    position: absolute;
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+    width: 100%;
+    height: 100%;
+    display: none
+}
+.cui-swipe-items-wrap > div.is-active {
+    display: block;
+    -webkit-transform: none;
+    transform: none;
+}
+.cui-swipe-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+.cui-swipe-indicator {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    border-radius: 100%;
+    background: #000;
+    opacity: 0.2;
+    margin: 0 6px;
+}
+.cui-swipe-indicator.is-active {
+    background: #fff;
+}

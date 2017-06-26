@@ -1,0 +1,10 @@
+{
+  "version": "0.4.0",
+  "name": "vuerify",
+  "repo": "ces_comp/vuerify",
+  "description": "ces_comp vuerify",
+  "main": "vuerify.js",
+  "dependencies": {
+    "ces_comp/vue": "2.0.3"
+  }
+}

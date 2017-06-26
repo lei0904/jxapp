@@ -1,0 +1,15 @@
+.cui-tab-container {
+    overflow: hidden;
+    position: relative;
+}
+.cui-tab-container .swipe-transition {
+    -webkit-transition: -webkit-transform 150ms ease-in-out;
+    transition: -webkit-transform 150ms ease-in-out;
+    transition: transform 150ms ease-in-out;
+    transition: transform 150ms ease-in-out, -webkit-transform 150ms ease-in-out;
+}
+.cui-tab-container-wrap {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}

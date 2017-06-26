@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "name": "vue-axios",
+  "repo": "ces_comp/vue-axios",
+  "description": "vue-axios",
+  "main": "index.js",
+  "dependencies": {
+    "ces_comp/vue": "2.0.3",
+    "ces_comp/axios": "1.0.0"
+  }
+}

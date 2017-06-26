@@ -1,0 +1,32 @@
+.cui-badge {
+    color: #fff;
+    text-align: center;
+    display: inline-block
+}
+.cui-badge.is-size-large {
+    border-radius: 28px;
+    font-size: 36px; /*px*/
+    padding: 4px 20px
+}
+.cui-badge.is-size-small {
+    border-radius: 16px;
+    font-size: 24px; /*px*/
+    padding: 4px 12px
+}
+.cui-badge.is-size-normal {
+    border-radius: 24px;
+    font-size: 30px; /*px*/
+    padding: 4px 16px
+}
+.cui-badge.is-warning {
+    background-color: #ffc107
+}
+.cui-badge.is-error {
+    background-color: #f44336
+}
+.cui-badge.is-primary {
+    background-color: #26a2ff
+}
+.cui-badge.is-success {
+    background-color: #4caf50
+}

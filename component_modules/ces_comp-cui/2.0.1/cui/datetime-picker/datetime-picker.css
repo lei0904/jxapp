@@ -1,0 +1,24 @@
+.cui-datetime {
+    width: 100%;
+}
+.cui-datetime .picker-slot-wrapper, .cui-datetime .picker-item {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.cui-datetime .picker-toolbar {
+    border-bottom: solid 1px #eaeaea;
+}
+.cui-datetime-action {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    line-height: 80px;
+    font-size: 32px; /*px*/
+    color: #26a2ff;
+}
+.cui-datetime-cancel {
+    float: left;
+}
+.cui-datetime-confirm {
+    float: right;
+}

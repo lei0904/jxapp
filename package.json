@@ -1,0 +1,32 @@
+{
+  "name": "jxapp",
+  "version": "1.0.0",
+  "private": true,
+  "main": "server/index.js",
+  "dependencies": {
+    "express": "4.6.1",
+    "compression": "1.0.8",
+    "errorhandler": "1.1.1",
+    "http-proxy": "1.11.1"
+  },
+  "config": {
+    "px2rem": true,
+    "plugin": false,
+    "debug": true,
+    "service": "static",
+    "ServiceEncrypt": true,
+    "Server": {
+      "defaultProtocol":"static",
+      "serverIp": "www.yitong.com.cn",
+      "serverPort": "19016",
+      "serverContext": "gsnx_mmp",
+      "timeOut": 30
+    },
+    "test":"/jxapp/1.0.0/index/index.html",
+    "index": "/index/index.html"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}

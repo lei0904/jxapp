@@ -1,0 +1,26 @@
+.cui-navbar {
+    background-color: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    text-align: center;
+}
+.cui-navbar .cui-tab-item {
+    padding: 34px 0;
+    font-size: 30px
+}
+.cui-navbar .cui-tab-item:last-child {
+    border-right: 0;
+}
+.cui-navbar .cui-tab-item.is-selected {
+    border-bottom: 6px solid #26a2ff; /*px*/
+    color: #26a2ff;
+    margin-bottom: -6px;
+}
+.cui-navbar.is-fixed {
+    top: 0;
+    right: 0;
+    left: 0;
+    position: fixed;
+    z-index: 1;
+}

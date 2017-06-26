@@ -1,0 +1,63 @@
+.cui-switch {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative
+}
+.cui-switch-label {
+    margin-left: 20px; /*no*/
+    display: inline-block
+}
+.cui-switch-label:empty {
+    margin-left: 0
+}
+.cui-switch-core {
+    display: inline-block;
+    position: relative;
+    width: 104px; /*no*/
+    height: 64px; /*no*/
+    border: 1px solid #d9d9d9; /*no*/
+    border-radius: 32px; /*no*/
+    box-sizing: border-box;
+    background: #d9d9d9
+}
+.cui-switch-core::after, .cui-switch-core::before {
+    content: " ";
+    top: 0;
+    left: 0;
+    position: absolute;
+    -webkit-transition: -webkit-transform .3s;
+    transition: -webkit-transform .3s;
+    transition: transform .3s;
+    transition: transform .3s, -webkit-transform .3s;
+    border-radius: 30px /*no*/
+}
+.cui-switch-core::after {
+    width: 60px; /*no*/
+    height: 60px; /*no*/
+    background-color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .4); /*no*/
+}
+.cui-switch-core::before {
+    width: 100px; /*no*/
+    height: 60px; /*no*/
+    background-color: #fdfdfd;
+}
+.cui-switch-input {
+    display: none;
+}
+.cui-switch-input:checked + .cui-switch-core {
+    border-color: #26a2ff;
+    background-color: #26a2ff;
+}
+.cui-switch-input:checked + .cui-switch-core::before {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+.cui-switch-input:checked + .cui-switch-core::after {
+    -webkit-transform: translateX(40px); /*no*/
+    transform: translateX(40px); /*no*/
+}
