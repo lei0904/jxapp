@@ -20,34 +20,9 @@ require.async([
                 data: function () {
                     return{
                         full: false,
-                        title: "特群云",
-                        backable: false,
-                        navable: true,
-                        savable: false,
-                        searchable: false,
                         animate: "left-fade",
                         user: '13053083464',
                         password: '000000',
-                        userAttr: "请选择角色属性",
-                        type: "",
-                        appRoles: [
-                            {
-                                name:'家属',
-                                code:"sg-help-family"
-                            },
-                            {
-                                name:'律师',
-                                code:"sg-help-lawyer"
-                            },
-                            {
-                                name:'心理咨询',
-                                code:"sg-help-counselor"
-                            },
-                            {
-                                name:'社工',
-                                code:"sg-help-social"
-                            }
-                        ]
                     }
                 },
                 methods: {
@@ -73,13 +48,10 @@ require.async([
                             });
                             return;
                         }
-                        if (!this.type) {
-                            Cui.Toast({
-                                message: '请选择角色属性',
-                                position: 'bottom'
-                            });
-                            return;
-                        }
+
+                        Ces.Page.open('/index/index.html');
+                        return;
+
                         Api.post(Api.login,
                             {
                                 account: vm.user,

@@ -1155,4 +1155,3 @@ module.exports = Promise;
 // return Promise;
 
 // })));
-//# sourceMappingURL=es6-promise.map

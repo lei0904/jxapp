@@ -26,7 +26,7 @@ a:active {
 }
 
 a:visited {
-    color: #be0a18
+    color: #028bff
 }
 
 .cui-indicator-mask {
@@ -42,7 +42,7 @@ a:visited {
 /*            header            */
 /********************************/
 .cui-header {
-    background: #BE1E2D;
+    background: #fff;
     height: 96px;
     line-height: 96px;
     position: fixed;
@@ -50,6 +50,7 @@ a:visited {
     left: 0;
     width: 100%;
     z-index: 9998;
+    color:#000;
 }
 
 .cui-header-title {
@@ -265,7 +266,7 @@ icon
 
 .icon {
     display: block;
-    width: 50px;
+    width: 60px;
     height: 60px;
     background-size: 100% 100% !important;
     float: left;
@@ -289,12 +290,12 @@ icon
 }
 
 .user_icon {
-    background: url("../images/user_icon.png") center no-repeat;
+    background: url("../images/jx-images/user-icon.png") center no-repeat;
     background-size: 80% 80% !important;
 }
 
 .password_icon {
-    background: url("../images/password_icon.png") center no-repeat;
+    background: url("../images/jx-images/password-icon.png") center no-repeat;
     background-size: 80% 80% !important;
 }
 
@@ -350,7 +351,7 @@ icon
 
 
 .login_con:first-child {
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 .clear:after {
@@ -362,35 +363,52 @@ icon
 }
 
 .login-form {
-    width: 100%;
     text-align: center;
-    padding-top: 102px;
+    padding-top: 232px;
+    background:url("../images/jx-images/login-bg.png");
+    background-size:100% 100%;
+    margin:200px 25px 0;
+    position: relative;
 }
 .login_con {
     position: relative;
-    width: 572px;
-    height: 62px;
-    margin: 0 auto;
-    margin-top: 50px;
+    width: 552px;
+    height: 66px;
+    margin: 0  auto 80px;
     display: block;
     clear: both;
+    border-bottom:1px solid #909090;
+
+}
+
+.register_item{
+    margin: 0  auto 30px;
+}
+
+.register_item_last{
+    margin: 0  auto 60px;
+}
+.register_form{
+    height: 850px;
 }
 .input_main{
-    border: 1px solid #9D9D9D;/*no*/
+    border:0;
+    background:rgba(0,0,0,0);
     line-height: 60px;
     position: absolute;
-    left:70px;
+    left:0;
 }
-.phone_ext {
-    position: absolute;
-    height: 60px;
-    width: 80px;
-    left: 0;
-    font-style: normal;
-    font-size: 26px;/*px*/
-    text-align: center;
-    line-height: 60px;
-}
+/*.phone_ext {*/
+    /*position: absolute;*/
+    /*height: 60px;*/
+    /*width: 80px;*/
+    /*left: 0;*/
+    /*font-style: normal;*/
+    /*font-size: 26px;!*px*!*/
+    /*text-align: center;*/
+    /*line-height: 60px;*/
+    /*color:#909090;*/
+/*}*/
 .login-form .login-form-input {
     outline: none;
     width: 500px;
@@ -401,14 +419,16 @@ icon
     text-align: left;
     border-radius: 0;
     border: 0 none;
+    background: rgba(0,0,0,0);
 }
 .login_input{
-    border: 1px solid #9d9d9d;/*no*/
     padding: 11.5px 20px;
-    width: 500px;
+    width: 480px;
     height: 60px;
-    background: #dfdfdf;
+    background: rgba(0,0,0,0);
+    border: 0;
     float: right;
+    color:#909090;
     font-size: 26px;/*px*/
 }
 .login_input::-webkit-input-placeholder{
@@ -440,15 +460,6 @@ icon
     color: #000000;
     opacity: 0.6;
 }
-.login-form .login-form-input.login-user {
-    background: #DFDFDF;
-}
-.register_phone{
-    background: #DFDFDF;
-}
-.login-form .login-form-input.login-password {
-    background: #DFDFDF;
-}
 
 
 .reg_list {
@@ -462,40 +473,39 @@ icon
 .reg_list .reg_code {
     width: 48%;
     float: left;
-    border: 1px solid #ccc; /*no*/
+    border: 0;
     height: 60px;
-    background-color: #efefef;
+    background-color: rgba(0,0,0,0);
     padding: 10px 20px;
 }
 
 .reg_list .reg_code_sure {
-    width: 48%;
+    width: 43%;
     float: right;
     height: 60px;
-    background: #BE1E2D;
+    background: #028bff;
     color: #fff;
     border: 0 none;
 }
 
 .login-form .login-form-button {
     outline: none;
-    width: 570px;
-    height: 80px;
-    border: 1px #C4DA85 solid; /*no*/
-    margin: 180px auto 0;
-    background-color: #BE1E2D !important;
+    width: 500px;
+    height: 100px;
+    margin: 0 auto 10px;
     text-align: center;
     font-size: 34px; /*px*/
     color: #FFF;
+    background: #028bff;
+    border-bottom: 4px solid #216ecd;
 }
 
 .bottom_con {
     position: relative;
-    width: 570px;
-    margin: 0 auto;
+    width: 500px;
+    margin: 20px auto;
     display: block;
     clear: both;
-    margin-top: 20px;
     font-size: 28px; /*px*/
 }
 
@@ -509,7 +519,7 @@ icon
 
 .bottom_con span {
     height: 40px;
-    color: #BE1E2D;
+    color: #028bff;
     font-size: 28px; /*px*/
     font-weight: 500;
 }
@@ -583,7 +593,7 @@ icon
 
 .reg_step span {
     line-height: 80px;
-    color: #BE1E2D;
+    color: #028bff;
     font-size: 30px /*px*/;
 }
 

@@ -21,118 +21,110 @@
             <cui-button v-show="searchable" @click.native="search" icon="search" slot="right"></cui-button>
     </cui-header>
     <div class="login_bg" v-show="cur_step == '0'">
-        <div class="login-form">
-            <div class="login_con clear">
-                <i class="phone_icon icon"></i>
+        <div class="login-form register_form">
+            <div class="login_con register_item clear">
+                <i class="user_icon icon"></i>
                 <div class="input_main">
-                    <i class="phone_ext">+86</i>
+                    <!--<i class="phone_ext">+86</i>-->
                     <input class="login-form-input ext-input-l register_phone" @blur="checkExist" v-model="user.loginName"  type="text" maxlength="11" placeholder="请输入您的手机号">
                 </div>
-
             </div>
-            <div class="login_con clear">
-                <i class="attr_icon icon"></i>
+            <div class="login_con register_item clear">
+                <i class="password_icon icon"></i>
                 <div class="input_main">
-                    <cui-button @click.native="openAttr" class="login-form-input ext-input-l register_attr" size="large">{{ userAttr }}</cui-button>
-                    <cui-attr-picker
-                            ref="picker2"
-                            @confirm="attrChange" v-model="userAttr">
-                    </cui-attr-picker>
+                    <input class="login-form-input  ext-input-l register_phone" value="" v-model="verify_code" maxlength="6" placeholder="请输入6位数字密码">
                 </div>
-            </div>
-            <div class="login_con clear" v-show="showBindInput">
-                <input class="login-form-input ext-input-l register_phone" v-model="special_code"  type="text"  placeholder="请输入你的特群编号">
-            </div>
-            <div class="login_con clear">
-                <i class="icon"></i>
+              </div>
+            <div class="login_con register_item clear">
                 <div class="reg_list">
                     <input class="reg_code" value="" v-model="verify_code" maxlength="4" placeholder="请输入验证码">
                     <cui-button @click.native="sendSms" class="reg_code_sure" size="small" :class="disableClass" :disabled="disabled">{{btnText}}</cui-button>
                 </div>
-
+            </div>
+            <div class="login_con register_item register_item_last clear">
+                <div class="input_main">
+                    <input class="login-form-input  ext-input-l register_phone" value="" v-model="invite_code" maxlength="6" placeholder="请输入邀请码">
+                </div>
             </div>
             <cui-button @click.native="goStep1()" class="login-form-button" size="large">下一步</cui-button>
             <div class="bottom_con">
                 注册即代表您同意"
-                <span ><a href="#" >特群云心理咨询用户使用协议</a></span>"
+                <span ><a href="#" >驾校用户使用协议</a></span>"
             </div>
         </div>
-
-
-
     </div>
-    <div class="login_bg" v-show="cur_step == '1'">
-        <div class="reg_step">
-            <span>第一步:&nbsp;&nbsp;&nbsp;</span>
-            <span>填写基本信息</span>
-        </div>
-        <div class="align-left  bot_border">
-            <div class="clear">
-                <i class="name_icon icon-l"></i>
-                <cui-field label="" class="font26" placeholder="请输入您的姓名" v-model="user.name" ></cui-field>
-            </div>
-            <div class="clear">
-                <i class="sex_icon icon-l"></i>
-                <label class="sex_radio"><input  name="sex" type="radio" value="1" v-model="user.gender" />男 </label>
-                <label class="sex_radio"><input  name="sex" type="radio" value="0" v-model="user.gender" />女 </label>
-            </div>
-            <div class="clear">
-                <i class="phone_icon icon-l"></i>
-                <cui-field label="" class="font26" v-model="user.loginName" placeholder="请输入您的手机号" readonly="readonly"></cui-field>
-            </div>
-            <div class="clear posr">
-                <i class="address_icon icon-l"></i>
-                <cui-button @click.native="open" class="address_picker ext-input  register_attr" size="large">{{ user.address }}</cui-button>
-                <cui-address-picker
-                        ref="picker1"
-                        @confirm="handleChange">
-                </cui-address-picker>
-            </div>
-            <div class="clear">
-                <i class="idcard_icon icon-l"></i>
-                <cui-field label="" class="font26" v-model="user.identityId" placeholder="请输入您的身份证号" ></cui-field>
-            </div>
-            <div class="clear">
-                <i class="mail_icon icon-l"></i>
-                <cui-field label="" class="font26" v-model="user.email"  placeholder="请输入您的邮箱" type="email" ></cui-field>
-            </div>
-        </div>
+    <!--<div class="login_bg" v-show="cur_step == '1'">-->
+        <!--<div class="reg_step">-->
+            <!--<span>第一步:&nbsp;&nbsp;&nbsp;</span>-->
+            <!--<span>填写基本信息</span>-->
+        <!--</div>-->
+        <!--<div class="align-left  bot_border">-->
+            <!--<div class="clear">-->
+                <!--<i class="name_icon icon-l"></i>-->
+                <!--<cui-field label="" class="font26" placeholder="请输入您的姓名" v-model="user.name" ></cui-field>-->
+            <!--</div>-->
+            <!--<div class="clear">-->
+                <!--<i class="sex_icon icon-l"></i>-->
+                <!--<label class="sex_radio"><input  name="sex" type="radio" value="1" v-model="user.gender" />男 </label>-->
+                <!--<label class="sex_radio"><input  name="sex" type="radio" value="0" v-model="user.gender" />女 </label>-->
+            <!--</div>-->
+            <!--<div class="clear">-->
+                <!--<i class="phone_icon icon-l"></i>-->
+                <!--<cui-field label="" class="font26" v-model="user.loginName" placeholder="请输入您的手机号" readonly="readonly"></cui-field>-->
+            <!--</div>-->
+            <!--<div class="clear posr">-->
+                <!--<i class="address_icon icon-l"></i>-->
+                <!--<cui-button @click.native="open" class="address_picker ext-input  register_attr" size="large">{{ user.address }}</cui-button>-->
+                <!--<cui-address-picker-->
+                        <!--ref="picker1"-->
+                        <!--@confirm="handleChange">-->
+                <!--</cui-address-picker>-->
+            <!--</div>-->
+            <!--<div class="clear">-->
+                <!--<i class="idcard_icon icon-l"></i>-->
+                <!--<cui-field label="" class="font26" v-model="user.identityId" placeholder="请输入您的身份证号" ></cui-field>-->
+            <!--</div>-->
+            <!--<div class="clear">-->
+                <!--<i class="mail_icon icon-l"></i>-->
+                <!--<cui-field label="" class="font26" v-model="user.email"  placeholder="请输入您的邮箱" type="email" ></cui-field>-->
+            <!--</div>-->
+        <!--</div>-->
 
-        <cui-button  size="large" type="default" class="pos_bottom red" @click.native="goStep2()">下一步</cui-button>
-    </div>
-    <div class="login_bg marb60" v-show="cur_step == '2'">
-         <div class="reg_step h80">
-            <span>第二步:&nbsp;&nbsp;&nbsp;</span>
-            <span>上传证件</span>
-        </div>
+        <!--<cui-button  size="large" type="default" class="pos_bottom red" @click.native="goStep2()">下一步</cui-button>-->
+    <!--</div>-->
+    <!--<div class="login_bg marb60" v-show="cur_step == '2'">-->
+         <!--<div class="reg_step h80">-->
+            <!--<span>第二步:&nbsp;&nbsp;&nbsp;</span>-->
+            <!--<span>上传证件</span>-->
+        <!--</div>-->
 
-        <div class="reg_step h100 white">
-            <span>上传身份证（正面）</span>
-            <!--<cui-button size="small" type="default" class="reg_button_small" >浏览</cui-button>-->
-            <cui-button size="small" type="default" class="reg_button_small" @click.native="upLoad_id_pic('id_pic_front')">上传</cui-button>
-        </div>
+        <!--<div class="reg_step h100 white">-->
+            <!--<span>上传身份证（正面）</span>-->
+            <!--&lt;!&ndash;<cui-button size="small" type="default" class="reg_button_small" >浏览</cui-button>&ndash;&gt;-->
+            <!--<cui-button size="small" type="default" class="reg_button_small" @click.native="upLoad_id_pic('id_pic_front')">上传</cui-button>-->
+        <!--</div>-->
 
-        <div class="photo_con">
-            <div class="photo_area">
-                <img :src="id_pic_front_src" alt="您还没上传任何照片" @click="select_method('id_pic_front')">
-            </div>
-        </div>
+        <!--<div class="photo_con">-->
+            <!--<div class="photo_area">-->
+                <!--<img :src="id_pic_front_src" alt="您还没上传任何照片" @click="select_method('id_pic_front')">-->
+            <!--</div>-->
+        <!--</div>-->
 
-        <div class="reg_step h100 white">
-            <span>上传身份证（反面）</span>
-            <!--<cui-button size="small" type="default" class="reg_button_small" >浏览</cui-button>-->
-            <cui-button size="small" type="default" class="reg_button_small" @click.native="upLoad_id_pic('id_pic_back')">上传</cui-button>
-        </div>
+        <!--<div class="reg_step h100 white">-->
+            <!--<span>上传身份证（反面）</span>-->
+            <!--&lt;!&ndash;<cui-button size="small" type="default" class="reg_button_small" >浏览</cui-button>&ndash;&gt;-->
+            <!--<cui-button size="small" type="default" class="reg_button_small" @click.native="upLoad_id_pic('id_pic_back')">上传</cui-button>-->
+        <!--</div>-->
 
-        <div class="photo_con">
-            <div class="photo_area">
-                <img :src="id_pic_back_src" alt="您还没上传任何照片" @click="select_method('id_pic_back')">
-            </div>
-        </div>
-        <cui-actionsheet :actions="actions" ref="imgSelect"></cui-actionsheet>
+        <!--<div class="photo_con">-->
+            <!--<div class="photo_area">-->
+                <!--<img :src="id_pic_back_src" alt="您还没上传任何照片" @click="select_method('id_pic_back')">-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<cui-actionsheet :actions="actions" ref="imgSelect"></cui-actionsheet>-->
 
-        <cui-button  size="large" type="default" class="pos_bottom red" @click.native="goStep3()">下一步</cui-button>
-    </div>
+        <!--<cui-button  size="large" type="default" class="pos_bottom red" @click.native="goStep3()">下一步</cui-button>-->
+    <!--</div>-->
 </div>
 
 <script src="../lib/js/scrat.js"></script>

@@ -1,8 +1,6 @@
 var Vue = require('vue');
 
 var _index = require('index');
-v
-
 
 
 var index = Vue.extend(_index);
@@ -13,7 +11,7 @@ var routes = [
         path: '/index',
         component: index,
         meta: {
-            title: '特群云',
+            title: '驾校首页',
             backable: false,
             savable: false,
             searchable: false,

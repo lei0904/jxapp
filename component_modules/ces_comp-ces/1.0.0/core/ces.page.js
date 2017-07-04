@@ -117,8 +117,10 @@ var NativeContext = (function () {
     };
 
     var _loadData = function (callback) {
-        var data = WebCache.local.get(Keys._s_load_key_);
-        callback && callback(data);
+        // JSBridge.callHandler(nativeMethod.init, {}, function (data) {
+        //     callback && callback(data);
+        // });
+            callback();
     };
 
     return {
@@ -141,7 +143,7 @@ var Page = (function () {
         }
     };
 
-    var _load = function (href, data) {
+    var _open = function (href, data) {
         href = Config.basepath + href;
 
         if (_debug) {
@@ -167,8 +169,13 @@ var Page = (function () {
         }
     };
 
+    var _load = function (url) {
+        window.location.assign(url);
+    };
+
     return {
         onResumeListener: _onResumeListener,
+        open: _open,
         load: _load,
         back: _back,
         init: _init
