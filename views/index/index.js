@@ -28,6 +28,19 @@ require.async(['ces',
                 if (to.path == '/') {
                     next('/index');
                 } else {
+                    if (app) {
+                        app.title = to.meta.title;
+                        app.backable = to.meta.backable;
+                        app.searchable = to.meta.searchable;
+                        app.showLogo = to.meta.showLogo;
+                        if (to.meta.value == from.meta.value) {
+                            app.animate = "fade";
+                        } else if(to.meta.value > from.meta.value){
+                            app.animate = "left-fade";
+                        } else {
+                            app.animate = "right-fade";
+                        }
+                    }
                     next();
                 }
 
@@ -39,7 +52,12 @@ require.async(['ces',
                 data:function(){
                     return{
                         wrapperHeight:'',
-                        backable:true
+                        backable:false,
+                        searchable:false,
+                        showLogo:true,
+                        title:'预约学车',
+                        value:'',
+                        animate: "left-fade",
                     }
                 },
                 methods: {

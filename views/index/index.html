@@ -17,11 +17,18 @@
 
 <div id="app" v-cloak>
     <div class="title" ref="title">
-        <a  class="page-back"><i class="cesui cesui-back"></i></a>
-        <img src="../lib/images/logo.png">
+        <a  class="goBack" v-show="backable"><i class="cesui cesui-back"></i></a>
+        <cui-search
+                v-show="searchable"
+                v-model="value"
+                cancel-text="取消"
+                placeholder="搜索">
+        </cui-search>
+        <img v-show = "showLogo" src="../lib/images/logo.png">
+        <div v-show = "!showLogo" class="title-content">{{title}}</div>
     </div>
     <div class="viewContent" :style="{'height': wrapperHeight + 'px'}">
-        <transition>
+        <transition :name="animate" mode="out-in">
             <keep-alive>
                 <router-view></router-view>
             </keep-alive>

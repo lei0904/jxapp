@@ -19,10 +19,8 @@ var routes = [
         meta: {
             title: '驾校首页',
             backable: false,
-            savable: false,
             searchable: false,
-            navable: true,
-            keepAlive: true,
+            showLogo:true,
             value:'1'
         }
     },
@@ -32,10 +30,8 @@ var routes = [
         meta: {
             title: '模拟练习',
             backable: false,
-            savable: false,
             searchable: false,
-            navable: true,
-            keepAlive: true,
+            showLogo:false,
             value:'1'
         }
     },
@@ -45,10 +41,8 @@ var routes = [
         meta: {
             title: '预约练车',
             backable: false,
-            savable: false,
             searchable: false,
-            navable: true,
-            keepAlive: true,
+            showLogo:false,
             value:'1'
         }
     },
@@ -58,10 +52,8 @@ var routes = [
         meta: {
             title: '个人中心',
             backable: false,
-            savable: false,
             searchable: false,
-            navable: true,
-            keepAlive: true,
+            showLogo:false,
             value:'1'
         }
     }
