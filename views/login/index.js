@@ -49,7 +49,7 @@ require.async([
                             return;
                         }
 
-                        Ces.Page.open('/index/index.html');
+                        window.location.href = '../index/index.html';
                         return;
 
                         Api.post(Api.login,
@@ -60,7 +60,7 @@ require.async([
                                 type: vm.type
                             }
                             , function (rets) {
-                                if (rets.status != 'OK') {
+                                if (rets.status !== 'OK') {
                                     Cui.Toast({
                                         message: rets.message,
                                         position: 'bottom'

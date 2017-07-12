@@ -8,32 +8,30 @@
             display: none;
         }
     </style>
+    <link rel="stylesheet" type="text/css" href="../lib/css/normalize.css">
     <link rel="stylesheet" type="text/css" href="../lib/css/style.css">
-    <title>CUI APP</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <title>合肥万锦驾校</title>
 </head>
 <body>
 
 <div id="app" v-cloak>
-    <div class="login_bg"  id="login_bg">
-        <cui-header :title="title" id="header-div" ref="header">
-            <cui-button v-show="backable" icon="back" slot="left" @click.native="back"></cui-button>
-            <cui-button v-show="savable" @click.native="save" slot="right">保存</cui-button>
-            <cui-button v-show="searchable" @click.native="search" icon="search" slot="right"></cui-button>
-        </cui-header>
-
-        <transition :name="animate" mode="out-in">
-                <keep-alive exclude="meetingRoom">
-                    <router-view></router-view>
-                </keep-alive>
+    <div class="title" ref="title">
+        <a  class="page-back"><i class="cesui cesui-back"></i></a>
+        <img src="../lib/images/logo.png">
+    </div>
+    <div class="viewContent" :style="{'height': wrapperHeight + 'px'}">
+        <transition>
+            <keep-alive>
+                <router-view></router-view>
+            </keep-alive>
         </transition>
-
-
-        <div class="main_nav" v-show="navable">
-            <router-link class="nav1" to="/index"><span>首页</span></router-link>
-            <router-link class="nav2" to="/recharge"><span>充值</span></router-link>
-            <router-link class="nav3" to="/information"><span>内容</span></router-link>
-            <router-link class="nav4" to="/personalCenter"><span>我的</span></router-link>
-        </div>
+    </div>
+    <div class="toolbar clearfix" ref="toolbar">
+        <router-link class="nav1" to="/index"><span>我要报名</span></router-link>
+        <router-link class="nav2" to="/exercise"><span>模拟练习</span></router-link>
+        <router-link class="nav3" to="/reserved"><span>约车训练</span></router-link>
+        <router-link class="nav4" to="/personal"><span>个人中心</span></router-link>
     </div>
 </div>
 

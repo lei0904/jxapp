@@ -80,9 +80,9 @@ Ces.ready = function (callback) {
         window.onload = function () {
             Ces.Page.init(callback);
         };
-        /*document.addEventListener("DOMContentLoaded", function () {
-            callback && callback();
-        }, false);*/
+        // document.addEventListener("DOMContentLoaded", function () {
+        //     callback && callback();
+        // }, false);
     } else {
         if (Ces.__bridge__) {
             callback();

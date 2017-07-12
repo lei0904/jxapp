@@ -113,22 +113,8 @@ module.exports = {
 
     attachmentPath:  _getUrl() + "api/sys/attachment/",
 
-    login: 'api/login', //登录接口
+    login: 'api/login' //登录接口
 
-    exist: 'api/register/exist/', //验证账户是否存在
-    register: 'api/register', //注册接口
-
-    upload: 'api/sys/attachment/upload', //文件上传接口
-
-    wholeUpload: _getUrl() + 'api/sys/attachment/upload', //文件上传全量接口
-
-
-    avatar: 'api/sys/attachment/avatar', //上传用户头像接口
-    avatar_show: _getUrl() + 'api/sys/attachment/avatar_show', //显示用户头像接口
-
-    sms: 'api/sys/sms/', //短信验证码发送接口
-    sms_check: 'api/sys/sms/check/', //验证短信验证码
-    feed : 'api/sys/feed' //意见反馈提交接口
 };
 
 

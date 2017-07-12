@@ -12,7 +12,7 @@
   "config": {
     "px2rem": true,
     "plugin": true,
-    "debug": false,
+    "debug": true,
     "service": "native",
     "ServiceEncrypt": true,
     "Server": {
@@ -22,8 +22,8 @@
       "serverContext": "gsnx_mmp",
       "timeOut": 30
     },
-    "test":"/jxapp/1.0.0/login/index.html",
-    "index": "/login/index.html"
+    "test":"/jxapp/1.0.0/index/index.html",
+    "index": "/index/index.html"
   },
   "devDependencies": {},
   "engines": {
