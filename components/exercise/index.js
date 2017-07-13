@@ -1,11 +1,18 @@
 var Ces = require('ces');
-var Cui = require('cui');
-var Api = require('api');
 
 module.exports = {
     template: __inline('index.ftl'),
     data: function () {
-        return {}
+        return {
+            selected: '1',
+        }
     },
-    methods: {}
+    methods: {
+        toPractice:function () {
+            var params = [1,{'type':2,'chapterDesc':'交通信号','question':10}];
+            Ces.Plugins.nativeApi.questions(params,function(rets){
+                console.log('=====',rets)
+            })
+        }
+    }
 };

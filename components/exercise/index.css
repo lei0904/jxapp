@@ -1,0 +1,46 @@
+.exercise .cui-navbar {
+    background-color: #eaeaea;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    text-align: center;
+}
+.exercise .exercise-content{
+    margin: 40px 20px;
+}
+.exercise .exercise-model{
+    background: #fff;
+    margin:0 0 140px 0;
+}
+.exercise .exercise-history{
+    background: #fff;
+
+}
+.exercise .practice{
+    font-size: 30px;
+    padding:10px 30px;
+}
+.exercise .exercise-title{
+    width: 100%;
+    text-align: center;
+    margin:auto;
+    box-sizing: border-box;
+}
+.exercise .exercise-title .title{
+    position: absolute;
+    bottom: 0;
+    left:0
+}
+.exercise .exercise-model .exercise-item{
+    display: inline-block;
+    width: 40%;
+    height: 200px;
+    line-height: 200px;
+    position: relative;
+}
+.exercise .exercise-history .exercise-item{
+    display: inline-block;
+    width: 40%;
+    height: 120px;
+    line-height: 120px;
+}
