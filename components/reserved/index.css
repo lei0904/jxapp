@@ -1,0 +1,171 @@
+.cars{
+    margin-top: 20px;
+    background: #fff;
+    width: 750px;
+}
+.normal_header{
+    height: 65px;
+    width: 100%;
+    border-left: 5px solid #028bff;
+    line-height: 65px;
+    color: #a2a0a1;
+    text-indent: 40px;
+    border-bottom: 1px solid #eeebe6;/*no*/
+}
+.carBox{
+    height: 90px;
+    width: 100%;
+    padding-top: 22px;
+    background: #fff;
+}
+.carBox .item{
+    width: 120px;
+    height: 46px;
+    line-height: 46px;
+    color: #909090;
+    float: left;
+    margin-left: 60px;
+    background: #f4f4f4;
+    text-align: center;
+    border-radius: 5px;/*no*/
+}
+.carBox .item.checked{
+    color: #fff;
+    background: #028bff;
+}
+.carBox .item:first-child{
+    margin-left: 45px;
+}
+.time{
+    margin-top: 20px;
+    border-bottom: 1px solid #eeebe6;/*no*/
+    background: #fff;
+    width: 750px;
+}
+.time_content {
+    padding: 0 30px;
+}
+.time .cui-cell{
+    min-height: 85px;
+}
+.time .cui-checklist-title{
+    text-align: center;
+
+}
+.check_title{
+    height: 70px;
+    text-align: center;
+    width: 100%;
+    line-height: 70px;
+}
+.check_title i{
+    background: url(../../views/lib/images/time-icon.png) no-repeat center / 100% 100%;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    margin-top: 20px;
+    vertical-align: top;
+}
+.checkItem{
+    height: 90px;
+    border-bottom: 1px solid #ebe8e2;/*no*/
+    line-height: 90px;
+    cursor: pointer;
+}
+.checkItem_time , .checkItem_count ,.checkItem_checked{
+    width: 33%;
+    float: left;
+    height: 90px;
+    line-height: 90px;
+}
+.checkItem_count{
+    text-align: center;
+}
+.checkItem_count span{
+    color: #ff9000;
+    padding: 0 5px;
+}
+.checkItem_checked{
+    text-align: right;
+}
+.checkItem_checked i{
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    background: url(../../views/lib/images/unChecked.png) no-repeat center / 100% 100%;
+    vertical-align: middle;
+}
+.checkItem.checked .checkItem_checked i{
+    background: url(../../views/lib/images/checked.png) no-repeat center / 100% 100%;
+}
+.time_tips{
+    min-height: 80px;
+    background: #f5f5f5;
+    color: #909090;
+    padding: 15px 30px;
+}
+.reserved{
+    background: #fff;
+    width: 750px;
+}
+.reserved .cui-switch{
+    float: right;
+    margin-right: 30px;
+    margin-top: 10px;
+}
+.reserved .cui-switch-core::after{
+    width: 40px;
+    height: 40px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .4);
+}
+.reserved .cui-switch-core{
+    width: 82px;
+    height: 44px;
+}
+.reserved .cui-switch-core::before {
+     width: 0;
+     height: 0;
+     background-color: #fdfdfd;
+}
+.reserved  .cui-switch-input:checked + .cui-switch-core::after {
+    -webkit-transform: translateX(40px);
+    transform: translateX(40px);
+}
+.timePicker .cui-cell-value input , .timePicker .cui-cell-value .cui-field-clear ,.timePicker .cui-cell-value .cui-field-state{
+    display: none !important;
+}
+.timePicker{
+    border-bottom: 1px solid #ebe8e2;/*no*/
+}
+.timePicker .cui-field-other{
+    position:relative;
+    height: 96px;
+    width: 100%;
+}
+.timeClickItem{
+    height: 100%;
+    width: 100%;
+    line-height: 96px;
+    color: #888;
+}
+.bottom_but{
+    height: 162px;
+    position: relative;
+}
+.bottom_but .cui-button--primary{
+    width: 600px;
+    height: 88px;
+    line-height: 88px;
+    position: absolute;
+    left:50%;
+    margin-left: -300px;
+    margin-top: 60px;
+}
+.bottom_but .cui-button--primary *{
+    line-height: 1.173333rem;
+    vertical-align: initial;
+    font-weight: normal;
+}
+.cui-cell::after , .cui-cell::before{
+    border: 0 none !important;
+}

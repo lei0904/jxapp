@@ -58,6 +58,7 @@ require.async(['ces',
                         title:'预约学车',
                         value:'',
                         animate: "left-fade",
+                        searchText:''
                     }
                 },
                 methods: {
