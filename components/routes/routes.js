@@ -4,12 +4,14 @@ var _index = require('index');
 var _exercise = require('exercise');
 var _reserved = require('reserved');
 var _personal = require('personal');
+var _exams = require('exams');
 
 
 var index = Vue.extend(_index);
 var exercise = Vue.extend(_exercise);
 var reserved = Vue.extend(_reserved);
 var personal = Vue.extend(_personal);
+var exams = Vue.extend(_exams);
 
 
 var routes = [
@@ -51,6 +53,17 @@ var routes = [
         component: personal,
         meta: {
             title: '个人中心',
+            backable: false,
+            searchable: false,
+            showLogo:false,
+            value:'1'
+        }
+    },
+    {
+        path: '/exams',
+        component: exams,
+        meta: {
+            title: '考试',
             backable: false,
             searchable: false,
             showLogo:false,

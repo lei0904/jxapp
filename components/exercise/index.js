@@ -1,11 +1,19 @@
 var Ces = require('ces');
-var Cui = require('cui');
-var Api = require('api');
 
 module.exports = {
     template: __inline('index.ftl'),
     data: function () {
-        return {}
+        return {
+            selected: '1',
+        }
     },
-    methods: {}
+    methods: {
+        toPractice:function (obj) {
+            var params = JSON.stringify({'subject':this.selected,'type':obj,'start':true,questions:1});
+            sessionStorage.setItem("topic",params);
+            console.log('toPractice', sessionStorage.getItem("topic"))
+            this.$router.push({path:'/exams'})
+
+        }
+    }
 };
