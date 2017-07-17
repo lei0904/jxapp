@@ -8,11 +8,12 @@ module.exports = {
         }
     },
     methods: {
-        toPractice:function () {
-            var params = [1,{'type':2,'chapterDesc':'交通信号','question':10}];
-            Ces.Plugins.nativeApi.questions(params,function(rets){
-                console.log('=====',rets)
-            })
+        toPractice:function (obj) {
+            var params = JSON.stringify({'subject':this.selected,'type':obj,'start':true,questions:1});
+            sessionStorage.setItem("topic",params);
+            console.log('toPractice', sessionStorage.getItem("topic"))
+            this.$router.push({path:'/exams'})
+
         }
     }
 };

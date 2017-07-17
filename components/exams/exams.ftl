@@ -1,0 +1,35 @@
+<div class="exams">
+    <div class="question-content" v-if='specialTraining' >
+        <div class="question">
+            <div class="question-item">
+                <div class="question-type">
+                    <span v-if="list.optiontype == 0">判断题</span>
+                    <span v-if="list.optiontype == 1">单选题</span>
+                    <span v-if="list.optiontype == 2">多选题</span>
+                </div>
+                {{list.questionid}}、{{list.question}}
+            </div>
+            <div>
+                <img :src="list.mediacontent" alt="">
+            </div>
+        </div>
+        <div class="answer">
+            <div  v-if="list.optiontype !=2 " >
+                <cui-radio v-model="answer" :options='list.options'></cui-radio>
+            </div>
+            <div v-else >
+                <cui-checklist  v-model="checklist"  :options='list.options'></cui-checklist>
+            </div>
+        </div>
+        <div class="explain" v-show="explainShow">
+            <div>答案: <span v-for="item in rightAnswer">{{item}}</span></div>
+            <div class="detail-desc">详细解释:{{list.explain}}</div>
+        </div>
+        <div class="next-btn-content">
+            <cui-button class="next-btn" size="normal" type="primary" @click.native="nextAnswer">下一题</cui-button>
+        </div>
+    </div>
+    <div v-else>
+        <cui-cell title="标题文字"  is-link value="描述文字"></cui-cell>
+    </div>
+</div>

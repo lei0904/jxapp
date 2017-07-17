@@ -6,7 +6,7 @@ var JSBridge = require('../core/ces.jsbridge.js');
 var nativeApi = (function () {
 
     var _questions = function (params,callback) {
-        JSBridge.callHandler('question', params, function (rets) {
+        JSBridge.callHandler('question', params,function (rets) {
             callback && callback(rets);
         });
     }
@@ -14,7 +14,6 @@ var nativeApi = (function () {
     return {
         questions:_questions
     }
-
 })();
 
 module.exports = nativeApi;
