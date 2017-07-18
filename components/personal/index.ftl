@@ -3,7 +3,6 @@
         <img src="../../views/lib/images/avatar.jpeg" alt="">
         <div class="atavar-name">路人甲</div>
     </div>
-    <cui-cell title="标题文字" icon="back" is-link ></cui-cell>
-    <cui-cell title="标题文字" icon="back" is-link ></cui-cell>
+    <cui-cell title="联系客服" icon="back" is-link ></cui-cell>
     <cui-cell title="我的邀请码" icon="back" is-link></cui-cell>
 </div>

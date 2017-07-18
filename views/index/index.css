@@ -11,6 +11,10 @@
     line-height: 90px;
     background: #fff;
     position: relative;
+    border-bottom: 1px solid #eeebe6;/*no*/
+}
+.title .cui-searchbar-cancel{
+    line-height: 0;
 }
 .goBack{
     position: absolute;
@@ -45,6 +49,7 @@
     left:0;
     padding: 10px 0 5px 0;
     background: #fff;
+    border-top: 1px solid #ebe8e2;/*no*/
 }
 .nav1 , .nav2, .nav3, .nav4{
     width: 25%;

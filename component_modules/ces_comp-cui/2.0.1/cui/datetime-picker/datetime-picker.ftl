@@ -3,7 +3,7 @@
         <cui-picker
                 :slots="dateSlots"
                 @change="onChange"
-                :visible-item-count="7"
+                :visible-item-count="3"
                 class="cui-datetime-picker"
                 ref="picker"
                 show-toolbar>
