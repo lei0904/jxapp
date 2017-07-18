@@ -12,7 +12,7 @@
   "config": {
     "px2rem": true,
     "plugin": true,
-    "debug": false,
+    "debug": true,
     "service": "native",
     "ServiceEncrypt": true,
     "Server": {
