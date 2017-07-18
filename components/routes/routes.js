@@ -5,6 +5,7 @@ var _exercise = require('exercise');
 var _reserved = require('reserved');
 var _personal = require('personal');
 var _exams = require('exams');
+var _examsDir = require('examsDir');
 
 
 var index = Vue.extend(_index);
@@ -12,6 +13,7 @@ var exercise = Vue.extend(_exercise);
 var reserved = Vue.extend(_reserved);
 var personal = Vue.extend(_personal);
 var exams = Vue.extend(_exams);
+var examsDir = Vue.extend(_examsDir);
 
 
 var routes = [
@@ -64,6 +66,17 @@ var routes = [
         component: exams,
         meta: {
             title: '考试',
+            backable: false,
+            searchable: false,
+            showLogo:false,
+            value:'1'
+        }
+    },
+    {
+        path: '/examsDir',
+        component: examsDir,
+        meta: {
+            title: '专项训练',
             backable: false,
             searchable: false,
             showLogo:false,

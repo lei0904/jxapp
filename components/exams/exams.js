@@ -15,8 +15,9 @@ module.exports = {
             rightAnswer:[], //正确答案
             questionId:0,  //序列号
             nextQuestionId:1,
-            specialTraining:true,
             totalAnswer:0,
+            chapterDesc:'' //专项训练
+
         }
     },
     methods: {
@@ -26,7 +27,7 @@ module.exports = {
                 params.questions = _ths.nextQuestionId;
                 params.start=false;
 
-            var nextParams = [parseInt(params.subject),{'type':params.type,'question':parseInt(params.questions),'start':params.start}];
+            var nextParams = [parseInt(params.subject),{'type':params.type,'question':parseInt(params.questions),'chapterDesc':params.chapterDesc,'start':params.start}];
 
                 if(_ths.nextQuestionId>_ths.totalAnswer){
                     Cui.Toast({
@@ -38,7 +39,11 @@ module.exports = {
                         Ces.Plugins.nativeApi.questions(nextParams,function (rets) {
                             _ths.list= rets.data;
                             _ths.rightAnswer = _ths.list.answer_arr;
-                            _ths.nextQuestionId = Number(_ths.list.questionid);
+                            if(params.chapterDesc){
+                                _ths.nextQuestionId = Number(_ths.list.chapterid);
+                            }else{
+                                _ths.nextQuestionId = Number(_ths.list.questionid);
+                            }
                             var options=[];
                             for(var i=0;i<_ths.list.answers.length;i++){
                                 var item = {};
@@ -64,7 +69,11 @@ module.exports = {
                             }
                             _ths.list.options =options;
                             _ths.rightAnswer = _ths.list.answer_arr;
-                            _ths.nextQuestionId = Number(_ths.list.questionid);
+                            if(params.chapterDesc){
+                                _ths.nextQuestionId = Number(_ths.list.chapterid);
+                            }else{
+                                _ths.nextQuestionId = Number(_ths.list.questionid);
+                            }
                         });
                         _ths.explainShow = false;
                         _ths.checklist =[];
@@ -76,15 +85,22 @@ module.exports = {
         }
     },
     mounted(){
+    },
+    activated(){
         var params =JSON.parse(sessionStorage.getItem('topic'));
-
-        var nativeRes = [parseInt(params.subject),{'type':params.type,'question':parseInt(params.questions),'chapterDesc':params.chapterDesc,'start':params.start}];
 
         console.log("nativeRes====",nativeRes);
 
+        var nativeRes = [parseInt(params.subject),{'type':params.type,'question':parseInt(params.questions),'chapterDesc':params.chapterDesc,'start':params.start}];
+
+
         var _ts =this;
+        _ts.chapterDesc =  params.chapterDesc;
+         if(params.chapterDesc){
+             _ts.nextQuestionId = 1;
+         }
         Ces.Plugins.nativeApi.questions(nativeRes,function(rets){
-            console.log(" 第一次进入==",rets)
+
             _ts.totalAnswer = rets.data.length;
             if(params.start){
 
@@ -92,11 +108,9 @@ module.exports = {
 
                 params.questions = 0;
 
-                nativeRes =[parseInt(params.subject),{'type':params.type,'question':parseInt(params.questions),'start':params.start}];
+                nativeRes =[parseInt(params.subject),{'type':params.type,'question':parseInt(params.questions),'chapterDesc':params.chapterDesc,'start':params.start}];
 
                 Ces.Plugins.nativeApi.questions(nativeRes,function (rets) {
-
-                    if(params.type != 2){
                         _ts.list= rets.data;
                         console.log('11111',rets);
                         var options=[];
@@ -109,13 +123,12 @@ module.exports = {
                         }
                         _ts.list.options =options;
                         _ts.rightAnswer = _ts.list.answer_arr;
-                        _ts.nextQuestionId = Number(_ts.list.questionid);
+                        if(params.chapterDesc){
+                            _ts.nextQuestionId = Number(_ts.list.chapterid);
+                        }else{
+                            _ts.nextQuestionId = Number(_ts.list.questionid);
+                        }
                         console.log("nextQuestionId=",_ts.nextQuestionId)
-                    }else{
-                        console.log("专项训练===",rets)
-                        _ts.specialTraining=false;
-
-                    }
                 })
 
             }else{
@@ -130,10 +143,13 @@ module.exports = {
                 }
                 _ts.list.options =options;
                 _ts.rightAnswer = _ts.list.answer_arr;
-                _ts.nextQuestionId = Number(_ts.list.questionid);
+                if(params.chapterDesc){
+                    _ts.nextQuestionId = Number(_ts.list.chapterid);
+                }else{
+                    _ts.nextQuestionId = Number(_ts.list.questionid);
+                }
                 console.log("nextQuestionId=",_ts.nextQuestionId)
             }
         })
-
     }
 };

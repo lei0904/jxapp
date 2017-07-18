@@ -1,0 +1,51 @@
+.examsDir .exams-title{
+    font-size: 24px;
+    margin: 20px;
+    text-align: center;
+    padding: 5px 10px;
+    color: #fff;
+    width: 120px;
+    background: #52C185;
+    border-radius: 20px;
+}
+.examsDir .special-contnent{
+    position: relative;
+    background: #fff;
+    height: 88px;
+    line-height: 88px;
+    margin: 20px 0;
+}
+.examsDir .special-title-seq{
+    margin-right: 20px;
+    font-size: 24px;
+    background: #26a2ff;
+    border-radius: 50%;
+    color: #fff;
+    display: inline-block;
+    height: 44px;
+    width: 44px;
+    line-height: 44px;
+    position: absolute;
+    top:22px;
+    text-align: center;
+}
+.examsDir .special-item{
+    position: relative;
+}
+.examsDir .special-title-item{
+    position: absolute;
+    left:80px;
+    font-size: 32px;
+}
+
+.examsDir .special-length{
+    position: absolute;
+    right:40px;
+    color: #9b9b9b;
+}
+
+.examsDir .special-title .special-item{
+    position: absolute;
+    left:20px;
+    right: 50px;
+}

@@ -1,5 +1,5 @@
 <div class="exams">
-    <div class="question-content" v-if='specialTraining' >
+    <div class="question-content" >
         <div class="question">
             <div class="question-item">
                 <div class="question-type">
@@ -7,7 +7,12 @@
                     <span v-if="list.optiontype == 1">单选题</span>
                     <span v-if="list.optiontype == 2">多选题</span>
                 </div>
-                {{list.questionid}}、{{list.question}}
+                <span v-if ="!chapterDesc">
+                    {{list.questionid}}、
+                </span>
+                <span v-else>
+                    {{list.chapterid}}、
+                </span>{{list.question}}
             </div>
             <div>
                 <img :src="list.mediacontent" alt="">
@@ -28,8 +33,5 @@
         <div class="next-btn-content">
             <cui-button class="next-btn" size="normal" type="primary" @click.native="nextAnswer">下一题</cui-button>
         </div>
-    </div>
-    <div v-else>
-        <cui-cell title="标题文字"  is-link value="描述文字"></cui-cell>
     </div>
 </div>
