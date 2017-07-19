@@ -1,4 +1,4 @@
-<div class="exams">
+<div class="examMock">
     <div class="question-content" >
         <div class="question">
             <div class="question-item">
@@ -7,8 +7,8 @@
                     <span v-if="list.optiontype == 1">单选题</span>
                     <span v-if="list.optiontype == 2">多选题</span>
                 </div>
-                    <span v-text="questionId"></span>、
-                    {{list.question}}
+                <span v-text="questionId"></span>、
+                {{list.question}}
             </div>
             <div v-if="list.mediacontent" class="img-content">
                 <img :src="list.mediacontent" alt="">

@@ -49,12 +49,12 @@
                 <div class="practice">答题练习</div>
                 <div class="exercise-model">
                     <div class="exercise-title">
-                        <div class="exercise-item" @click="toPractice(1)"><span class="title">顺序练习</span></div>
-                        <div class="exercise-item" @click="toPractice(2)"><span class="title">专项练习</span></div>
+                        <div class="exercise-item" @click="toPractice(1)"><span class="title-item">顺序练习</span></div>
+                        <div class="exercise-item" @click="toPractice(2)"><span class="title-item">专项练习</span></div>
                     </div>
                     <div class="exercise-title">
-                        <div class="exercise-item"  @click="toPractice(3)"><span class="title">随机练习</span></div>
-                        <div class="exercise-item"  @click="toPractice(4)"><span class="title">模拟考试</span></div>
+                        <div class="exercise-item"  @click="toPractice(3)"><span class="title-item">随机练习</span></div>
+                        <div class="exercise-item"  @click="toPractice(4)"><span class="title-item">模拟考试</span></div>
                     </div>
                 </div>
             </div>

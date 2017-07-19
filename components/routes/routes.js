@@ -6,6 +6,7 @@ var _reserved = require('reserved');
 var _personal = require('personal');
 var _exams = require('exams');
 var _examsDir = require('examsDir');
+var _examMock = require('examMock');
 
 
 var index = Vue.extend(_index);
@@ -14,6 +15,7 @@ var reserved = Vue.extend(_reserved);
 var personal = Vue.extend(_personal);
 var exams = Vue.extend(_exams);
 var examsDir = Vue.extend(_examsDir);
+var examMock = Vue.extend(_examMock)
 
 
 var routes = [
@@ -77,6 +79,17 @@ var routes = [
         component: examsDir,
         meta: {
             title: '专项训练',
+            backable: false,
+            searchable: false,
+            showLogo:false,
+            value:'1'
+        }
+    },
+    {
+        path: '/examMock',
+        component: examMock,
+        meta: {
+            title: '模拟考试',
             backable: false,
             searchable: false,
             showLogo:false,

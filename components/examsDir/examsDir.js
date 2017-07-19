@@ -18,9 +18,8 @@ module.exports = {
                 topic.questions=1;
                 topic.start=true;
                 topic.chapterDesc = item.name;
-            console.log('=====topic=====',topic);
+                topic.totalAnswer = item.length;
             sessionStorage.setItem('topic',JSON.stringify(topic));
-            console.log('topic=====',topic);
 
             this.$router.push({'path':'/exams'})
         }

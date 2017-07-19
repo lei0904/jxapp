@@ -1,10 +1,10 @@
 
-.exams .question{
+.examMock .question{
     font-size: 32px;
     margin: 20px 10px;
 }
 
-.exams .question-type{
+.examMock .question-type{
     font-size: 24px;
     background: -webkit-linear-gradient(30deg, #7fdaff, #7fdaff);
     background: linear-gradient(30deg,#7fdaff,#7fdaff);
@@ -15,33 +15,33 @@
     margin: 8px 2px;
 }
 
-.exams .next-btn-content{
+.examMock .next-btn-content{
     width: 750px;
 
 }
 
-.exams .explain{
+.examMock .explain{
     background: #fff;
     margin: 40px 0;
     padding: 20px 40px;
     font-size: 32px;
 }
-.exams .next-btn-content .next-btn{
+.examMock .next-btn-content .next-btn{
     width: 400px;
     margin: 20px 175px;
 
 }
 
-.exams .detail-desc{
+.examMock .detail-desc{
     font-size: 28px;
     margin-top: 10px;
 }
 
-.exams .img-content{
+.examMock .img-content{
     width: 80%;
     margin: 10px auto;
 }
 
-.exams .img-content img{
+.examMock .img-content img{
     width: 100%;
 }

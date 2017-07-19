@@ -9,14 +9,16 @@ module.exports = {
     },
     methods: {
         toPractice:function (obj) {
+
             var params = JSON.stringify({'subject':this.selected,'type':obj,'start':true,questions:1});
             sessionStorage.setItem("topic",params);
-            console.log('toPractice', sessionStorage.getItem("topic"))
-            if(obj !=2){
-
-                this.$router.push({path:'/exams'})
-            }else{
+            console.log('toPractice', sessionStorage.getItem("topic"));
+            if(obj == 4){
+                this.$router.push({'path':'/examsMock'})
+            }else if( obj == 2){
                 this.$router.push({'path':'/examsDir'})
+            }else{
+                this.$router.push({path:'/exams'})
             }
 
         }
