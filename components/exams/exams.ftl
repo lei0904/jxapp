@@ -13,13 +13,9 @@
             <div v-if="list.mediacontent" class="img-content">
                 <img v-if="list.mediatype == 1" :src="list.mediacontent" alt="">
 
-                <video  v-if="list.mediatype == 2"  controls loop preload  >
-                    <source :src="list.mediacontent"   type="video/mp4" >
+                <video  v-if="list.mediatype == 2" :src="list.mediacontent"  controls  >
                     您的浏览器不支持 HTML5 video 标签。
                 </video>
-                <video-player>
-
-                </video-player>
             </div>
         </div>
         <div class="answer">
@@ -31,7 +27,7 @@
             </div>
         </div>
         <div class="explain" v-show="explainShow">
-            <div>答案: <span v-for="item in rightAnswer">{{item}}</span></div>
+            <div>答案: <span >{{list.answer}}</span></div>
             <div class="detail-desc">详细解释:{{list.explain}}</div>
         </div>
         <div class="next-btn-content" v-show="showNext">
