@@ -12,9 +12,9 @@ module.exports = {
                 options:[]
             },
             answer:'',  //选择答案
-            checklist:'', //多选题答案
+            checklist:[], //多选题答案
             explainShow:false, //解释
-            rightAnswer:[], //正确答案
+            rightAnswer:'', //正确答案
             questionId:1,  //序列号
             nextQuestionId:1,
             totalAnswer:0,
@@ -36,9 +36,7 @@ module.exports = {
                 _ths.showNext=true
             }
 
-
-
-            var nextParams = [parseInt(params.subject),{'type':params.type,'question':parseInt(params.questions),'chapterDesc':params.chapterDesc,'start':params.start}];
+           var nextParams = [parseInt(params.subject),{'type':params.type,'question':parseInt(params.questions),'chapterDesc':params.chapterDesc,'start':params.start}];
 
                 if(_ths.nextQuestionId >= _ths.totalAnswer){
                     Cui.Toast({
@@ -47,14 +45,14 @@ module.exports = {
                     });
                     _ths.showNext =false;
                 }else{
-                    if(( _ths.list.optiontype == "1" || _ths.list.optiontype == "0") && _ths.answer == _ths.rightAnswer[0] || _ths.explainShow){
+                    if(( _ths.list.optiontype == "1" || _ths.list.optiontype == "0") && _ths.answer == _ths.rightAnswer || _ths.explainShow){
                         Ces.Plugins.nativeApi.questions(nextParams,function (rets) {
 
                             console.log('rets===',rets);
 
                              if(rets.status == 1){
                                 _ths.list= rets.data;
-                                _ths.rightAnswer = _ths.list.answer_arr;
+                                _ths.rightAnswer = _ths.list.answer;
                                 var options=[];
                                 for(var i=0;i<_ths.list.answers.length;i++){
                                     var item = {};
@@ -74,11 +72,10 @@ module.exports = {
                              }
 
                         });
-
                         _ths.explainShow = false;
                         _ths.answer ="";
 
-                    }else if( _ths.list.optiontype == "3"  && _ths.checklist.sort().toString() == _ths.rightAnswer.sort().toString()){
+                    }else if( _ths.list.optiontype == "2"  && _ths.checklist.sort().join(",") == _ths.rightAnswer){
                         Ces.Plugins.nativeApi.questions(nextParams,function (rets) {
                             _ths.list= rets.data;
                             var options=[];
@@ -90,8 +87,8 @@ module.exports = {
                                 options.push(item)
                             }
                             _ths.list.options =options;
-                            console.log("============",_ths.list)
-                            _ths.rightAnswer = _ths.list.answer_arr;
+                            _ths.rightAnswer = _ths.list.answer;
+                            _ths.checklist=[];
                         });
                         _ths.explainShow = false;
                         _ths.checklist =[];
@@ -125,7 +122,7 @@ module.exports = {
                     _ts.nextQuestionId = 1;
                     _ts.questionId = 1;
                     params.start =false;
-                    params.questions = 0;
+                    params.questions = 26;
                     if(!params.chapterDesc){
                         _ts.totalAnswer = rets.data.length;
                     }else{
@@ -140,16 +137,19 @@ module.exports = {
                     console.log("_ts.nativeRes==",nativeRes);
                     Ces.Plugins.nativeApi.questions(nativeRes,function (rets) {
                         _ts.list= rets.data;
-                        var options=[];
-                        for(var i=0;i<_ts.list.answers.length;i++){
-                            var item = {};
-                            var j= i+1;
-                            item.value = j.toString();
-                            item.label=j+"、"+_ts.list.answers[i];
-                            options.push(item)
-                        }
-                        _ts.list.options =options;
-                        _ts.rightAnswer = _ts.list.answer_arr;
+                        console.log('rets===',rets)
+                            var options=[];
+                            for(var i=0;i<_ts.list.answers.length;i++){
+                                var item = {};
+                                var j= i+1;
+                                item.value = j.toString();
+                                item.label=j+"、"+_ts.list.answers[i];
+                                options.push(item)
+                                _ts.list.options =options;
+                            }
+                        console.log("_ts.list.options=",  _ts.list.options)
+
+                        _ts.rightAnswer = _ts.list.answer;
                         _ts.nextQuestionId= _ts.nextQuestionId + 1;
 
                     })
@@ -164,7 +164,7 @@ module.exports = {
                         options.push(item)
                     }
                     _ts.list.options =options;
-                    _ts.rightAnswer = _ts.list.answer_arr;
+                    _ts.rightAnswer = _ts.list.answer;
                     _ts.nextQuestionId= _ts.nextQuestionId + 1;
                 }
             }else{

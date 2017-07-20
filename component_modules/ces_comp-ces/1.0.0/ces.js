@@ -84,8 +84,14 @@ Ces.ready = function (callback) {
         //     callback && callback();
         // }, false);
     } else {
-        if (Ces.__bridge__) {
-            callback();
+        if (window.WebViewJavascriptBridge) {
+            if (!Ces.__bridge__) {
+                WebViewJavascriptBridge.init(function () {
+                    console.log('init messageHandler');
+                });
+                Ces.__bridge__ = WebViewJavascriptBridge;
+            }
+            Ces.Page.init(callback);
         } else {
             document.addEventListener('WebViewJavascriptBridgeReady', function () {
                 WebViewJavascriptBridge.init(function () {
