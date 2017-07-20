@@ -1,0 +1,105 @@
+/***注册***/
+.login_bg {
+    /*background: #fff;*/
+    background: #efefef;
+    /*min-height: 100vh;*/
+}
+
+.login-form {
+    text-align: center;
+    height: 775px;
+    width: 681px;
+    background: url("../../views/lib/images/login-bg.png");
+    background-size: 100% 100%;
+    position: absolute;
+    top:50%;
+    left:50%;
+    margin-top: -387px;
+    margin-left: -340px;
+    padding-top: 210px;
+}
+
+.login_con {
+    position: relative;
+    width: 552px;
+    height: 66px;
+    margin: 0 auto 80px;
+    display: block;
+    clear: both;
+    border-bottom: 1px solid #909090;
+
+}
+
+.login_con:first-child {
+    margin-top: 0;
+}
+
+.icon {
+    display: block;
+    width: 60px;
+    height: 60px;
+    background-size: 100% 100% !important;
+    float: left;
+}
+
+.user_icon {
+    background: url("../../views/lib/images/user-icon.png") center no-repeat;
+    background-size: 80% 80% !important;
+}
+
+.password_icon {
+    background: url("../../views/lib/images/password-icon.png") center no-repeat;
+    background-size: 80% 80% !important;
+}
+
+.login_input {
+    padding: 11.5px 20px;
+    width: 480px;
+    height: 60px;
+    background: rgba(0, 0, 0, 0);
+    border: 0;
+    float: right;
+    color: #909090;
+    font-size: 26px; /*px*/
+}
+
+.login_input::-webkit-input-placeholder {
+    text-align: center;
+    font-size: 26px; /*px*/
+}
+
+.login-form .login-form-button {
+    outline: none;
+    width: 500px;
+    height: 80px;
+    margin: 0 auto 10px;
+    text-align: center;
+    font-size: 34px; /*px*/
+    color: #FFF;
+    background: #028bff;
+    border-bottom: 4px solid #216ecd;
+}
+
+.bottom_con {
+    position: relative;
+    width: 500px;
+    margin: 40px auto;
+    display: block;
+    clear: both;
+    font-size: 28px; /*px*/
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.bottom_con span {
+    height: 40px;
+    color: #028bff;
+    font-size: 28px; /*px*/
+    font-weight: 500;
+}

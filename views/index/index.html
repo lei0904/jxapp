@@ -16,8 +16,8 @@
 <body>
 
 <div id="app" v-cloak>
-    <div class="title" ref="title">
-        <a  class="goBack" v-show="backable"><i class="cesui cesui-back"></i></a>
+    <div class="title" ref="title" v-show = "!fullScreen">
+        <a  class="goBack" @click="back" v-show="backable"><i class="cesui cesui-back"></i></a>
         <cui-search
                 v-show="searchable"
                 v-model="searchText"
@@ -34,7 +34,7 @@
             </keep-alive>
         </transition>
     </div>
-    <div class="toolbar clearfix" ref="toolbar">
+    <div class="toolbar clearfix" ref="toolbar" v-show = "!fullScreen && showToolBar">
         <router-link class="nav1" to="/index"><span>我要报名</span></router-link>
         <router-link class="nav2" to="/exercise"><span>模拟练习</span></router-link>
         <router-link class="nav3" to="/reserved"><span>约车训练</span></router-link>

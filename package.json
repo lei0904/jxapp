@@ -22,7 +22,7 @@
       "serverContext": "gsnx_mmp",
       "timeOut": 30
     },
-    "test":"/jxapp/1.0.0/index/index.html",
+    "test":"/jxapp/1.0.0/index/index.html#/login",
     "index": "/index/index.html"
   },
   "devDependencies": {},

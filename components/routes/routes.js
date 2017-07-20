@@ -7,6 +7,8 @@ var _personal = require('personal');
 var _exams = require('exams');
 var _examsDir = require('examsDir');
 var _examMock = require('examMock');
+var _login = require('login');
+var _register = require('register');
 
 
 var index = Vue.extend(_index);
@@ -16,9 +18,37 @@ var personal = Vue.extend(_personal);
 var exams = Vue.extend(_exams);
 var examsDir = Vue.extend(_examsDir);
 var examMock = Vue.extend(_examMock);
+var login = Vue.extend(_login);
+var register = Vue.extend(_register);
 
 
 var routes = [
+    {
+        path: '/login',
+        component: login,
+        meta: {
+            title: '登录',
+            backable: false,
+            searchable: false,
+            showLogo:false,
+            value:'1',
+            fullScreen:true,
+            showToolBar:false
+        }
+    },
+    {
+        path: '/register',
+        component: register,
+        meta: {
+            title: '注册',
+            backable: true,
+            searchable: false,
+            showLogo:false,
+            value:'1',
+            fullScreen:false,
+            showToolBar:false
+        }
+    },
     {
         path: '/index',
         component: index,
@@ -27,7 +57,9 @@ var routes = [
             backable: false,
             searchable: false,
             showLogo:true,
-            value:'1'
+            value:'1',
+            fullScreen:false,
+            showToolBar:true
         }
     },
     {
@@ -38,7 +70,9 @@ var routes = [
             backable: false,
             searchable: false,
             showLogo:false,
-            value:'1'
+            value:'1',
+            fullScreen:false,
+            showToolBar:true
         }
     },
     {
@@ -49,7 +83,9 @@ var routes = [
             backable: false,
             searchable: false,
             showLogo:false,
-            value:'1'
+            value:'1',
+            fullScreen:false,
+            showToolBar:true
         }
     },
     {
@@ -60,7 +96,9 @@ var routes = [
             backable: false,
             searchable: false,
             showLogo:false,
-            value:'1'
+            value:'1',
+            fullScreen:false,
+            showToolBar:true
         }
     },
     {
@@ -71,7 +109,9 @@ var routes = [
             backable: true,
             searchable: false,
             showLogo:false,
-            value:'1'
+            value:'1',
+            fullScreen:false,
+            showToolBar:true
         }
     },
     {
@@ -82,7 +122,9 @@ var routes = [
             backable: true,
             searchable: false,
             showLogo:false,
-            value:'1'
+            value:'1',
+            fullScreen:false,
+            showToolBar:true
         }
     },
     {
@@ -93,7 +135,9 @@ var routes = [
             backable: true,
             searchable: false,
             showLogo:false,
-            value:'1'
+            value:'1',
+            fullScreen:false,
+            showToolBar:true
         }
     }
 

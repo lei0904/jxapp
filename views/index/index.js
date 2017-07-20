@@ -29,6 +29,8 @@ require.async(['ces',
                     next('/index');
                 } else {
                     if (app) {
+                        app.fullScreen = to.meta.fullScreen;
+                        app.showToolBar = to.meta.showToolBar;
                         app.title = to.meta.title;
                         app.backable = to.meta.backable;
                         app.searchable = to.meta.searchable;
@@ -58,7 +60,9 @@ require.async(['ces',
                         title:'预约学车',
                         value:'',
                         animate: "left-fade",
-                        searchText:''
+                        searchText:'',
+                        fullScreen:true,
+                        showToolBar:false
                     }
                 },
                 methods: {
@@ -66,7 +70,7 @@ require.async(['ces',
                         this.$router.back();
                     }
                 },
-                mounted:function(){
+                updated:function(){
                     this.wrapperHeight = document.documentElement.clientHeight
                         - this.$refs.title.clientHeight
                         - this.$refs.toolbar.clientHeight;
