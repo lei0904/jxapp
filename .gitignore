@@ -3,4 +3,4 @@ node_modules
 *.bak
 *.tmp
 Thumbs.db
-/.idea/
+.idea/
