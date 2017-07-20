@@ -8,7 +8,9 @@ module.exports = {
     template: __inline('exams.ftl'),
     data: function () {
         return {
-            list:{},
+            list:{
+                options:[]
+            },
             answer:'',  //选择答案
             checklist:'', //多选题答案
             explainShow:false, //解释
@@ -34,6 +36,8 @@ module.exports = {
                 _ths.showNext=true
             }
 
+
+
             var nextParams = [parseInt(params.subject),{'type':params.type,'question':parseInt(params.questions),'chapterDesc':params.chapterDesc,'start':params.start}];
 
                 if(_ths.nextQuestionId >= _ths.totalAnswer){
@@ -43,11 +47,12 @@ module.exports = {
                     });
                     _ths.showNext =false;
                 }else{
-                    console.log("this===",_ths.list)
                     if(( _ths.list.optiontype == "1" || _ths.list.optiontype == "0") && _ths.answer == _ths.rightAnswer[0] || _ths.explainShow){
                         Ces.Plugins.nativeApi.questions(nextParams,function (rets) {
-                             if(rets.status == 1){
 
+                            console.log('rets===',rets);
+
+                             if(rets.status == 1){
                                 _ths.list= rets.data;
                                 _ths.rightAnswer = _ths.list.answer_arr;
                                 var options=[];
@@ -103,11 +108,12 @@ module.exports = {
     },
     activated(){
         var params =JSON.parse(sessionStorage.getItem('topic'));
-
+        console.log('params===',params)
         var _ts =this;
         if(params.chapterDesc){
             _ts.nextQuestionId = 1;
         }
+        params.questions =0;
         var nativeRes = [parseInt(params.subject),{'type':params.type,'question':parseInt(params.questions),'chapterDesc':params.chapterDesc,'start':params.start}];
         _ts.explainShow = false;
         _ts.chapterDesc =  params.chapterDesc;
@@ -145,6 +151,7 @@ module.exports = {
                         _ts.list.options =options;
                         _ts.rightAnswer = _ts.list.answer_arr;
                         _ts.nextQuestionId= _ts.nextQuestionId + 1;
+
                     })
                 }else{
                     _ts.list= rets.data;

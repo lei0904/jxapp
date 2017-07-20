@@ -1,7 +1,4 @@
 /**
- * Created by lei on 2017/7/19.
- */
-/**
  * Created by lei on 2017/7/13.
  */
 var Ces = require('ces');
@@ -20,7 +17,10 @@ module.exports = {
             nextQuestionId:1,
             totalAnswer:0,
             showNext:true,//是否显示下一题
-            chapterDesc:'' //专项训练
+            chapterDesc:'', //专项训练
+            score:0,  // 模拟分数
+            step:1,    //步长
+            isDisabled:false  //是否禁用
         }
     },
     methods: {
@@ -32,15 +32,20 @@ module.exports = {
 
             var nextParams = [parseInt(params.subject),{'type':params.type,'question':parseInt(params.questions),'chapterDesc':params.chapterDesc,'start':params.start}];
 
-            if(_ths.nextQuestionId >= _ths.totalAnswer){
-                Cui.Toast({
-                    message: "已是最后一题",
-                    position: 'bottom'
-                });
+            if(_ths.questionId >= 100){
+                if(_ths.answer != _ths.rightAnswer[0]){
+                    _ths.explainShow = true;
+                }else{
+                    _ths.explainShow = false
+                }
                 _ths.showNext =false;
+                Cui.MessageBox('你的分数', _ths.score);
+                console.log('score===',_ths.score)
             }else{
-                console.log("this===",_ths.list)
-                if(( _ths.list.optiontype == "1" || _ths.list.optiontype == "0") && _ths.answer == _ths.rightAnswer[0] || _ths.explainShow){
+
+                if( (_ths.answer !="" &&  _ths.explainShow)||
+                    (_ths.answer != _ths.rightAnswer[0] &&  _ths.explainShow)||
+                     _ths.answer == _ths.rightAnswer[0]  ){
                     Ces.Plugins.nativeApi.questions(nextParams,function (rets) {
                         if(rets.status == 1){
                             _ths.list= rets.data;
@@ -55,7 +60,14 @@ module.exports = {
                             }
                             _ths.list.options =options;
                             _ths.questionId = _ths.questionId + 1;
-                            _ths.nextQuestionId= _ths.nextQuestionId + 1;
+                            _ths.nextQuestionId= _ths.nextQuestionId + _ths.step;
+
+                            if( _ths.answer == _ths.rightAnswer[0] ){
+                                _ths.score = _ths.score + 1;
+                                console.log('_ths.score==',_ths.score);
+                            }
+                            _ths.explainShow = false;
+                            _ths.answer ="";
                         }else{
                             Cui.Toast({
                                 message:rets.message,
@@ -64,29 +76,6 @@ module.exports = {
                         }
 
                     });
-
-                    _ths.explainShow = false;
-                    _ths.answer ="";
-
-                }else if( _ths.list.optiontype == "3"  && _ths.checklist.sort().toString() == _ths.rightAnswer.sort().toString()){
-                    Ces.Plugins.nativeApi.questions(nextParams,function (rets) {
-                        _ths.list= rets.data;
-                        var options=[];
-                        for(var i=0;i<_ths.list.answers.length;i++){
-                            var item = {};
-                            var j= i+1;
-                            item.value = j.toString();
-                            item.label=j+"、"+_ths.list.answers[i];
-                            options.push(item)
-                        }
-                        _ths.list.options =options;
-                        console.log("============",_ths.list)
-                        _ths.rightAnswer = _ths.list.answer_arr;
-                    });
-                    _ths.explainShow = false;
-                    _ths.checklist =[];
-                    _ths.questionId = _ths.questionId + 1;
-                    _ths.nextQuestionId= _ths.nextQuestionId + 1;
                 }else{
                     _ths.explainShow = true;
                 }
@@ -95,37 +84,31 @@ module.exports = {
         }
     },
     mounted(){
+        console.log('mounted');
     },
     activated(){
+        console.log('activated');
         var params =JSON.parse(sessionStorage.getItem('topic'));
-
         var _ts =this;
-        if(params.chapterDesc){
-            _ts.nextQuestionId = 1;
-        }
+
         var nativeRes = [parseInt(params.subject),{'type':params.type,'question':parseInt(params.questions),'chapterDesc':params.chapterDesc,'start':params.start}];
         _ts.explainShow = false;
-        _ts.chapterDesc =  params.chapterDesc;
-
+        _ts.score =0;
         Ces.Plugins.nativeApi.questions(nativeRes,function(rets){
             if(rets.status == 1){
-                if(params.start){
                     _ts.showNext= true;
                     params.start =false;
                     params.questions = 0;
-                    if(!params.chapterDesc){
-                        _ts.totalAnswer = rets.data.length;
-                    }else{
-                        _ts.totalAnswer = params.totalAnswer;
-                    }
+                    _ts.questionId =1;
+                     _ts.totalAnswer = rets.data.length;
                     console.log("_ts.totalAnswer==",_ts.totalAnswer);
                     if(params.type == 4){
                         console.log("模拟考试");
                         var seqStart = parseInt((Math.random()* (_ts.totalAnswer / 4) + 1),10);
                         console.log('seqStart===',seqStart);
 
-                        var step = _ts.totalAnswer / 100;
-                        var nextMockId = seqStart + step;
+                            _ts.step = _ts.totalAnswer / 40;
+                        var nextMockId = seqStart + _ts.step;
 
                         if(nextMockId < _ts.totalAnswer ){
                             params.questions = nextMockId;
@@ -146,24 +129,8 @@ module.exports = {
                         }
                         _ts.list.options =options;
                         _ts.rightAnswer = _ts.list.answer_arr;
-                        _ts.questionId = _ts.questionId +1;
-                        _ts.nextQuestionId= _ts.nextQuestionId + 1;
+                        _ts.nextQuestionId= _ts.nextQuestionId +_ts.step;
                     })
-                }else{
-                    _ts.list= rets.data;
-                    var options=[];
-                    for(var i=0;i<_ts.list.answers.length;i++){
-                        var item = {};
-                        var j= i+1;
-                        item.value = j.toString();
-                        item.label=j+"、"+_ts.list.answers[i];
-                        options.push(item)
-                    }
-                    _ts.list.options =options;
-                    _ts.rightAnswer = _ts.list.answer_arr;
-                    _ts.questionId = _ts.questionId + 1;
-                    _ts.nextQuestionId= _ts.nextQuestionId + 1;
-                }
             }else{
                 Cui.Toast({
                     message:rets.message,

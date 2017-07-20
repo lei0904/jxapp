@@ -16,7 +16,7 @@ middleware.forEach(function (m) {
 
 app.get('/testUrl', function(req, res){
 
-    delete require.cache[require.resolve('../package.json')]
+    delete require.cache[require.resolve('../package.json')];
     var meta = require('../package.json');
 
     res.send(meta.config.test||'');

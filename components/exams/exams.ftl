@@ -1,4 +1,4 @@
-<div class="exams">
+<div class="exams" >
     <div class="question-content" >
         <div class="question">
             <div class="question-item">
@@ -11,7 +11,15 @@
                     {{list.question}}
             </div>
             <div v-if="list.mediacontent" class="img-content">
-                <img :src="list.mediacontent" alt="">
+                <img v-if="list.mediatype == 1" :src="list.mediacontent" alt="">
+
+                <video  v-if="list.mediatype == 2"  controls loop preload  >
+                    <source :src="list.mediacontent"   type="video/mp4" >
+                    您的浏览器不支持 HTML5 video 标签。
+                </video>
+                <video-player>
+
+                </video-player>
             </div>
         </div>
         <div class="answer">

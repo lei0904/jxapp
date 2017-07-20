@@ -39,9 +39,12 @@
 
 .exams .img-content{
     width: 80%;
+    height: 300px;
     margin: 10px auto;
 }
 
-.exams .img-content img{
+.exams .img-content img,
+.exams .img-content  video{
     width: 100%;
+    height: 100%;
 }
