@@ -27,9 +27,7 @@ module.exports = {
     methods: {
         upAnswer:function(){
             var _ths =this;
-
-            _ths.upQuestion=true;
-
+            _ths.upQuestion=true; //右滑
             _ths.checklist=[];
             _ths.answer="";
             if( _ths.sessionParams.questions > 1){
@@ -45,7 +43,7 @@ module.exports = {
         },
         nextAnswer:function(){
             var _ths =this;
-            _ths.upQuestion=false;
+            _ths.upQuestion=false; //左滑
             _ths.sessionParams.start=false;
 
             if(_ths.sessionParams.type == 3  && !_ths.upQuestion){ //随机练习
@@ -73,7 +71,6 @@ module.exports = {
                 }
             }
 
-
            var nextParams = [
                         parseInt(_ths.sessionParams.subject),
                             {
@@ -84,10 +81,12 @@ module.exports = {
                             }
                         ];
                 if((_ths.sessionParams.questions + 1) >= _ths.totalAnswer){
+
                     Cui.Toast({
                         message: "已是最后一题",
                         position: 'bottom'
                     });
+
                 }else{
                     if(_ths.answer == _ths.rightAnswer||_ths.checklist.sort().join(",") == _ths.rightAnswer || _ths.explainShow ){
                         _ths.loadQuestion(nextParams);
@@ -105,6 +104,7 @@ module.exports = {
             _ts.upQuestionId =  _ts.sessionParams.questions;
             console.log("_ts.upQuestionId===",_ts.upQuestionId);
 
+            //模拟考试
             if(_ts.sessionParams.type == 4  && !_ts.upQuestion){
                 console.log("模拟考试");
                 var seqStart = parseInt((Math.random()* (_ts.totalAnswer / 4) + 1),10);
@@ -118,12 +118,16 @@ module.exports = {
                     _ts.sessionParams.questions = Math.floor(nextMockId/_ts.totalAnswer);
                 }
             }
-            if(_ts.sessionParams.type == 3 &&  !_ts.upQuestion){ //随机练习
+
+            //随机练习
+            if(_ts.sessionParams.type == 3 &&  !_ts.upQuestion){
                 var num = Math.random()* _ts.totalAnswer + 1;
                 _ts.sessionParams.questions  = parseInt(num, 10);
             }
+
             var nativeRes =[parseInt(_ts.sessionParams.subject),{'type': _ts.sessionParams.type,'question':parseInt( _ts.sessionParams.questions),'chapterDesc': _ts.sessionParams.chapterDesc,'start': _ts.sessionParams.start}];
 
+            console.log('nativeRes==',nativeRes);
             Ces.Plugins.nativeApi.questions(nativeRes,function (rets) {
                 _ts.list= rets.data;
                 console.log('rets===',rets);
@@ -141,6 +145,7 @@ module.exports = {
 
                     //序号+1
                     if(_ts.sessionParams.questions  > 0 &&  !_ts.upQuestion){
+                        console.log()
                         _ts.questionId = _ts.questionId + 1;
                         console.log('down===questions',_ts.sessionParams.questions);
                         console.log('down===questionId',_ts.questionId);
@@ -149,6 +154,7 @@ module.exports = {
                     if(_ts.sessionParams.questions > 0 &&  _ts.upQuestion){
                         _ts.questionId = _ts.questionId - 1;
                     }
+
                     if(!_ts.upQuestion){
                         _ts.sessionParams.questions = _ts.sessionParams.questions + 1;
                     }
@@ -161,23 +167,7 @@ module.exports = {
             })
         }
     },
-    watch:{
-        answer:function(o,n){
-            this.$nextTick(function() {
-                window.scrollTo(0, 1);
-                window.scrollTo(0, 0)
-                this.$forceUpdate()
-            })
-        },
-        checklist:function(o,n){
-            this.$nextTick(function() {
-                window.scrollTo(0, 1);
-                window.scrollTo(0, 0);
-                this.$forceUpdate()
-            })
-        }
-    },
-    activated(){
+    activated: function(){
         var _ts =this;
         _ts.sessionParams =JSON.parse(sessionStorage.getItem('topic'));
         _ts.sessionParams.questions =0;

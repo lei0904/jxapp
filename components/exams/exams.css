@@ -1,5 +1,6 @@
 .exams{
     transform: translate3d(0, 0, 0);
+    height: 90%;
 }
 .fold-enter-active, .fold-leave-active {
     transition: all .5s;

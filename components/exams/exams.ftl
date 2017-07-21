@@ -1,7 +1,7 @@
 <transition name="fold">
-    <div class="exams" >
+    <v-touch v-on:swipeleft="nextAnswer" v-on:swiperight="upAnswer">
+        <div class="exams" >
         <div class="question-content" >
-            <v-touch v-on:swipeleft="nextAnswer" v-on:swiperight="upAnswer">
                 <div class="question">
                     <div class="question-item">
                         <div class="question-type">
@@ -22,17 +22,17 @@
                 </div>
                 <div class="answer">
                     <div  v-if="list.optiontype !=2 " >
-                        <cui-radio v-model="answer" :options='list.options'></cui-radio>
+                        <cui-radio v-model="answer" :options='list.options' :key="list.options.value"></cui-radio>
                     </div>
                     <div v-else >
-                        <cui-checklist  v-model="checklist"  :options='list.options'></cui-checklist>
+                        <cui-checklist  v-model="checklist"  :options='list.options' :key="list.options.value"></cui-checklist>
                     </div>
                 </div>
                 <div class="explain" v-show="explainShow">
                     <div>答案: <span >{{list.answer}}</span></div>
                     <div class="detail-desc">详细解释:{{list.explain}}</div>
                 </div>
-            </v-touch>
         </div>
     </div>
+    </v-touch>
 </transition>
