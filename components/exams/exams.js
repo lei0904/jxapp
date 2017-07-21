@@ -167,7 +167,7 @@ module.exports = {
             })
         }
     },
-    activated(){
+    activated: function(){
         var _ts =this;
         _ts.sessionParams =JSON.parse(sessionStorage.getItem('topic'));
         _ts.sessionParams.questions =0;

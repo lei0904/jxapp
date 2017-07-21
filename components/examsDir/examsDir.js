@@ -24,9 +24,7 @@ module.exports = {
             this.$router.push({'path':'/exams'})
         }
     },
-    created(){},
-    mounted(){},
-    activated(){
+    activated: function(){
         var params =JSON.parse(sessionStorage.getItem('topic'));
 
         var nativeRes = [parseInt(params.subject),{'type':params.type,'question':0,'chapterDesc':params.chapterDesc,'start':params.start}];
@@ -35,7 +33,7 @@ module.exports = {
 
         var _ts =this;
         Ces.Plugins.nativeApi.questions(nativeRes,function(rets){
-            console.log(" 第一次进入==",rets)
+            console.log(" 第一次进入==",rets);
             _ts.list=rets.data
         })
     }
