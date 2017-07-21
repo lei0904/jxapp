@@ -9,7 +9,7 @@ module.exports = {
     },
     methods: {
         toPractice:function (obj) {
-            var params = JSON.stringify({'subject':this.selected,'type':obj,'start':true,questions:1});
+            var params = JSON.stringify({'subject':this.selected,'type':obj,'start':true,questions:0});
             sessionStorage.setItem("topic",params);
             console.log('toPractice', sessionStorage.getItem("topic"));
            if( obj == 2){

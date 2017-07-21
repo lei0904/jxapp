@@ -27,7 +27,7 @@
     <div class="cui-search-list" v-show="currentValue">
         <div class="cui-search-list-warp">
             <slot>
-                <x-cell v-for="item in result" track-by="$index" :title="item"></x-cell>
+                <x-cell v-for="item in result" :key="$index" track-by="$index" :title="item"></x-cell>
             </slot>
         </div>
     </div>

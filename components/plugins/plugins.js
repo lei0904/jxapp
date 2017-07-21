@@ -8,7 +8,6 @@ module.exports = {
             console.log(d);
             if (d['status'] == 1) {
                 var data = d['data'];
-
                 cb && cb(data);
 
             } else {

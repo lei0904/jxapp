@@ -15,36 +15,52 @@ module.exports = {
             checklist:[], //多选题答案
             explainShow:false, //解释
             rightAnswer:'', //正确答案
-            questionId:0,  //序列号
-            nextQuestionId:1,
+            questionId:1,  //序列号
             totalAnswer:0,
-            showNext:true,//是否显示下一题
             chapterDesc:'', //专项训练
             sessionParams:{}, //缓存
-            score:0
+            score:0,
+            upQuestionId:0,
+            upQuestion:false
         }
     },
     methods: {
+        upAnswer:function(){
+            var _ths =this;
+
+            _ths.upQuestion=true;
+
+            _ths.checklist=[];
+            _ths.answer="";
+            if( _ths.sessionParams.questions > 1){
+                _ths.sessionParams.questions =  _ths.sessionParams.questions - 1;
+                _ths.loadQuestion();
+            }else{
+                Cui.Toast({
+                    message:"当前已是第一题",
+                    position:'bottom'
+                })
+            }
+
+        },
         nextAnswer:function(){
             var _ths =this;
-            _ths.sessionParams.questions = _ths.nextQuestionId;
+            _ths.upQuestion=false;
             _ths.sessionParams.start=false;
 
-            if(_ths.sessionParams.type == 3){ //随机练习
+            if(_ths.sessionParams.type == 3  && !_ths.upQuestion){ //随机练习
                 var num = Math.random()* _ths.totalAnswer + 1;
-                _ths.nextQuestionId = parseInt(num, 10);
-                _ths.showNext=true
+                _ths.sessionParams.questions = parseInt(num, 10);
             }
 
             //模拟试题计分
-            if(_ths.sessionParams.type == 4){
+            if(_ths.sessionParams.type == 4  && !_ths.upQuestion){
                 if(_ths.questionId > 100){
                     if(_ths.answer != _ths.rightAnswer){
                         _ths.explainShow = true;
                     }else{
                         _ths.explainShow = false
                     }
-                    _ths.showNext =false;
                     Cui.MessageBox('你的分数', _ths.score);
                     console.log('score===',_ths.score)
                 }else{
@@ -58,13 +74,20 @@ module.exports = {
             }
 
 
-           var nextParams = [parseInt(_ths.sessionParams.subject),{'type':_ths.sessionParams.type,'question':parseInt(_ths.sessionParams.questions),'chapterDesc':_ths.sessionParams.chapterDesc,'start':_ths.sessionParams.start}];
-                if(_ths.nextQuestionId >= _ths.totalAnswer){
+           var nextParams = [
+                        parseInt(_ths.sessionParams.subject),
+                            {
+                                'type':_ths.sessionParams.type,
+                                'question':parseInt(_ths.sessionParams.questions),
+                                'chapterDesc':_ths.sessionParams.chapterDesc,
+                                'start':_ths.sessionParams.start
+                            }
+                        ];
+                if((_ths.sessionParams.questions + 1) >= _ths.totalAnswer){
                     Cui.Toast({
                         message: "已是最后一题",
                         position: 'bottom'
                     });
-                    _ths.showNext =false;
                 }else{
                     if(_ths.answer == _ths.rightAnswer||_ths.checklist.sort().join(",") == _ths.rightAnswer || _ths.explainShow ){
                         _ths.loadQuestion(nextParams);
@@ -79,7 +102,10 @@ module.exports = {
         },
         loadQuestion:function(){
             var _ts =this;
-            if(_ts.sessionParams.type == 4){
+            _ts.upQuestionId =  _ts.sessionParams.questions;
+            console.log("_ts.upQuestionId===",_ts.upQuestionId);
+
+            if(_ts.sessionParams.type == 4  && !_ts.upQuestion){
                 console.log("模拟考试");
                 var seqStart = parseInt((Math.random()* (_ts.totalAnswer / 4) + 1),10);
                 console.log('seqStart===',seqStart);
@@ -92,10 +118,9 @@ module.exports = {
                     _ts.sessionParams.questions = Math.floor(nextMockId/_ts.totalAnswer);
                 }
             }
-            if(_ts.sessionParams.type == 3){ //随机练习
+            if(_ts.sessionParams.type == 3 &&  !_ts.upQuestion){ //随机练习
                 var num = Math.random()* _ts.totalAnswer + 1;
                 _ts.sessionParams.questions  = parseInt(num, 10);
-                _ts.showNext=true
             }
             var nativeRes =[parseInt(_ts.sessionParams.subject),{'type': _ts.sessionParams.type,'question':parseInt( _ts.sessionParams.questions),'chapterDesc': _ts.sessionParams.chapterDesc,'start': _ts.sessionParams.start}];
 
@@ -113,11 +138,20 @@ module.exports = {
                         _ts.list.options =options;
                     }
                     _ts.rightAnswer =  _ts.list.answer;
-                    _ts.questionId = _ts.questionId + 1;
-                    _ts.nextQuestionId= _ts.nextQuestionId + 1;
 
-
-
+                    //序号+1
+                    if(_ts.sessionParams.questions  > 0 &&  !_ts.upQuestion){
+                        _ts.questionId = _ts.questionId + 1;
+                        console.log('down===questions',_ts.sessionParams.questions);
+                        console.log('down===questionId',_ts.questionId);
+                    }
+                    //序号-1
+                    if(_ts.sessionParams.questions > 0 &&  _ts.upQuestion){
+                        _ts.questionId = _ts.questionId - 1;
+                    }
+                    if(!_ts.upQuestion){
+                        _ts.sessionParams.questions = _ts.sessionParams.questions + 1;
+                    }
                 }else{
                     Cui.Toast({
                         message:rets.message,
@@ -132,39 +166,38 @@ module.exports = {
             this.$nextTick(function() {
                 window.scrollTo(0, 1);
                 window.scrollTo(0, 0)
+                this.$forceUpdate()
             })
         },
         checklist:function(o,n){
             this.$nextTick(function() {
                 window.scrollTo(0, 1);
                 window.scrollTo(0, 0);
+                this.$forceUpdate()
             })
         }
-    },
-    mounted(){
     },
     activated(){
         var _ts =this;
         _ts.sessionParams =JSON.parse(sessionStorage.getItem('topic'));
-        if( _ts.sessionParams.chapterDesc){
-            _ts.nextQuestionId = 1;
-        }
         _ts.sessionParams.questions =0;
 
-        var nativeRes = [parseInt( _ts.sessionParams.subject),{'type':_ts.sessionParams.type,'question':parseInt( _ts.sessionParams.questions),'chapterDesc':_ts.sessionParams.chapterDesc,'start':_ts.sessionParams.start}];
+        var nativeRes = [parseInt( _ts.sessionParams.subject),
+                        {'type':_ts.sessionParams.type,
+                         'question':parseInt( _ts.sessionParams.questions),
+                         'chapterDesc':_ts.sessionParams.chapterDesc,
+                         'start':_ts.sessionParams.start}];
         _ts.explainShow = false;
         _ts.chapterDesc = _ts.sessionParams.chapterDesc;
 
         Ces.Plugins.nativeApi.questions(nativeRes,function(rets){
             if(rets.status == 1){
                 if(_ts.sessionParams.start){
-                    _ts.showNext= true;
-                    _ts.nextQuestionId = 1;
-                    _ts.questionId = 0;
+                    _ts.questionId = 1;
                     _ts.answer ='';
                     _ts.checklist=[];
-                    _ts.sessionParams .start = false;
-                    _ts.sessionParams .questions = 0;
+                    _ts.sessionParams.start = false;
+                    _ts.sessionParams.questions = 0;
                     _ts.score = 0;
 
                     if(! _ts.sessionParams .chapterDesc){
@@ -172,26 +205,7 @@ module.exports = {
                     }else{
                         _ts.totalAnswer =  _ts.sessionParams.totalAnswer;
                     }
-                    // if( _ts.sessionParams.type == 3){
-                    //     var num = Math.random()* _ts.totalAnswer + 1;
-                    //     _ts.nextQuestionId = parseInt(num, 10);
-                    // }
-                 //   nativeRes =[parseInt( _ts.sessionParams.subject),{'type':_ts.sessionParams.type,'question':parseInt( _ts.sessionParams.questions),'chapterDesc':_ts.sessionParams.chapterDesc,'start':_ts.sessionParams.start}];
-                   // console.log("_ts.nativeRes==",nativeRes);
                     _ts.loadQuestion();
-                }else{
-                    _ts.list= rets.data;
-                    var options=[];
-                    for(var i=0;i<_ts.list.answers.length;i++){
-                        var item = {};
-                        var j= i+1;
-                        item.value = j.toString();
-                        item.label=j+"、"+_ts.list.answers[i];
-                        options.push(item)
-                    }
-                    _ts.list.options =options;
-                    _ts.rightAnswer = _ts.list.answer;
-                    _ts.nextQuestionId= _ts.nextQuestionId + 1;
                 }
             }else{
                 Cui.Toast({

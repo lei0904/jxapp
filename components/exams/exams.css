@@ -1,4 +1,12 @@
-
+.exams{
+    transform: translate3d(0, 0, 0);
+}
+.fold-enter-active, .fold-leave-active {
+    transition: all .5s;
+}
+.fold-enter, .fold-leave-active {
+    transform: translate3d(0, 0, 0);
+}
 .exams .question{
     font-size: 32px;
     margin: 20px 10px;
