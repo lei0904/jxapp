@@ -3,4 +3,10 @@ node_modules
 *.bak
 *.tmp
 Thumbs.db
-.idea/
+
+/.idea/
+.idea/inspectionProfiles/
+.idea/jxapp.iml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
