@@ -10,5 +10,10 @@ module.exports = {
         }
     },
     methods:{
+    },
+    mounted:function(){
+        this.$api.get('api/main', {}).then(function (rets) {
+            console.log(rets);
+        });
     }
 };

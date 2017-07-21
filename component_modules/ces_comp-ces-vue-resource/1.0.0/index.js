@@ -2,12 +2,28 @@ var Ces = require('ces');
 
 var Vue = require('vue');
 var VueResource = require('vue-resource');
+var qs = require('./qs.js');
 Vue.use(VueResource);
+
+var Cui = require('cui');
+
+Vue.http.interceptors.push(function(request, next) {
+    Cui.Indicator.open('加载中...');
+    next(function(response) {
+        Cui.Indicator.close();
+        return response;
+    });
+});
+
+Vue.http.options.emulateJSON = true;
+Vue.http.options.headers = {
+    'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+};
+
 
 var Config = Ces.Config;
 
 var CesVueResource = (function () {
-
     var _getUrl = function (api, type) {
         type = type || Config.service;
         var url;
@@ -15,49 +31,35 @@ var CesVueResource = (function () {
             case "native":
             case "http":
                 var defaultProtocol, serverIp, serverPort, serverContext;
-                //TODO 如果是在客户端,通过插件取服务器配置地址
                 defaultProtocol = Config.Server.defaultProtocol;
                 serverIp = Config.Server.serverIp;
                 serverPort = Config.Server.serverPort;
                 serverContext = Config.Server.serverContext;
-
-                url = defaultProtocol + '://' + serverIp + ':' + serverPort + "/" + (serverContext ? serverContext + "/" : "") + api + ".json";
+                url = defaultProtocol + '://' + serverIp + ':' + serverPort + "/" + (serverContext ? serverContext + "/" : "") + api;
                 break;
             case "static":
                 url = "data/" + api + ".json";
                 break;
-            /*case "native":
-                //url = api + ".json";
-                var defaultProtocol, serverIp, serverPort, serverContext;
-                //TODO 如果是在客户端,通过插件取服务器配置地址
-                defaultProtocol = Config.Server.defaultProtocol;
-                serverIp = Config.Server.serverIp;
-                serverPort = Config.Server.serverPort;
-                serverContext = Config.Server.serverContext;
-
-                url = defaultProtocol + '://' + serverIp + ':' + serverPort + "/" + (serverContext ? serverContext + "/" : "") + api + ".json";
-                break;*/
         }
         return url;
     };
 
     var _send = function (method, api, params, success, error) {
         var options = {
-            params: params,
-            timeout: Config.Server.timeOut || 30000
+            timeout: Config.Server.timeOut || 50000
         };
 
         success = success || function () {
-                alert('请求成功');
-            };
+            alert('请求成功');
+        };
 
         error = error || function () {
-                alert('请求失败');
-            };
+            alert('请求失败');
+        };
 
         var url = _getUrl(api);
 
-        if (Config.service != 'native') {
+        if (Config.service !== 'native') {
             switch (method) {
                 case 'GET':
                     Vue.http.get(url, options).then(function (response) {
@@ -67,7 +69,7 @@ var CesVueResource = (function () {
                     });
                     break;
                 case 'POST':
-                    Vue.http.post(url, options).then(function (response) {
+                    Vue.http.post(url, qs.stringify(params)).then(function (response) {
                         success(response.body);
                     }, function (response) {
                         error(response);
@@ -78,7 +80,7 @@ var CesVueResource = (function () {
             switch (method) {
                 case 'GET':
                     Ces.Plugins.Http.get(url).setBody(params).send(function (rets) {
-                        if (rets.status == 1) {
+                        if (rets.status === 1) {
                             success(rets.data);
                         } else {
                             error && error(rets);
@@ -87,7 +89,7 @@ var CesVueResource = (function () {
                     break;
                 case 'POST':
                     Ces.Plugins.Http.post(url).setBody(params).send(function (rets) {
-                        if (rets.status == 1) {
+                        if (rets.status === 1) {
                             success(rets.data);
                         } else {
                             error && error(rets);
@@ -96,26 +98,21 @@ var CesVueResource = (function () {
                     break;
             }
         }
-
-
-    };
-
-    var _get = function (api, params, success, error) {
-        _send('GET', api, params, success, error);
-    };
-
-    var _post = function (api, params, success, error) {
-        _send('POST', api, params, success, error);
     };
 
     return {
+        VueResource: VueResource,
         type: {
             http: 'http',
             static: 'static',
             native: 'native'
         },
-        get: _get,
-        post: _post
+        get: function (api, params, success, error) {
+            _send('GET', api, params, success, error);
+        },
+        post: function (api, params, success, error) {
+            _send('POST', api, params, success, error);
+        }
     }
 })();
 
