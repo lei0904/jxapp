@@ -110,7 +110,7 @@ Api.install = function (Vue) {
                     });
                 },
 
-                get: function (api, params, success, error, autoLoading) {
+                get: function (api, params, autoLoading) {
                     return new Promise(function (resolve, reject) {
                         CesVueHttp.get(api, params, function (data) {
                             if (data['status'] === 'FORBIDDEN' || data['status'] === 'NOLOGIN') {
