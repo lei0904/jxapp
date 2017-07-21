@@ -6,7 +6,6 @@ var _reserved = require('reserved');
 var _personal = require('personal');
 var _exams = require('exams');
 var _examsDir = require('examsDir');
-var _examMock = require('examMock');
 var _login = require('login');
 var _register = require('register');
 
@@ -17,7 +16,6 @@ var reserved = Vue.extend(_reserved);
 var personal = Vue.extend(_personal);
 var exams = Vue.extend(_exams);
 var examsDir = Vue.extend(_examsDir);
-var examMock = Vue.extend(_examMock);
 var login = Vue.extend(_login);
 var register = Vue.extend(_register);
 
@@ -119,19 +117,6 @@ var routes = [
         component: examsDir,
         meta: {
             title: '专项训练',
-            backable: true,
-            searchable: false,
-            showLogo:false,
-            value:'1',
-            fullScreen:false,
-            showToolBar:true
-        }
-    },
-    {
-        path:'/examMock',
-        component: examMock,
-        meta: {
-            title: '模拟考试',
             backable: true,
             searchable: false,
             showLogo:false,
