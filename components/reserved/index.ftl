@@ -1,11 +1,15 @@
 <div>
     <div class="cars">
         <div class="normal_header">车辆</div>
-        <div class="clearfix carBox">
-            <div class="item" :class="[checkedCars == 1 ? 'checked':'']" @click="checkCars(1)">A辆车</div>
-            <div class="item" :class="[checkedCars == 2 ? 'checked':'']" @click="checkCars(2)">B辆车</div>
-            <div class="item" :class="[checkedCars == 3 ? 'checked':'']" @click="checkCars(3)">C辆车</div>
-            <div class="item" :class="[checkedCars == 4 ? 'checked':'']" @click="checkCars(4)">D辆车</div>
+        <div class="carBox">
+            <div class="clearfix">
+                <div class="item" :class="[checkedCars == 1 ? 'checked':'']" @click="checkCars(1)">A辆车</div>
+                <div class="item" :class="[checkedCars == 2 ? 'checked':'']" @click="checkCars(2)">B辆车</div>
+                <div class="item" :class="[checkedCars == 3 ? 'checked':'']" @click="checkCars(3)">C辆车</div>
+                <div class="item" :class="[checkedCars == 4 ? 'checked':'']" @click="checkCars(4)">D辆车</div>
+                <div class="item" :class="[checkedCars == 5 ? 'checked':'']" @click="checkCars(5)">E辆车</div>
+                <div class="item" :class="[checkedCars == 6 ? 'checked':'']" @click="checkCars(6)">F辆车</div>
+            </div>
         </div>
     </div>
     <div class="time">

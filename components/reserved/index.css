@@ -15,8 +15,18 @@
 .carBox{
     height: 90px;
     width: 100%;
-    padding-top: 22px;
+    padding-top: 22px ;
     background: #fff;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+.carBox::-webkit-scrollbar{
+    width:0
+}
+.carBox > div{
+    min-width: 1110px;
+    height: 68px;
 }
 .carBox .item{
     width: 120px;
@@ -35,6 +45,9 @@
 }
 .carBox .item:first-child{
     margin-left: 45px;
+}
+.carBox .item:last-child{
+    margin-right: 45px;
 }
 .time{
     margin-top: 20px;
