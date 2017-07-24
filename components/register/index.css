@@ -1,0 +1,101 @@
+.register_head{
+    height: 400px;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+}
+.register_head img{
+    height:150px;
+    margin-top:125px ;
+}
+.register_content{
+    width: 650px;
+    margin: 0 50px;
+    border: 1px solid #d5d5d5; /*no*/
+    border-radius: 5px;/*no*/
+}
+.cui-field:last-child {
+    border: 0 none !important;
+}
+.register_content a , .register_content input{
+    background-color: transparent;
+}
+.register_content .cui-cell-title{
+    width: 80px !important;
+}
+.register_content .cui-field{
+    border-bottom: 1px solid #ccc;/*no*/
+}
+.register_name .cui-cell-title{
+    background: url(../../views/lib/images/user-icon.png) no-repeat left / 56px 56px;
+    min-height: 96px;
+}
+.register_password .cui-cell-title{
+    background: url(../../views/lib/images/password-icon.png) no-repeat left / 56px 56px;
+    min-height: 96px;
+}
+.register_inviter .cui-cell-title{
+    background: url(../../views/lib/images/user-icon.png) no-repeat left / 56px 56px;
+    min-height: 96px;
+}
+.current-button{
+    outline: none !important;
+    width: 650px !important;
+    height: 80px !important;
+    margin: 0 auto 10px !important;
+    text-align: center !important;
+    font-size: 34px !important; /*px*/
+    color: #FFF !important;
+    background: #096bb2 !important;
+    border-bottom: 4px solid #216ecd !important;
+}
+.register_end{
+    padding-top: 100px;
+    height: 300px;
+}
+.MessageLogin-FsPlX{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 0 20px;
+    min-height: 96px;
+    border-bottom: 1px solid #ccc;/*no*/
+    background: transparent;
+    font-size: 32px; /*px*/
+}
+.MessageLogin-FsPlX input{
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    padding: .133333rem 0;
+    height: .8rem;
+    color: #333;
+    line-height: .533333rem;
+    border: 0 none;
+}
+.CountButton{
+    padding: 0;
+    width: 2.666667rem;
+    height: .8rem;
+    border-radius: .08rem;
+    background: #2395ff;
+    color: #fff;
+    text-align: center;
+    font-size: .373333rem;
+    line-height: .8rem;
+}
+.tel_icon{
+    background: url(../../views/lib/images/user-icon.png) no-repeat left / 56px 56px;
+    min-height: 96px;
+    width: 80px;
+}

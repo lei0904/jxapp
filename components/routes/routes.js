@@ -8,6 +8,7 @@ var _exams = require('exams');
 var _examsDir = require('examsDir');
 var _login = require('login');
 var _register = require('register');
+var _forgotPassword = require('forgotPassword');
 var _success = require('success');
 
 
@@ -19,6 +20,7 @@ var exams = Vue.extend(_exams);
 var examsDir = Vue.extend(_examsDir);
 var login = Vue.extend(_login);
 var register = Vue.extend(_register);
+var forgotPassword = Vue.extend(_forgotPassword);
 var success = Vue.extend(_success);
 
 
@@ -44,7 +46,20 @@ var routes = [
             backable: true,
             searchable: false,
             showLogo:false,
-            value:'1',
+            value:'2',
+            fullScreen:false,
+            showToolBar:false
+        }
+    },
+    {
+        path: '/forgotPassword',
+        component: forgotPassword,
+        meta: {
+            title: '忘记密码',
+            backable: true,
+            searchable: false,
+            showLogo:false,
+            value:'2',
             fullScreen:false,
             showToolBar:false
         }
