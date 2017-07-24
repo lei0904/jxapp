@@ -18,6 +18,8 @@ require.async(['ces',
                 Routes,VueTouch) {
 
     VueTouch.install(Vue);
+    Vue.use(Api);
+
     var _app = {
         init: function (account, role) {
             Vue.use(VueRouter);

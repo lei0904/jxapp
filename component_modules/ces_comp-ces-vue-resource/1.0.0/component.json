@@ -8,5 +8,13 @@
     "ces_comp/ces": "1.0.0",
     "ces_comp/vue": "2.0.3",
     "ces_comp/vue-resource": "1.0.3"
-  }
+  },
+  "files": [
+    "formats.js",
+
+    "parse.js",
+    "qs.js",
+    "stringify.js",
+    "utils.js"
+  ]
 }

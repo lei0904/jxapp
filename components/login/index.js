@@ -1,6 +1,5 @@
 var Ces = require('ces');
 var Cui = require('cui');
-var Api = require('api');
 
 module.exports = {
     template: __inline('index.ftl'),
@@ -8,8 +7,8 @@ module.exports = {
         return {
             full: false,
             animate: "left-fade",
-            user: '13053083464',
-            password: '000000'
+            user: '13365698927',
+            password: '123456'
         }
     },
     methods: {
@@ -36,32 +35,44 @@ module.exports = {
                 });
                 return;
             }
+            var _this = this;
+            this.$api.post('api/login', {
+                    mobile: _this.user,
+                    password: _this.password
+                }).then(function (rets) {
+                    if (rets.status !== 'OK') {
+                        Cui.Toast({
+                            message: rets.message,
+                            position: 'bottom'
+                        });
+                    } else {
+                        _this.$api.LoginData.set(rets.data, function () {
+                            _this.$router.push({ path: '/index' });
+                        }, function () {
+                            Cui.MessageBox.alert('系统异常，登录失败');
+                        });
+                    }
+                });
 
-            this.$router.push({ path: '/index' });
-
-            // Api.post(Api.login,
-            //     {
-            //         account: vm.user,
-            //         password: vm.password,
-            //         push_id: data['push_id'],
-            //         type: vm.type
-            //     }
-            //     , function (rets) {
-            //         if (rets.status !== 'OK') {
-            //             Cui.Toast({
-            //                 message: rets.message,
-            //                 position: 'bottom'
-            //             });
-            //         } else {
-            //             Ces.JSBridge.callHandler('setLoginData', [0, rets.data], function (d) {
-            //                 if (d['status'] == 1) {
-            //                     Ces.Page.open('/index/index.html');
-            //                 } else {
-            //                     Cui.MessageBox.alert('系统异常，登录失败');
-            //                 }
-            //             });
-            //         }
-            //     })
+            /*this.$api.post('api/login',
+                {
+                    mobile: _this.user,
+                    password: _this.password
+                }
+                , function (rets) {
+                    if (rets.status !== 'OK') {
+                        Cui.Toast({
+                            message: rets.message,
+                            position: 'bottom'
+                        });
+                    } else {
+                        _this.$api.LoginData.set(rets.data, function () {
+                            _this.$router.push({ path: '/index' });
+                        }, function () {
+                            Cui.MessageBox.alert('系统异常，登录失败');
+                        });
+                    }
+                })*/
         },
         register: function () {
             this.$router.push({ path: '/register' });
