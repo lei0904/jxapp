@@ -76,13 +76,10 @@ Ces.register = function(plugin) {
 };
 
 Ces.ready = function (callback) {
-    if (Ces.Config.debug) {
+    if (!Ces.Config.plugin) {
         window.onload = function () {
             Ces.Page.init(callback);
         };
-        // document.addEventListener("DOMContentLoaded", function () {
-        //     callback && callback();
-        // }, false);
     } else {
         if (window.WebViewJavascriptBridge) {
             if (!Ces.__bridge__) {
@@ -101,6 +98,7 @@ Ces.ready = function (callback) {
                 Ces.Page.init(callback);
             }, false);
         }
+
     }
 };
 

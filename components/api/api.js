@@ -8,7 +8,7 @@ var Promise = Promise || require('es6-promise').Promise;
 
 var LoginData = {
     set: function (data, success, failed) {
-        if (!Ces.Config.debug) {
+        if (Ces.Config.plugin) {
             Ces.JSBridge.callHandler('setLoginData', [0, data], function (d) {
                 if (d['status'] === 1) {
                     success && success();
@@ -75,6 +75,30 @@ var _handlerAuthFailed = function (vm) {
     });
 };
 
+var _getBasePath = function () {
+    var defaultProtocol, serverIp, serverPort, serverContext;
+    defaultProtocol = Ces.Config.Server.defaultProtocol;
+    serverIp = Ces.Config.Server.serverIp;
+    serverPort = Ces.Config.Server.serverPort;
+    serverContext = Ces.Config.Server.serverContext;
+    return defaultProtocol + '://' + serverIp + ':' + serverPort + "/" + (serverContext ? serverContext + "/" : "")
+};
+
+var _getUrl = function (api, type) {
+    type = type || Ces.Config.service;
+    var url;
+    switch (type) {
+        case "native":
+        case "http":
+            url = _getBasePath() + api;
+            break;
+        case "static":
+            url = "data/" + api + ".json";
+            break;
+    }
+    return url;
+};
+
 Api.install = function (Vue) {
     Vue.Api = {
         process: function (rets, success, failed) {
@@ -98,6 +122,12 @@ Api.install = function (Vue) {
             var _this = this;
 
             return {
+                getBasePath: _getBasePath,
+
+                image_path: function (path) {
+                    return _getUrl('api/attachment') + '?path=' + path;
+                },
+
                 post: function (api, params, autoLoading) {
                     return new Promise(function (resolve, reject) {
                         CesVueHttp.post(api, params, function (data) {
