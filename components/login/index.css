@@ -26,7 +26,7 @@
     margin: 0 auto 80px;
     display: block;
     clear: both;
-    border-bottom: 1px solid #909090;
+    border-bottom: 1px solid #ccc;/*no*/
 
 }
 
@@ -76,7 +76,7 @@
     text-align: center;
     font-size: 34px; /*px*/
     color: #FFF;
-    background: #028bff;
+    background: #096bb2;
     border-bottom: 4px solid #216ecd;
 }
 

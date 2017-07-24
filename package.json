@@ -23,7 +23,7 @@
       "timeOut": 5000
     },
     "test":"/jxapp/1.0.0/index/index.html#/login",
-    "index": "/index/index.html"
+    "index": "/index/index.html#/login"
   },
   "devDependencies": {},
   "engines": {

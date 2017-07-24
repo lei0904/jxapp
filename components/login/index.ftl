@@ -22,7 +22,7 @@
                     size="large">登录</cui-button>
         <div class="bottom_con clear">
             <span class="left"><router-link  to="/register"><span>注册</span></router-link></span>
-            <span class="right"><a href="#" >忘记密码？</a></span>
+            <span class="right"><router-link  to="/forgotPassword"><span>忘记密码</span></router-link></span>
         </div>
     </div>
 </div>
