@@ -134,9 +134,10 @@ var NativeContext = (function () {
 
 var Page = (function () {
     var _debug = Config.debug;
+    var _plugin = Config.plugin;
 
     var _onResumeListener = function (callback) {
-        if (_debug) {
+        if (_plugin) {
             WebContext.onResumeListener(callback);
         } else {
             NativeContext.onResumeListener(callback);
@@ -146,7 +147,7 @@ var Page = (function () {
     var _open = function (href, data) {
         href = Config.basepath + href;
 
-        if (_debug) {
+        if (_plugin) {
             WebContext.push(href, data);
         } else {
             NativeContext.push(href, data);
@@ -154,7 +155,7 @@ var Page = (function () {
     };
 
     var _back = function (data) {
-        if (_debug) {
+        if (_plugin) {
             WebContext.pop(data);
         } else {
             NativeContext.pop(data);
