@@ -81,8 +81,6 @@ Ces.ready = function (callback) {
             Ces.Page.init(callback);
         };
     } else {
-
-
         if (window.WebViewJavascriptBridge) {
             if (!Ces.__bridge__) {
                 WebViewJavascriptBridge.init(function () {
