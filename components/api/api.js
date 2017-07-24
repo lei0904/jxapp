@@ -8,7 +8,7 @@ var Promise = Promise || require('es6-promise').Promise;
 
 var LoginData = {
     set: function (data, success, failed) {
-        if (Ces.Config.plugin) {
+        if (!Ces.Config.plugin) {
             Ces.JSBridge.callHandler('setLoginData', [0, data], function (d) {
                 if (d['status'] === 1) {
                     success && success();
