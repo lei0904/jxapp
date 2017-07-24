@@ -16,11 +16,6 @@ module.exports = function (Ces) {
 
     Ces.Plugins = Plugins;
 
-    /*-------------- vue-touch ------------*/
-    var vueTouch = require('vue-touch/vue-touch.js');
-
-    Ces.vueTouch = vueTouch;
-
     /* ----------- utils ----------- */
     var DateTime = require('utils/ces.datetime.js');
     var Utils = require('utils/ces.utils.js');

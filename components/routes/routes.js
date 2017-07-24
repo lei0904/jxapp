@@ -8,6 +8,7 @@ var _exams = require('exams');
 var _examsDir = require('examsDir');
 var _login = require('login');
 var _register = require('register');
+var _success = require('success');
 
 
 var index = Vue.extend(_index);
@@ -18,6 +19,7 @@ var exams = Vue.extend(_exams);
 var examsDir = Vue.extend(_examsDir);
 var login = Vue.extend(_login);
 var register = Vue.extend(_register);
+var success = Vue.extend(_success);
 
 
 var routes = [
@@ -117,6 +119,19 @@ var routes = [
         component: examsDir,
         meta: {
             title: '专项训练',
+            backable: true,
+            searchable: false,
+            showLogo:false,
+            value:'1',
+            fullScreen:false,
+            showToolBar:true
+        }
+    },
+    {
+        path: '/success',
+        component: success,
+        meta: {
+            title: '考试结果',
             backable: true,
             searchable: false,
             showLogo:false,

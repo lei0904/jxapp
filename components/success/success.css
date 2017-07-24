@@ -1,0 +1,19 @@
+.success .dis{
+    text-align: Center;
+    font-size: 48px;
+
+}
+
+.success .score{
+    margin: 50% 0 0;
+    text-align: center;
+    font-size: 48px;
+}
+
+.red{
+    color: #ff0000;
+}
+
+.green{
+    color: #20A690;
+}
