@@ -29,7 +29,7 @@ require.async(['ces',
             });
 
             router.beforeEach(function (to, from, next) {
-                if (to.path == '/') {
+                if (to.path === '/') {
                     next('/index');
                 } else {
                     if (app) {
@@ -39,7 +39,7 @@ require.async(['ces',
                         app.backable = to.meta.backable;
                         app.searchable = to.meta.searchable;
                         app.showLogo = to.meta.showLogo;
-                        if (to.meta.value == from.meta.value) {
+                        if (to.meta.value === from.meta.value) {
                             app.animate = "fade";
                         } else if(to.meta.value > from.meta.value){
                             app.animate = "left-fade";
