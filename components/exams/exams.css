@@ -1,6 +1,9 @@
+.touchClass {
+    height: 100%;
+}
 .exams{
     transform: translate3d(0, 0, 0);
-    height: 90%;
+    height: 100%;
 }
 .fold-enter-active, .fold-leave-active {
     transition: all .5s;
