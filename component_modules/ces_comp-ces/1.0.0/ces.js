@@ -76,11 +76,7 @@ Ces.register = function(plugin) {
 };
 
 Ces.ready = function (callback) {
-    if (!Ces.Config.plugin) {
-        window.onload = function () {
-            Ces.Page.init(callback);
-        };
-    } else {
+    if (Ces.Config.plugin) {
         if (window.WebViewJavascriptBridge) {
             if (!Ces.__bridge__) {
                 WebViewJavascriptBridge.init(function () {
@@ -98,7 +94,10 @@ Ces.ready = function (callback) {
                 Ces.Page.init(callback);
             }, false);
         }
-
+    } else {
+        window.onload = function () {
+            Ces.Page.init(callback);
+        };
     }
 };
 
