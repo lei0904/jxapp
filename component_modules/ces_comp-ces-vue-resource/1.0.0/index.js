@@ -8,9 +8,14 @@ Vue.use(VueResource);
 var Cui = require('cui');
 
 Vue.http.interceptors.push(function(request, next) {
-    Cui.Indicator.open('加载中...');
+    if (request.autoLoading) {
+        Cui.Indicator.open('加载中...');
+    }
+
     next(function(response) {
-        Cui.Indicator.close();
+        if (request.autoLoading) {
+            Cui.Indicator.close();
+        }
         return response;
     });
 });
@@ -44,9 +49,13 @@ var CesVueResource = (function () {
         return url;
     };
 
-    var _send = function (method, api, params, success, error) {
+    var _send = function (method, api, params, success, error, autoLoading) {
+        if (typeof autoLoading === 'undefined') {
+            autoLoading = true;
+        }
         var options = {
-            timeout: Config.Server.timeOut || 50000
+            timeout: Config.Server.timeOut || 50000,
+            autoLoading: !!autoLoading
         };
 
         success = success || function () {
@@ -107,11 +116,11 @@ var CesVueResource = (function () {
             static: 'static',
             native: 'native'
         },
-        get: function (api, params, success, error) {
-            _send('GET', api, params, success, error);
+        get: function (api, params, success, error, autoLoading) {
+            _send('GET', api, params, success, error, autoLoading);
         },
-        post: function (api, params, success, error) {
-            _send('POST', api, params, success, error);
+        post: function (api, params, success, error, autoLoading) {
+            _send('POST', api, params, success, error, autoLoading);
         }
     }
 })();
