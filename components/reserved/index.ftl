@@ -13,7 +13,17 @@
         </div>
     </div>
     <div class="time">
-        <div class="normal_header">预约时间</div>
+        <div class="normal_header">预约时间
+            <div class="dateClickItem" @click="open('picker2')" >{{dateValue || "请选择接送时间"}}
+            </div>
+        </div>
+        <cui-datetime-picker
+                ref="picker2"
+                type="date"
+                @confirm="handleChange2"
+                :startDate="startDate"
+                :endDate="endDate">
+        </cui-datetime-picker>
         <div class="time_content">
             <div class="check_title">
                 <i></i>
@@ -91,14 +101,13 @@
         </div>
         <div>
             <cui-field class="timePicker" label="接送时间" >
-                <div class="timeClickItem" @click="open('picker3')" >{{timevalue || "请选择接送时间"}}</div>
+                <div class="timeClickItem" @click="open('picker3')" >{{timeValue || "请选择日期"}}</div>
             </cui-field>
             <cui-field label="接送地点" placeholder="请输入接送地点" ></cui-field>
             <cui-datetime-picker
                     ref="picker3"
                     type="time"
-                    v-model="timevalue"
-                    @confirm="handleChange">
+                    @confirm="handleChange1">
             </cui-datetime-picker>
         </div>
     </div>
