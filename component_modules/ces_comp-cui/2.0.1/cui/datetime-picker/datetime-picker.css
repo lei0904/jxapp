@@ -6,7 +6,8 @@
     backface-visibility: hidden;
 }
 .cui-datetime .picker-toolbar {
-    border-bottom: solid 1px #eaeaea;
+    border-bottom: solid 1px #eaeaea;/*no*/
+
 }
 .cui-datetime-action {
     display: inline-block;

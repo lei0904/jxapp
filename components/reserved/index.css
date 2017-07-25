@@ -11,6 +11,7 @@
     color: #a2a0a1;
     text-indent: 40px;
     border-bottom: 1px solid #eeebe6;/*no*/
+    position: relative;
 }
 .carBox{
     height: 90px;
@@ -161,6 +162,15 @@
     line-height: 96px;
     color: #888;
 }
+.dateClickItem{
+    color: #888;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left:0;
+    right:0;
+    text-align: center;
+}
 .bottom_but{
     height: 162px;
     position: relative;
@@ -181,4 +191,7 @@
 }
 .cui-cell::after , .cui-cell::before{
     border: 0 none !important;
+}
+.cui-popup{
+    z-index: 9999;
 }
