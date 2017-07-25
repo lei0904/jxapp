@@ -8,7 +8,7 @@ var Promise = Promise || require('es6-promise').Promise;
 
 var LoginData = {
     set: function (data, success, failed) {
-        if (!Ces.Config.plugin) {
+        if (Ces.Config.plugin) {
             Ces.JSBridge.callHandler('setLoginData', [0, data], function (d) {
                 if (d['status'] === 1) {
                     success && success();
@@ -101,21 +101,6 @@ var _getUrl = function (api, type) {
 
 Api.install = function (Vue) {
     Object.defineProperty(Vue.prototype, '$api', {
-        process: function (rets, success, failed) {
-            success = success || function (rets) {
-                Cui.MessageBox.alert(rets.message);
-            };
-            failed = failed || function (rets) {
-                Cui.MessageBox.alert(rets.message);
-            };
-
-            if (rets['status'] === 'OK') {
-                success(rets);
-            } else {
-                failed(rets);
-            }
-        },
-
         get:function () {
             var _this = this;
 
@@ -124,6 +109,21 @@ Api.install = function (Vue) {
 
                 image_path: function (path) {
                     return _getUrl('api/attachment') + '?path=' + path;
+                },
+
+                process: function (rets, success, failed) {
+                    success = success || function (rets) {
+                        Cui.MessageBox.alert(rets.message);
+                    };
+                    failed = failed || function (rets) {
+                        Cui.MessageBox.alert(rets.message);
+                    };
+
+                    if (rets['status'] === 'OK') {
+                        success(rets);
+                    } else {
+                        failed(rets);
+                    }
                 },
 
                 post: function (api, params, autoLoading) {

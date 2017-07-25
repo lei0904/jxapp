@@ -44,6 +44,7 @@ module.exports = {
         rows: String,
             label: String,
             placeholder: String,
+            name: String,
             readonly: Boolean,
             disabled: Boolean,
             disableClear: Boolean,

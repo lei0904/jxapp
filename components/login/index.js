@@ -16,14 +16,7 @@ module.exports = {
             var _this = this;
             _this.$validator.validateAll().then(function(result) {
                 if (!result) {
-                    var errors = _this.$validator.getErrors().errors;
-                    if (errors && errors.length > 0) {
-                        Cui.Toast({
-                            message: errors[0].msg,
-                            position: 'bottom'
-                        });
-                    }
-
+                    _this.$validator.renderError();
                     return;
                 }
 

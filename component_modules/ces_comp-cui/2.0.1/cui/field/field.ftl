@@ -20,6 +20,7 @@
             ref="input"
             class="cui-field-core"
             :placeholder="placeholder"
+            :name="name"
             :number="type === 'number'"
             v-else
             :type="type"
