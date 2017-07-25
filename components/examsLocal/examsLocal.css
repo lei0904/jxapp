@@ -1,7 +1,7 @@
 .touchClass {
     height: 100%;
 }
-.exams{
+.examsLocal{
     transform: translate3d(0, 0, 0);
     height: 100%;
 }
@@ -11,12 +11,12 @@
 .fold-enter, .fold-leave-active {
     transform: translate3d(0, 0, 0);
 }
-.exams .question{
+.examsLocal .question{
     font-size: 32px;
     margin: 20px 10px;
 }
 
-.exams .question-type{
+.examsLocal .question-type{
     font-size: 24px;
     background: -webkit-linear-gradient(30deg, #7fdaff, #7fdaff);
     background: linear-gradient(30deg,#7fdaff,#7fdaff);
@@ -27,53 +27,53 @@
     margin: 20px px;
 }
 
-.exams .next-btn-content{
+.examsLocal .next-btn-content{
     width: 750px;
 
 }
 
-.exams .explain{
+.examsLocal .explain{
     background: #fff;
     margin: 40px 0;
     padding: 20px 40px;
     font-size: 32px;
 }
-.exams .next-btn-content .next-btn{
+.examsLocal .next-btn-content .next-btn{
     width: 400px;
     margin: 20px 175px;
 
 }
 
-.exams .detail-desc{
+.examsLocal .detail-desc{
     font-size: 28px;
     margin-top: 10px;
 }
 
-.exams .img-content{
+.examsLocal .img-content{
     width: 80%;
     height: 300px;
     margin: 10px auto;
 }
 
-.exams .img-content img,
-.exams .img-content  video{
+.examsLocal .img-content img,
+.examsLocal .img-content  video{
     width: 100%;
     height: 100%;
 }
-.exams .question-item{
+.examsLocal .question-item{
     position: relative;
     margin:20px 0;
 }
-.exams .item{
+.examsLocal .item{
     margin-left: 70px;
     margin-top: 10px;
 }
 
-.exams .start {
+.examsLocal .start {
     position: relative;
     font-style: normal;
 }
-.exams .start-uncheck:before{
+.examsLocal .start-uncheck:before{
     content: "\2605";
     position: absolute;
     left:20px;
@@ -83,7 +83,7 @@
     font-style: normal;
 }
 
-.exams .start-checked:before{
+.examsLocal .start-checked:before{
     content: "\2605";
     position: absolute;
     left:20px;
@@ -91,4 +91,9 @@
     color: #ff9000;
     font-size: 44px;
     font-style: normal;
+}
+
+.examsLocal .cancel-btn{
+    width: 250px;
+    margin: 40px 250px;
 }
