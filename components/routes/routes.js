@@ -1,5 +1,9 @@
 var Vue = require('vue');
 
+var V = require('../vee-validate/index.js');
+V.init();
+
+
 var _index = require('index');
 var _exercise = require('exercise');
 var _reserved = require('reserved');

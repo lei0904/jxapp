@@ -100,7 +100,7 @@ var _getUrl = function (api, type) {
 };
 
 Api.install = function (Vue) {
-    Vue.Api = {
+    Object.defineProperty(Vue.prototype, '$api', {
         process: function (rets, success, failed) {
             success = success || function (rets) {
                 Cui.MessageBox.alert(rets.message);
@@ -114,10 +114,8 @@ Api.install = function (Vue) {
             } else {
                 failed(rets);
             }
-        }
-    };
+        },
 
-    Object.defineProperty(Vue.prototype, '$api', {
         get:function () {
             var _this = this;
 

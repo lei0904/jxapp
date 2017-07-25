@@ -1,6 +1,7 @@
 var Ces = require('ces');
 var Cui = require('cui');
 var Api = require('api');
+var moment = require('moment');
 
 module.exports = {
     template: __inline('index.ftl'),
@@ -10,8 +11,10 @@ module.exports = {
             checkedItem1:'',
             checkedItem2:'',
             switchValue:'',
-            timevalue:'',
-            options1:[]
+            timeValue:'',
+            dateValue:'',
+            startDate:new Date(),
+            endDate:new Date()
         }
     },
     methods: {
@@ -36,24 +39,17 @@ module.exports = {
             this.$refs[picker].open();
         },
 
-        handleChange: function(value) {
-            this.timevalue = value;
+        handleChange1: function(value) {
+            this.timeValue = value;
+        },
+        handleChange2: function(value) {
+            this.dateValue = moment(value).format('YYYY-MM-DD');
+
         }
     },
-    created: function () {
-        this.options1 = [
-            {
-                label: '7:00 - 8:00  预约人数：3人',
-                value: '1'
-            },
-            {
-                label: '8:00 - 9:00  预约人数：2人',
-                value: '2'
-            },
-            {
-                label: '9:00 - 10:00  预约人数：5人',
-                value: '3'
-            }
-        ];
+    mounted:function () {
+        this.endDate = new Date(moment().endOf('week').add(1, 'd'));
+        console.log(this.endDate)
+        // sevenDayAgo.setTime(new Date(val).getTime() - 3600 * 1000 * 24 * 6);
     }
 };

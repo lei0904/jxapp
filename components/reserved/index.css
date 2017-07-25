@@ -11,12 +11,23 @@
     color: #a2a0a1;
     text-indent: 40px;
     border-bottom: 1px solid #eeebe6;/*no*/
+    position: relative;
 }
 .carBox{
     height: 90px;
     width: 100%;
-    padding-top: 22px;
+    padding-top: 22px ;
     background: #fff;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+.carBox::-webkit-scrollbar{
+    width:0
+}
+.carBox > div{
+    min-width: 1110px;
+    height: 68px;
 }
 .carBox .item{
     width: 120px;
@@ -35,6 +46,9 @@
 }
 .carBox .item:first-child{
     margin-left: 45px;
+}
+.carBox .item:last-child{
+    margin-right: 45px;
 }
 .time{
     margin-top: 20px;
@@ -148,6 +162,15 @@
     line-height: 96px;
     color: #888;
 }
+.dateClickItem{
+    color: #888;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left:0;
+    right:0;
+    text-align: center;
+}
 .bottom_but{
     height: 162px;
     position: relative;
@@ -168,4 +191,7 @@
 }
 .cui-cell::after , .cui-cell::before{
     border: 0 none !important;
+}
+.cui-popup{
+    z-index: 9999;
 }

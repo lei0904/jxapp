@@ -11,7 +11,7 @@
   },
   "config": {
     "px2rem": true,
-    "plugin": true,
+    "plugin": false,
     "debug": true,
     "service": "http",
     "ServiceEncrypt": true,
@@ -22,8 +22,8 @@
       "serverContext": "",
       "timeOut": 5000
     },
-    "test":"/jxapp/1.0.0/index/index.html#/login",
-    "index": "/index/index.html#/login"
+    "test":"/jxapp/1.0.0/index/index.html#/reserved",
+    "index": "/index/index.html#/reserved"
   },
   "devDependencies": {},
   "engines": {

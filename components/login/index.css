@@ -64,7 +64,7 @@
 }
 
 .login_input::-webkit-input-placeholder {
-    text-align: center;
+    text-align: left;
     font-size: 26px; /*px*/
 }
 
@@ -83,10 +83,10 @@
 .bottom_con {
     position: relative;
     width: 500px;
-    margin: 40px auto;
+    margin: 50px auto;
     display: block;
     clear: both;
-    font-size: 28px; /*px*/
+    font-size: 30px; /*px*/
 }
 
 .left {
@@ -102,4 +102,12 @@
     color: #028bff;
     font-size: 28px; /*px*/
     font-weight: 500;
+}
+
+.CountButton {
+    cursor: pointer;
+    outline: none;
+}
+button[disable].CountButton {
+    background: #ccc;
 }

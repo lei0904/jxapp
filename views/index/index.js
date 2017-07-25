@@ -3,19 +3,19 @@
 require.config(__FRAMEWORK_CONFIG__);
 
 require.async(['ces',
-                'vue',
-                'cui',
-                'api',
-                'vue-router',
-                'routes',
-                'vue-touch'
-            ], function (
-                Ces,
-                Vue ,
-                Cui ,
-                Api ,
-                VueRouter,
-                Routes,VueTouch) {
+    'vue',
+    'cui',
+    'api',
+    'vue-router',
+    'routes',
+    'vue-touch'
+], function (Ces,
+             Vue,
+             Cui,
+             Api,
+             VueRouter,
+             Routes,
+             VueTouch) {
 
     VueTouch.install(Vue);
     Vue.use(Api);
@@ -41,7 +41,7 @@ require.async(['ces',
                         app.showLogo = to.meta.showLogo;
                         if (to.meta.value === from.meta.value) {
                             app.animate = "fade";
-                        } else if(to.meta.value > from.meta.value){
+                        } else if (to.meta.value > from.meta.value) {
                             app.animate = "left-fade";
                         } else {
                             app.animate = "right-fade";
@@ -55,18 +55,18 @@ require.async(['ces',
             var app = new Vue({
                 el: '#app',
                 router: router,
-                data:function(){
-                    return{
-                        wrapperHeight:'',
-                        backable:false,
-                        searchable:false,
-                        showLogo:true,
-                        title:'预约学车',
-                        value:'',
+                data: function () {
+                    return {
+                        wrapperHeight: '',
+                        backable: false,
+                        searchable: false,
+                        showLogo: true,
+                        title: '预约学车',
+                        value: '',
                         animate: "left-fade",
-                        searchText:'',
-                        fullScreen:true,
-                        showToolBar:false
+                        searchText: '',
+                        fullScreen: true,
+                        showToolBar: false
                     }
                 },
                 methods: {
@@ -74,7 +74,7 @@ require.async(['ces',
                         this.$router.back();
                     }
                 },
-                updated:function(){
+                updated: function () {
                     this.wrapperHeight = document.documentElement.clientHeight
                         - this.$refs.title.clientHeight
                         - this.$refs.toolbar.clientHeight;
