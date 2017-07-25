@@ -14,9 +14,11 @@ module.exports = {
             console.log('toPractice', sessionStorage.getItem("topic"));
            if( obj == 2){
                 this.$router.push({'path':'/examsDir'})
-            }else{
+            }else if(obj == 1 || obj == 3 || obj == 4){
                 this.$router.push({path:'/exams'})
-            }
+            }else{
+               this.$router.push({path:'/examsLocal'})
+           }
 
         }
     }

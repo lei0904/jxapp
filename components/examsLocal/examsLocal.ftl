@@ -1,7 +1,7 @@
 <transition name="fold">
     <v-touch v-on:swipeleft="nextAnswer" v-on:swiperight="upAnswer" class="touchClass">
-        <div class="exams" >
-        <div class="question-content" >
+        <div class="examsLocal" >
+            <div class="question-content" >
                 <div class="question">
                     <div class="question-type">
                         <span v-if="list.optiontype == 0">判断题</span>
@@ -9,11 +9,7 @@
                         <span v-if="list.optiontype == 2">多选题</span>
                     </div>
                     <div class="question-item">
-                            <span  @click="collectQ">
-                                <em class="start-uncheck" v-show="!showStart"></em>
-                                <em class="start-checked" v-show="showStart"></em>
-                            </span>
-                            <span class="item">
+                        <span class="item">
                                {{list.question}}
                             </span>
                     </div>
@@ -37,7 +33,8 @@
                     <div>答案: <span >{{list.answer}}</span></div>
                     <div class="detail-desc">详细解释:{{list.explain}}</div>
                 </div>
+                <cui-button size="normal" class="cancel-btn"  type="primary" @click.native="removeQ">取消收藏</cui-button>
+            </div>
         </div>
-    </div>
     </v-touch>
 </transition>

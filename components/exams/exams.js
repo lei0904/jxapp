@@ -3,6 +3,7 @@
  */
 var Ces = require('ces');
 var Cui = require('cui');
+var Collect = require('examCollect');
 
 module.exports = {
     template: __inline('exams.ftl'),
@@ -27,7 +28,8 @@ module.exports = {
             mockSeq:0, //模拟随机序号
             upQuestion:false,
             answerList:[],
-            allAnswer:{}
+            allAnswer:{},
+            showStart:false //默认没收藏
         }
     },
     methods: {
@@ -36,21 +38,22 @@ module.exports = {
             this.upQuestion =false;
             if(type == 1){
                 console.log(" 顺序练习上一题")
-                if(localStorage.orderKey == 'undefind'){
+                if(localStorage.orderKey == 'undefined'){
                     var upParams = JSON.stringify({questions:this.sessionParams.questions,questionId:this.questionId,answerList:this.answerList});
                     localStorage.setItem('orderKey',upParams);
                 }else{
                     var u = JSON.parse( localStorage.getItem('orderKey'));
                     console.log("u==",u);
-                    this.sessionParams.questions = u.questions - 1;
+                    this.sessionParams.questions = parseInt(u.questions) - 1;
                     this.questionId = u.questionId - 1;
 
                     var q= parseInt(this.sessionParams.questions);
-                    if(this.sessionParams.optiontype != 2 && u.answerList.length >=  this.sessionParams.questions){
+                    if(this.list.optiontype != 2 && u.answerList.length >=  this.sessionParams.questions){
                         this.answer = u.answerList[q]
                     }else{
                         this.checklist = u.answerList[q]
                     }
+                    console.log('u',u);
                     console.log( this.answer,this.checklist)
                 }
 
@@ -64,54 +67,28 @@ module.exports = {
                     this.sessionParams.questions = parseInt(num, 10);
                 }
             }else{
-                console.log("模拟考试上一题");
-                this.mockSeq = this.mockSeq - this.step;
+                console.log("模拟考试下一题");
+                this.mockSeq = this.mockSeq + this.step;
                 this.sessionParams.questions = this.mockSeq;
+
             }
 
-            if(this.sessionParams.questions  <= -1  ){
+            if(parseInt(this.sessionParams.questions)  <= -1  ){
                 Cui.Toast({
                     message: "当前已是第一题",
                     position: 'bottom'
                 });
                 if(type == 1){
                     var t = JSON.parse( localStorage.getItem('orderKey'));
-                    if(this.sessionParams.optiontype != 2){
+                    if(this.list.optiontype != 2){
                         this.answer = t.answerList[0]
                     }else{
                         this.checklist = t.answerList[0]
                     }
                 }
 
-            }else if(  this.sessionParams.questions == this.seqStart ){
-
-                Cui.Toast({
-                    message: "当前已是第一题",
-                    position: 'bottom'
-                });
-                if(type == 1){
-                    var t = JSON.parse( localStorage.getItem('orderKey'));
-                    if(this.sessionParams.optiontype != 2){
-                        this.answer = t.answerList[0]
-                    }else{
-                        this.checklist = t.answerList[0]
-                    }
-                }
             }else{
                 //显示上一题答案
-                // this.allAnswer= JSON.parse(sessionStorage.getItem('allAnswer'));
-                // var s =parseInt(this.sessionParams.questions);
-                // if(this.allAnswer.allAnswerList.length >=  this.sessionParams.questions){
-                //     this.questionId =  this.allAnswer.questionId;
-                //     this.questions =  this.allAnswer.questions;
-                //     if(this.sessionParams.optiontype != 2){
-                //         this.answer =  this.allAnswer.answerList[s];
-                //     }else{
-                //         this.checklist =  this.allAnswer.answerList[s];
-                //     }
-                // }else{
-                //
-                // }
                     this.loadQuestion();
             }
         },
@@ -121,7 +98,7 @@ module.exports = {
             this.upQuestion =true;
             if(type == 1){
                 console.log(" 顺序练习下一题");
-                if(localStorage.orderKey == 'undefind'){
+                if(localStorage.orderKey === undefined){
                     var nextParams = JSON.stringify({questions:this.sessionParams.questions,questionId:this.questionId,answerList:this.answerList});
                     localStorage.setItem('orderKey',nextParams);
                 }else{
@@ -130,20 +107,15 @@ module.exports = {
                     this.sessionParams.questions = n.questions + 1;
                     this.questionId = n.questionId +1;
                     var q= parseInt(this.sessionParams.questions);
-                    if(n.answerList.length >=  this.sessionParams.questions){
-                        if(this.sessionParams.optiontype != 2){
-                            this.answer = n.answerList[q]
+
+                        //判断缓存答案类型
+                        if(this.list.optiontype !=2){
+                            this.answerList.splice(q - 1,1,this.answer)
                         }else{
-                            this.checklist = n.answerList[q]
+                            this.answerList.splice(q - 1,1,this.checklist)
                         }
-                    }else{
-                        //判断是否需要缓存答案
-                        if(this.sessionParams.optiontype !=2){
-                            this.answerList.push(this.answer);
-                        }else{
-                            this.answerList.push(this.checklist);
-                        }
-                    }
+
+                        console.log("splice next answerList",this.answerList)
                 }
             }
             else if(type == 2){
@@ -157,7 +129,6 @@ module.exports = {
                 }
             }else{
                 console.log("模拟考试下一题");
-
                 if(this.mockSeq  < this.totalAnswer ){
                     this.sessionParams.questions = this.mockSeq + this.step;
                 }else{
@@ -175,11 +146,12 @@ module.exports = {
                    // Cui.MessageBox('你的分数', this.score);
                     console.log('score===',this.score)
                 }else{
-                    if( (this.answer == this.rightAnswer
-                        ||this.checklist.sort().join(",") == this.rightAnswer )){
+                    console.log("this.checklist==",this.checklist)
+                    if( (this.answer == this.rightAnswer||this.checklist.sort().join(",") == this.rightAnswer ) ){
                         this.score = this.score + 1;
                         console.log("_ts.score ==",this.score)
                     }
+
                 }
             }
 
@@ -193,32 +165,30 @@ module.exports = {
             }else{
 
                 if(this.answer == this.rightAnswer||this.checklist.sort().join(",") == this.rightAnswer || this.explainShow ){
-
-                    // this.allAnswer= JSON.parse(sessionStorage.getItem('allAnswer'));
-                    // var s =parseInt(this.sessionParams.questions);
-                    // this.allAnswer.questionId =this.questionId;
-                    // this.allAnswer.questions = this.questions;
-                    // if(this.sessionParams.optiontype != 2){
-                    //     this.allAnswer.answerList.push(this.answer)
-                    //
-                    // }else{
-                    //     this.allAnswer.answerList.push(this.checklist);
-                    // }
-                    // JSON.setItem('allAnswer',JSON.stringify(this.allAnswer))
                     this.explainShow = false;
                     this.checklist =[];
                     this.answer ="";
-
-
                     this.loadQuestion();
                 }else{
                     this.explainShow = true;
+
+                    var un = JSON.parse( localStorage.getItem('orderKey'));
+                    if(this.sessionParams.type == '1' && localStorage.orderKey !== undefined){
+                        var q= parseInt(this.sessionParams.questions);
+                        if(un.answerList.length >= q){
+                            if(this.list.optiontype != 2){
+                                this.answer = un.answerList[q]
+                            }else{
+                                this.checklist = un.answerList[q]
+                            }
+                        }
+                    }
                 }
             }
         },
         loadQuestion:function() {
             var _ts = this;
-
+                _ts.showStart =false;
             var nativeRes =[
                 parseInt(this.sessionParams.subject),
                 {
@@ -229,32 +199,11 @@ module.exports = {
                 }];
             console.log('nativeRes==', _ts.sessionParams.questions);
 
-            //缓存上一题答案
-            // var allAnswer =JSON.parse( sessionStorage.getItem('allAnswer')) ;
-            // var s = allAnswer.questions;
-            // console.log('aaaaa',allAnswer);
-            // if(allAnswer.allAnswer.length >=  parseInt(this.sessionParams.questions)){
-            //             _ts.questionId = allAnswer.questionId;
-            //             _ts.questions = allAnswer.questions;
-            //             if(_ts.sessionParams.optiontype != 2){
-            //                 _ts.answer = allAnswer.answerList[s];
-            //             }else{
-            //                 _ts.checklist = allAnswer.answerList[s];
-            //             }
-            // }else{
-            //             allAnswer.questionId =_ts.questionId;
-            //             allAnswer.questions = _ts.questions;
-            //             if(_ts.sessionParams.optiontype != 2){
-            //                 allAnswer.answerList.push(_ts.answer)
-            //
-            //             }else{
-            //                 allAnswer.answerList.push(_ts.checklist);
-            //             }
-            // }
-
              Ces.Plugins.nativeApi.questions(nativeRes,function (rets) {
                     _ts.list= rets.data;
-                    console.log('rets===',rets);
+                    console.log('rets===',_ts.list.optiontype);
+                    console.log('sessionParse===',_ts.sessionParams.optiontype);
+
                     if(rets.status == 1){
                         var options=[];
                         for(var i=0;i<_ts.list.answers.length;i++){
@@ -268,18 +217,11 @@ module.exports = {
                         _ts.rightAnswer =  _ts.list.answer;
 
 
-                        //todo 顺序练习 缓存题号
-                        if(_ts.sessionParams.type == '1'){
-                            var localParams = JSON.stringify({questions:_ts.sessionParams.questions,questionId:_ts.questionId,answerList:_ts.answerList});
-                            localStorage.setItem('orderKey',localParams);
-                            console.log('localParams==',localParams);
-                        }
-
                         var un = JSON.parse( localStorage.getItem('orderKey'));
-                        if(_ts.sessionParams.type == '1' && localStorage.orderKey != 'undefind'){
+                        if(_ts.sessionParams.type == '1' && localStorage.orderKey !== undefined){
                             var q= parseInt(_ts.sessionParams.questions);
                             if(un.answerList.length >= q){
-                                if(_ts.sessionParams.optiontype != 2){
+                                if(_ts.list.optiontype != 2){
                                     _ts.answer = un.answerList[q]
                                 }else{
                                     _ts.checklist = un.answerList[q]
@@ -288,14 +230,28 @@ module.exports = {
                         }
 
                         if(_ts.upQuestion){
-                            _ts.nextQuestionId = _ts.questionId + 1;
-                            _ts.questionId = _ts.questionId + 1;
+                            _ts.nextQuestionId = _ts.nextQuestionId + 1;
+                           // _ts.questionId = _ts.questionId + 1;
                             _ts.upQuestion = false; //返回更改状态
                             console.log("下一题")
                         }else{
-                            _ts.nextQuestionId = _ts.questionId - 1;
-                            _ts.questionId = _ts.questionId - 1;
-                            console.log("上一题")
+                            if(_ts.sessionParams.type !=4){
+                                _ts.nextQuestionId = _ts.nextQuestionId - 1;
+                            }else{
+
+                                _ts.nextQuestionId = _ts.nextQuestionId + 1;
+                            }
+                            //_ts.questionId = _ts.questionId - 1;
+                            console.log("上一题");
+
+                            _ts.upQuestion = true; //返回更改状态
+                        }
+
+                        //todo 顺序练习 缓存题号
+                        if(_ts.sessionParams.type == '1'){
+                            var localParams = JSON.stringify({questions:_ts.sessionParams.questions,questionId:_ts.questionId,answerList:_ts.answerList});
+                            localStorage.setItem('orderKey',localParams);
+                            console.log('localParams==',localParams);
                         }
                         console.log( _ts.nextQuestionId, _ts.questionId)
 
@@ -305,42 +261,29 @@ module.exports = {
                             message:rets.message,
                             position:'bottom'
                         })
-                        //todo 操作失败 记录题号
-                        //  var type =_ts.sessionParams.type;
-                        // if(!_ts.upQuestion){
-                        //     if(type == 1){
-                        //         localStorage.getItem('orderKey') - 1;
-                        //     }
-                        //     if(type == 2) {
-                        //         _ts.sessionParams.questions = _ts.sessionParams.questions - 1;
-                        //     }
-                        //     if(type == 4){
-                        //
-                        //         _ts.mockSeq  = _ts.mockSeq - _ts.step
-                        //     }
-                        // }else{
-                        //     if(type == 1){
-                        //         localStorage.getItem('orderKey') + 1;
-                        //     }
-                        //     if(type == 2){
-                        //         _ts.sessionParams.questions =  _ts.sessionParams.questions + 1;
-                        //     }
-                        //     if(type == 4) {
-                        //         _ts.mockSeq  = _ts.mockSeq + _ts.step
-                        //     }
-                        // }
                     }
                 })
+        },
+        collectQ:function(){
+            if(this.showStart){
+                this.showStart =false;
+                console.log("取消收藏此问题");
+                //todo  取消收藏此问题
+                Collect.removeQ(this.list);
+            }else{
+                this.showStart =true;
+                console.log("收藏此问题");
+                //todo  收藏此问题
+                Collect.setQ(this.list);
+            }
         }
     },
     activated: function(){
         var ths = this;
-
+        Collect.initCollectQ();
         ths.sessionParams =  JSON.parse(sessionStorage.getItem('topic'));
-
         sessionStorage.setItem("allAnswer",JSON.stringify({questionId:0,questions:0,allAnswerList:[]}));
         //模拟考试初始化步长
-
 
         var initNativeRes =[
             parseInt(ths.sessionParams.subject),
@@ -359,19 +302,22 @@ module.exports = {
                     ths.answer ='';
                     ths.checklist=[];
                     ths.score = 0;
-                    this.explainShow = false;
+                    ths.nextQuestionId = 1 ;
+                    ths.explainShow = false;
                     ths.sessionParams.start = false;
-                    if(! ths.sessionParams .chapterDesc){
+                    if(!ths.sessionParams.chapterDesc){
                         ths.totalAnswer = res.data.length;
                     }else{
                         ths.totalAnswer =  ths.sessionParams.totalAnswer;
                     }
 
-                    if(ths.sessionParams.type == 1){
+                    if(ths.sessionParams.type == 1 && localStorage.orderKey !== undefined){
                         var l = JSON.parse(localStorage.getItem('orderKey'));
                         ths.sessionParams.questions = l.questions;
                         ths.questionId = l.questionId;
+                        ths.answerList = l.answerList;
                     }
+
                     if(ths.sessionParams.type == 4 ){
                         console.log("模拟考试");
                         ths.mockSeq = parseInt((Math.random()* (ths.totalAnswer / 4) + 1),10);
@@ -382,7 +328,6 @@ module.exports = {
 
                         ths.sessionParams.questions = ths.mockSeq;
                     }
-
                     ths.loadQuestion();
                 }
             })
