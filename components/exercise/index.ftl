@@ -62,8 +62,8 @@
                 <div class="practice">我的练习</div>
                 <div class="exercise-history">
                     <div class="exercise-title">
-                        <div class="exercise-item">我的收藏</div>
-                        <div class="exercise-item">我的错题</div>
+                        <div class="exercise-item" @click="toPractice(5)">我的收藏</div>
+                        <div class="exercise-item" @click="toPractice(6)">我的错题</div>
                     </div>
                     <div class="exercise-title">
                         <div class="exercise-item">答题技巧</div>

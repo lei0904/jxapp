@@ -96,6 +96,7 @@ module.exports = {
             var type =this.sessionParams.type;
 
             this.upQuestion =true;
+            console.log('this.checklist===',this.checklist);
             if(type == 1){
                 console.log(" 顺序练习下一题");
                 if(localStorage.orderKey === undefined){
@@ -121,13 +122,15 @@ module.exports = {
             else if(type == 2){
                 console.log("专项练习下一题");
                 this.sessionParams.questions =  this.sessionParams.questions + 1;
-            }else if(type == 3){
+            }
+            else if(type == 3){
                 console.log("随机练习下一题");
                 if(this.sessionParams.type == 3  && this.upQuestion){ //随机练习
                     var num = Math.random()* this.totalAnswer + 1;
                     this.sessionParams.questions = parseInt(num, 10);
                 }
-            }else{
+            }
+            else{
                 console.log("模拟考试下一题");
                 if(this.mockSeq  < this.totalAnswer ){
                     this.sessionParams.questions = this.mockSeq + this.step;
@@ -146,8 +149,9 @@ module.exports = {
                    // Cui.MessageBox('你的分数', this.score);
                     console.log('score===',this.score)
                 }else{
-                    console.log("this.checklist==",this.checklist)
-                    if( (this.answer == this.rightAnswer||this.checklist.sort().join(",") == this.rightAnswer ) ){
+                    console.log("this.checklist==",this.checklist);
+                    if( (this.answer == this.rightAnswer && this.list.optiontype != 2) ||
+                        (this.checklist.sort().join(",") == this.rightAnswer && this.list.optiontype == 2) ){
                         this.score = this.score + 1;
                         console.log("_ts.score ==",this.score)
                     }
@@ -155,23 +159,34 @@ module.exports = {
                 }
             }
 
+
+            //todo 缓存错题
+            if((this.answer != this.rightAnswer && this.list.optiontype != 2) ||
+                (this.checklist.sort().join(",") != this.rightAnswer && this.list.optiontype == 2) ){
+                Collect.setErrorQ(this.list,this.sessionParams)
+            }
+            if( this.answer != this.rightAnswer && this.list.optiontype != 2){
+                Collect.setErrorQ(this.list,this.sessionParams)
+            }
             //todo 判断是否有下一题
 
-            if((this.sessionParams.questions + 1) >= this.totalAnswer && this.sessionParams.type !=4){
+            if((this.sessionParams.questions + 1) >= this.totalAnswer
+                && this.sessionParams.type !=4){
                 Cui.Toast({
                     message: "已是最后一题",
                     position: 'bottom'
                 });
-            }else{
-
-                if(this.answer == this.rightAnswer||this.checklist.sort().join(",") == this.rightAnswer || this.explainShow ){
-                    this.explainShow = false;
-                    this.checklist =[];
-                    this.answer ="";
-                    this.loadQuestion();
+            }
+            else{
+                if( (this.answer == this.rightAnswer&& this.list.optiontype != 2)||
+                    (this.checklist.sort().join(",") == this.rightAnswer&& this.list.optiontype == 2)||
+                    this.explainShow ){
+                        this.explainShow = false;
+                        this.checklist =[];
+                        this.answer ="";
+                        this.loadQuestion();
                 }else{
                     this.explainShow = true;
-
                     var un = JSON.parse( localStorage.getItem('orderKey'));
                     if(this.sessionParams.type == '1' && localStorage.orderKey !== undefined){
                         var q= parseInt(this.sessionParams.questions);
@@ -269,18 +284,18 @@ module.exports = {
                 this.showStart =false;
                 console.log("取消收藏此问题");
                 //todo  取消收藏此问题
-                Collect.removeQ(this.list);
+                Collect.removeQ(this.list,this.sessionParams);
             }else{
                 this.showStart =true;
                 console.log("收藏此问题");
                 //todo  收藏此问题
-                Collect.setQ(this.list);
+                Collect.setQ(this.list,this.sessionParams);
             }
         }
     },
     activated: function(){
         var ths = this;
-        Collect.initCollectQ();
+      //  Collect.initCollectQ();
         ths.sessionParams =  JSON.parse(sessionStorage.getItem('topic'));
         sessionStorage.setItem("allAnswer",JSON.stringify({questionId:0,questions:0,allAnswerList:[]}));
         //模拟考试初始化步长

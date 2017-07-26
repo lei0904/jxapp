@@ -3,12 +3,12 @@
         <div class="examsLocal" >
             <div class="question-content" >
                 <div class="question">
-                    <div class="question-type">
-                        <span v-if="list.optiontype == 0">判断题</span>
-                        <span v-if="list.optiontype == 1">单选题</span>
-                        <span v-if="list.optiontype == 2">多选题</span>
-                    </div>
                     <div class="question-item">
+                        <div class="question-type">
+                            <span v-if="list.optiontype == 0">判断题</span>
+                            <span v-if="list.optiontype == 1">单选题</span>
+                            <span v-if="list.optiontype == 2">多选题</span>
+                        </div>
                         <span class="item">
                                {{list.question}}
                             </span>
@@ -33,7 +33,7 @@
                     <div>答案: <span >{{list.answer}}</span></div>
                     <div class="detail-desc">详细解释:{{list.explain}}</div>
                 </div>
-                <cui-button size="normal" class="cancel-btn"  type="primary" @click.native="removeQ">取消收藏</cui-button>
+                <cui-button size="normal" class="cancel-btn"  type="primary" @click.native="removeQ" v-show="showStart">取消收藏</cui-button>
             </div>
         </div>
     </v-touch>
