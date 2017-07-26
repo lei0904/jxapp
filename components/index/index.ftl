@@ -8,7 +8,7 @@
     </div>
     <div class="package-title">学车套餐</div>
     <div class="package">
-        <div class="item" v-for="(combo, index) in combos">
+        <div class="item" v-for="(combo, index) in combos" @click="toComboDetail(combo)">
             <div class="package_item_header clearfix">
                 <div :class="(index+1) % 3 == 0 ? 'package_item_header_name blue_item' : (index+1) % 2 === 0 ? 'package_item_header_name green_item' : 'package_item_header_name yellow_item'">{{combo.name}}</div>
                 <div class="package_item_header_price">¥{{combo.postage}}</div>

@@ -3,6 +3,8 @@ var Cui = require('cui');
 var Api = require('api');
 var Helper = require('helper');
 
+var Storage = require('../api/storage.js')
+
 var weeks = ['一', '二', '三', '四', '五', '六', '日'];
 
 
@@ -17,7 +19,6 @@ module.exports = {
     filters: {
         showComboOrderWeeks: function (combo) {
             var str = combo['order_weeks'];
-            console.log(str);
             if (!str) {
                 return '';
             }
@@ -35,6 +36,10 @@ module.exports = {
     methods:{
         bannerClick: function (banner) {
             Helper.banner.call(this, banner);
+        },
+        toComboDetail: function (combo) {
+            new Storage('session').set('ComboDetail', Storage.stringify(combo));
+            this.$router.push({ path: '/comboDetail' });
         }
     },
     computed: {

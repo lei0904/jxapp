@@ -15,6 +15,7 @@ var _login = require('login');
 var _register = require('register');
 var _forgotPassword = require('forgotPassword');
 var _success = require('success');
+var _comboDetail = require('comboDetail');
 
 
 var index = Vue.extend(_index);
@@ -28,6 +29,7 @@ var login = Vue.extend(_login);
 var register = Vue.extend(_register);
 var forgotPassword = Vue.extend(_forgotPassword);
 var success = Vue.extend(_success);
+var comboDetail = Vue.extend(_comboDetail);
 
 
 var routes = [
@@ -153,6 +155,19 @@ var routes = [
         component: success,
         meta: {
             title: '考试结果',
+            backable: true,
+            searchable: false,
+            showLogo:false,
+            value:'1',
+            fullScreen:false,
+            showToolBar:true
+        }
+    },
+    {
+        path: '/comboDetail',
+        component: comboDetail,
+        meta: {
+            title: '套餐详情',
             backable: true,
             searchable: false,
             showLogo:false,

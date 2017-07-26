@@ -1,10 +1,20 @@
 module.exports = {
     init: function () {
-
+        var Cui = require('cui');
         var Vue = require('vue');
         var zh_CN = require('./locale/zh_CN.js');
         var VeeValidate = require('./vee-validate.js');
         var Validator = VeeValidate.Validator;
+        Validator.prototype.renderError = function() {
+            var errors = this.getErrors().errors;
+            if (errors && errors.length > 0) {
+                Cui.Toast({
+                    message: errors[0].msg,
+                    position: 'bottom'
+                });
+            }
+        };
+
         Validator.updateDictionary({
             zh_CN: {
                 messages: zh_CN.messages

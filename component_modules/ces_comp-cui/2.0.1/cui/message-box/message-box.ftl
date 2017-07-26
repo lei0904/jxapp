@@ -1,6 +1,6 @@
-<div class="cui-msgbox-wrapper">
+<div class="cui-msgbox-wrapper" v-show="value">
     <transition name="msgbox-bounce">
-        <div class="cui-msgbox" v-show="value">
+        <div class="cui-msgbox">
             <div class="cui-msgbox-header" v-if="title !== ''">
                 <div class="cui-msgbox-title">{{ title }}</div>
             </div>
