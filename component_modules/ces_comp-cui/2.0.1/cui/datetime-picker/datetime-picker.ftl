@@ -1,9 +1,9 @@
-<div>
+<div class="datetime-picker-wrap-div" v-show="visible">
     <cui-popup v-show="visible" position="bottom" class="cui-datetime" ref="popup">
         <cui-picker
                 :slots="dateSlots"
                 @change="onChange"
-                :visible-item-count="3"
+                :visible-item-count="5"
                 class="cui-datetime-picker"
                 ref="picker"
                 show-toolbar>

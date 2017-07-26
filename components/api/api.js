@@ -140,6 +140,21 @@ Api.install = function (Vue) {
 
                 get: function (api, params, autoLoading) {
                     return new Promise(function (resolve, reject) {
+                        if (params) {
+                            var qs = [];
+                            for (var k in params) {
+                                if (params.hasOwnProperty(k)) {
+                                    var v = params[k];
+                                    qs.push(k + '=' + encodeURIComponent(v));
+                                }
+                            }
+                            if (api.indexOf('?') > -1) {
+                                api = api + "&" + qs.join("&");
+                            } else {
+                                api = api + "?" + qs.join("&");
+                            }
+                        }
+
                         CesVueHttp.get(api, params, function (data) {
                             if (data['status'] === 'FORBIDDEN' || data['status'] === 'NOLOGIN') {
                                 _handlerAuthFailed(_this);

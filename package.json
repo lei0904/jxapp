@@ -20,7 +20,7 @@
       "serverIp": "192.168.1.24",
       "serverPort": "8080",
       "serverContext": "",
-      "timeOut": 5000
+      "timeOut": 10000
     },
     "test":"/jxapp/1.0.0/index/index.html#/login",
     "index": "/index/index.html#/login"
