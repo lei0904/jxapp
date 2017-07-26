@@ -1,4 +1,6 @@
 var Ces = require('ces');
+var Cui =require('cui');
+var Collect = require('examCollect');
 
 module.exports = {
     template: __inline('index.ftl'),
@@ -17,7 +19,15 @@ module.exports = {
             }else if(obj == 1 || obj == 3 || obj == 4){
                 this.$router.push({path:'/exams'})
             }else{
-               this.$router.push({path:'/examsLocal'})
+               var localParams = JSON.parse(params);
+               if( Collect.getQLength(localParams) >0){
+                   this.$router.push({path:'/examsLocal',query:localParams})
+               }else{
+                   Cui.Toast({
+                       message: "没有收藏题目了",
+                       position: 'bottom'
+                   });
+               }
            }
 
         }
