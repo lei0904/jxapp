@@ -1,0 +1,19 @@
+.combo{
+    margin-top: 20px;
+    background: #fff;
+    width: 750px;
+}
+.combo_header{
+    height: 65px;
+    width: 100%;
+    font-size: 28px;/*no*/
+    border-left: 5px solid #028bff;
+    line-height: 65px;
+    text-indent: 40px;
+    border-bottom: 1px solid #eeebe6;/*no*/
+    position: relative;
+}
+
+.combo_content {
+    padding: 15px 30px;
+}

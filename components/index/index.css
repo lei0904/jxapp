@@ -32,6 +32,10 @@
     background: #fff;
     position: relative;
 }
+.package .item:active{
+    background: #cccccc;
+
+}
 .package_item_content::after{
     width: 20px !important;
     height: 20px !important;

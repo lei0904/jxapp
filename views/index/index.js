@@ -35,10 +35,10 @@ require.async(['ces',
                     if (app) {
                         app.fullScreen = to.meta.fullScreen;
                         app.showToolBar = to.meta.showToolBar;
-                        app.title = to.meta.title;
+                        //app.title = to.meta.title;
                         app.backable = to.meta.backable;
                         app.searchable = to.meta.searchable;
-                        app.showLogo = to.meta.showLogo;
+                        //app.showLogo = to.meta.showLogo;
                         if (to.meta.value === from.meta.value) {
                             app.animate = "fade";
                         } else if (to.meta.value > from.meta.value) {
