@@ -17,3 +17,6 @@
     height: 88px;
     line-height: 88px;
 }
+.cui-actionsheet{
+    z-index: 999;
+}

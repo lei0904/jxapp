@@ -22,7 +22,9 @@ module.exports = {
 
     },
     methods:{
-
+        select_method:function () {
+            this.$refs.imgSelect.currentValue = true;
+        }
     },
     mounted:function () {
         this.actions = [
