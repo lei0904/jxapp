@@ -19,7 +19,6 @@ module.exports = {
                     _this.$validator.renderError();
                     return;
                 }
-
                 _this.$api.post('api/login', {
                     mobile: _this.user,
                     password: _this.password

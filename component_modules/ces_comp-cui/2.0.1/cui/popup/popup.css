@@ -30,7 +30,8 @@
 }
 
 .cui-popup-bottom {
-    top: auto;
+    /*top: auto;*/
+    top: 65%;
     right: auto;
     bottom: 0;
     left: 50%;

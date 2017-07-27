@@ -8,12 +8,12 @@ Vue.use(VueResource);
 var Cui = require('cui');
 
 Vue.http.interceptors.push(function(request, next) {
-    if (request.autoLoading) {
+    if (request.autoLoading || typeof request.autoLoading === 'undefined') {
         Cui.Indicator.open('加载中...');
     }
 
     next(function(response) {
-        if (request.autoLoading) {
+        if (request.autoLoading || typeof request.autoLoading === 'undefined') {
             Cui.Indicator.close();
         }
         return response;

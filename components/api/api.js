@@ -27,10 +27,14 @@ var LoginData = {
             }
         }
     },
-    get: function () {
+    get: function (cb) {
         try {
             var storage = new Storage('local');
             var data = storage.get('loginData');
+            if (cb && typeof cb === 'function') {
+                cb(Storage.parse(data));
+                return;
+            }
             return Storage.parse(data)
         } catch (e) {
             console.error(e);
@@ -140,6 +144,21 @@ Api.install = function (Vue) {
 
                 get: function (api, params, autoLoading) {
                     return new Promise(function (resolve, reject) {
+                        if (params) {
+                            var qs = [];
+                            for (var k in params) {
+                                if (params.hasOwnProperty(k)) {
+                                    var v = params[k];
+                                    qs.push(k + '=' + encodeURIComponent(v));
+                                }
+                            }
+                            if (api.indexOf('?') > -1) {
+                                api = api + "&" + qs.join("&");
+                            } else {
+                                api = api + "?" + qs.join("&");
+                            }
+                        }
+
                         CesVueHttp.get(api, params, function (data) {
                             if (data['status'] === 'FORBIDDEN' || data['status'] === 'NOLOGIN') {
                                 _handlerAuthFailed(_this);

@@ -30,7 +30,9 @@
     height: 68px;
 }
 .carBox .item{
-    width: 120px;
+    min-width: 120px;
+    padding-left: 15px;
+    padding-right: 15px;
     height: 46px;
     line-height: 46px;
     color: #909090;

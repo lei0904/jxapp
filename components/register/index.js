@@ -5,10 +5,10 @@ module.exports = {
     template: __inline('index.ftl'),
     data: function () {
         return {
-            mobile: '13365698921',
-            code: '1234',
-            password: '123456',
-            password2: '123456',
+            mobile: '',
+            code: '',
+            password: '',
+            password2: '',
             invite_or_mobile: '',
             msg_id: ''
         }
