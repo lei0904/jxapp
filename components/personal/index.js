@@ -1,6 +1,5 @@
 var Cui = require('cui');
 var Ces = require('ces');
-var Api = require('api');
 var Plugins = require('plugins');
 
 module.exports = {
@@ -22,9 +21,24 @@ module.exports = {
 
     },
     methods:{
-
+        logout: function () {
+            var _this = this;
+            Cui.MessageBox.confirm('确认退出登录吗？', '', {
+                callback: function (action) {
+                    if (action === 'confirm') {
+                        _this.$api.post('api/logout', {}).then(function (rets) {
+                            _this.$api.process(rets, function (rets) {
+                                _this.$api.LoginData.remove();
+                                _this.$router.push({ path: '/login' });
+                            });
+                        });
+                    }
+                }
+            })
+        }
     },
     mounted:function () {
+
         this.actions = [
             {
                 name: '拍照',

@@ -13,14 +13,12 @@ module.exports = {
     },
     methods: {
         doLogin: function () {
-            alert(11);
             var _this = this;
             _this.$validator.validateAll().then(function(result) {
                 if (!result) {
                     _this.$validator.renderError();
                     return;
                 }
-                alert(222);
                 _this.$api.post('api/login', {
                     mobile: _this.user,
                     password: _this.password

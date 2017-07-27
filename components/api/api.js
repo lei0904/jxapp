@@ -27,10 +27,14 @@ var LoginData = {
             }
         }
     },
-    get: function () {
+    get: function (cb) {
         try {
             var storage = new Storage('local');
             var data = storage.get('loginData');
+            if (cb && typeof cb === 'function') {
+                cb(Storage.parse(data));
+                return;
+            }
             return Storage.parse(data)
         } catch (e) {
             console.error(e);
