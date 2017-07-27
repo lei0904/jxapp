@@ -33,7 +33,7 @@
                     <div>答案: <span >{{list.answer}}</span></div>
                     <div class="detail-desc">详细解释:{{list.explain}}</div>
                 </div>
-                <cui-button size="normal" class="cancel-btn"  type="primary" @click.native="removeQ" v-show="showStart">取消收藏</cui-button>
+                <cui-button size="normal" class="cancel-btn"  type="primary" @click.native="removeQ" v-show="showStart">删除</cui-button>
             </div>
         </div>
     </v-touch>

@@ -23,8 +23,14 @@ module.exports = {
                if( Collect.getQLength(localParams) >0){
                    this.$router.push({path:'/examsLocal',query:localParams})
                }else{
+                   var message = "";
+                    if(obj ==5){
+                        message = "没有收藏题目"
+                    }else{
+                        message = "没有收集到错题"
+                    }
                    Cui.Toast({
-                       message: "没有收藏题目了",
+                       message: message,
                        position: 'bottom'
                    });
                }

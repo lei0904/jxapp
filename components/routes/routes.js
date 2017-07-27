@@ -129,7 +129,7 @@ var routes = [
         component: exams,
         meta: {
             title: '考试',
-            backable: true,
+            backable: false,
             searchable: false,
             showLogo:false,
             value:'1',
