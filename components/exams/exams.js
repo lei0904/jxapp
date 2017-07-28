@@ -207,7 +207,6 @@ module.exports = {
                     'start': _ts.sessionParams.start
                 }];
             console.log('nativeRes==', _ts.sessionParams.questions);
-
              Ces.Plugins.nativeApi.questions(nativeRes,function (rets) {
                     _ts.list= rets.data;
                     if(rets.status == 1){
@@ -221,21 +220,8 @@ module.exports = {
                             _ts.list.options =options;
                         }
                         _ts.rightAnswer =  _ts.list.answer;
-                        //var un = JSON.parse(localStorage.getItem('orderKey'));
-                        // if(_ts.sessionParams.type == '1' && localStorage.orderKey !== undefined){
-                        //     var q= parseInt(_ts.sessionParams.questions);
-                        //     if(un.answerList.length >= q){
-                        //         if(_ts.list.optiontype != 2){
-                        //             _ts.answer = un.answerList[q]
-                        //         }else{
-                        //             _ts.checklist = un.answerList[q]
-                        //         }
-                        //     }
-                        // }
-
                         if(_ts.upQuestion){
                             _ts.nextQuestionId = _ts.nextQuestionId + 1;
-                           // _ts.questionId = _ts.questionId + 1;
                             _ts.upQuestion = false; //返回更改状态
                             console.log("下一题")
                         }else{
@@ -245,21 +231,9 @@ module.exports = {
 
                                 _ts.nextQuestionId = _ts.nextQuestionId + 1;
                             }
-                            //_ts.questionId = _ts.questionId - 1;
                             console.log("上一题");
-
                             _ts.upQuestion = true; //返回更改状态
                         }
-
-                        //todo 顺序练习 缓存题号
-                       // if(_ts.sessionParams.type == '1'){
-                            // var localParams = JSON.stringify({questions:_ts.sessionParams.questions,questionId:_ts.questionId,answerList:_ts.answerList});
-                            // localStorage.setItem('orderKey',localParams);
-                            // console.log('localParams==',localParams);
-                         //   Storage.local.localSetQ(_ts.list,_ts.sessionParams)
-                      //  }
-                       // console.log( _ts.nextQuestionId, _ts.questionId)
-
                     }else{
                         Cui.Toast({
                             message:rets.message,
