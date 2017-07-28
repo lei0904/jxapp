@@ -47,15 +47,16 @@ module.exports = {
             }
         },
         nextAnswer:function(){
-
                 if( this.list.answer == this.checklist.sort().join(",") || this.list.answer == this.answer || this.explainShow ){
                     this.answer ='';
                     this.checklist =[];
+                  //  Collect.removeQ(this.list,this.localParams);
                     if(this.qLength> this.indexId ){
                         this.indexId = this.indexId +1;
                         this.loadQ(this.indexId);
                         this.showStart=true;
                         this.explainShow =false;
+
                     }else{
                         Cui.Toast({
                             message: "最后一题了",

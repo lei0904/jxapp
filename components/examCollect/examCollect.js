@@ -60,7 +60,7 @@ var collect ={
             var itemQ = JSON.parse(localStorage.getItem(localKey));
             return itemQ.list.length
         }else{
-            console.log('暂时没有收藏题目')
+            return 0;
         }
     },
     getQ:function(indexId,params){
