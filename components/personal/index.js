@@ -46,6 +46,12 @@ module.exports = {
         },
         select_method:function () {
             this.$refs.imgSelect.currentValue = true;
+        },
+        toBespeakList: function () {
+            this.$router.push({ path: '/bespeakList' });
+        },
+        toShuttleList: function () {
+            this.$router.push({ path: '/shuttleList' });
         }
     },
     mounted:function () {

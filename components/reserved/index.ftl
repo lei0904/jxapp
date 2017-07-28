@@ -22,7 +22,7 @@
 
             <div class="checkItem clearfix" v-for="(item, index) in timetable_am" @click="timetableSelect(item)" :id="item.id">
                 <div class="checkItem_time">
-                    {{item.start_time}} - {{item.end_time}}
+                    {{item.start_time|formatTime}} - {{item.end_time|formatTime}}
                 </div>
                 <div class="checkItem_count" v-if="!!item.trainee">已预约</div>
                 <div class="checkItem_count" v-else="!!item.trainee">预约人数<span>{{item.all_times}}</span>人</div>
@@ -37,7 +37,7 @@
             </div>
             <div class="checkItem clearfix" v-for="(item, index) in timetable_pm" @click="timetableSelect(item)" :id="item.id">
                 <div class="checkItem_time">
-                    {{item.start_time}} - {{item.end_time}}
+                    {{item.start_time|formatTime}} - {{item.end_time|formatTime}}
                 </div>
                 <div class="checkItem_count" v-if="!!item.trainee">已预约</div>
                 <div class="checkItem_count" v-else="!!item.trainee">预约人数<span>{{item.all_times}}</span>人</div>

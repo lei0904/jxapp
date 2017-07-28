@@ -1,10 +1,10 @@
 <div class="personal">
     <div class="atavar-content">
         <img :src="avatar" alt="" @click="select_method()">
-        <div class="atavar-name">路人甲</div>
+        <div class="atavar-name">{{name}}</div>
     </div>
-    <cui-cell title="预约记录" icon="back" is-link ></cui-cell>
-    <cui-cell title="接送记录" icon="back" is-link ></cui-cell>
+    <cui-cell title="预约记录" icon="back" is-link @click.native="toBespeakList"></cui-cell>
+    <cui-cell title="接送记录" icon="back" is-link @click.native="toShuttleList"></cui-cell>
     <cui-cell title="我的邀请码" :value="invite" icon="back"></cui-cell>
 
     <div class="bottom_but">

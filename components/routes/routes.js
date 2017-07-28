@@ -16,6 +16,8 @@ var _register = require('register');
 var _forgotPassword = require('forgotPassword');
 var _success = require('success');
 var _comboDetail = require('comboDetail');
+var _bespeakList = require('bespeakList');
+var _shuttleList = require('shuttleList');
 
 
 var index = Vue.extend(_index);
@@ -30,6 +32,8 @@ var register = Vue.extend(_register);
 var forgotPassword = Vue.extend(_forgotPassword);
 var success = Vue.extend(_success);
 var comboDetail = Vue.extend(_comboDetail);
+var bespeakList = Vue.extend(_bespeakList);
+var shuttleList = Vue.extend(_shuttleList);
 
 
 var routes = [
@@ -168,6 +172,32 @@ var routes = [
         component: comboDetail,
         meta: {
             title: '套餐详情',
+            backable: true,
+            searchable: false,
+            showLogo:false,
+            value:'1',
+            fullScreen:false,
+            showToolBar:true
+        }
+    },
+    {
+        path: '/bespeakList',
+        component: bespeakList,
+        meta: {
+            title: '预约记录',
+            backable: true,
+            searchable: false,
+            showLogo:false,
+            value:'1',
+            fullScreen:false,
+            showToolBar:true
+        }
+    },
+    {
+        path: '/shuttleList',
+        component: shuttleList,
+        meta: {
+            title: '接送记录',
             backable: true,
             searchable: false,
             showLogo:false,

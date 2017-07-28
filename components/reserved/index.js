@@ -129,6 +129,15 @@ module.exports = {
             })
         }
     },
+    filters: {
+        formatTime: function (d) {
+            if (d) {
+                var arr = (d + "").split(':');
+                return arr[0] + ":" + arr[1];
+            }
+            return '';
+        }
+    },
     mounted:function () {
         var _this = this;
         _this.dateValue = new moment(_this.startDate).format('YYYY-MM-DD');
