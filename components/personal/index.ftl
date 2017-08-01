@@ -1,6 +1,12 @@
 <div class="personal">
     <div class="atavar-content">
-        <img :src="avatar" alt="" @click="select_method()">
+        <attachment-upload ref="au"
+                           :url="avatar_upload_url"
+                           :business="'avatar'"
+                           :preview="'avatar_preview'">
+        </attachment-upload>
+
+        <img :src="avatar" alt="" id="avatar_preview" @click="select_method()">
         <div class="atavar-name">{{name}}</div>
     </div>
     <cui-cell title="预约记录" icon="back" is-link @click.native="toBespeakList"></cui-cell>

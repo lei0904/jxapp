@@ -13,7 +13,7 @@
     "px2rem": true,
     "plugin": true,
     "debug": true,
-    "service": "http",
+    "service": "native",
     "ServiceEncrypt": true,
     "Server": {
       "defaultProtocol":"http",

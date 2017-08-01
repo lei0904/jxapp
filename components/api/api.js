@@ -111,6 +111,10 @@ Api.install = function (Vue) {
             return {
                 getBasePath: _getBasePath,
 
+                getUrl: function (api) {
+                    return _getUrl(api);
+                },
+
                 image_path: function (path) {
                     return _getUrl('api/attachment') + '?path=' + path;
                 },

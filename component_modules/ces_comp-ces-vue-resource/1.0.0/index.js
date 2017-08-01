@@ -97,7 +97,10 @@ var CesVueResource = (function () {
                     });
                     break;
                 case 'POST':
+                    console.log(url);
+                    console.log(Ces.__bridge__);
                     Ces.Plugins.Http.post(url).setBody(params).send(function (rets) {
+                        console.log(rets);
                         if (rets.status === 1) {
                             success(rets.data);
                         } else {
