@@ -20,7 +20,7 @@ module.exports = {
 
             timetable:[],
             switchValue:true,
-            startDate: new Date('2017-07-31'), //new Date(moment().add(1, 'd')),
+            startDate: new Date(moment().add(1, 'd')),
             endDate: new Date(moment().endOf('week').add(7, 'd'))
         }
     },
@@ -43,9 +43,10 @@ module.exports = {
             var _this = this;
             _this.timetable = [];
             var d = document.querySelectorAll('.checkItem');
-            d.forEach(function (t) {
+            for(var i = 0, l = d.length; i < l; i++) {
+                var t = d[i];
                 Helper.removeClass(t, 'checked');
-            });
+            }
             _this.$api.get('api/biz/timetable/list',{
                 car: _this.checkedCar,
                 date: _this.dateValue
@@ -54,7 +55,8 @@ module.exports = {
                 if (data && data.length > 0) {
                     var am = [];
                     var pm = [];
-                    data.forEach(function (t) {
+                    for (var i = 0, l = data.length; i < l; i++) {
+                        var t = data[i];
                         var start_time = t['start_time'];
                         var s = parseInt(start_time);
                         if (s <= 12) {
@@ -62,7 +64,7 @@ module.exports = {
                         } else {
                             pm.push(t);
                         }
-                    });
+                    }
                     _this.timetable_am = am;
                     _this.timetable_pm = pm;
                 } else {
@@ -73,9 +75,10 @@ module.exports = {
         },
         checkCar:function (e, car) {
             var car_item = document.querySelectorAll('.car_item');
-            car_item.forEach(function (t) {
+            for(var i = 0, l = car_item.length; i < l; i++) {
+                var t = car_item[i];
                 t.setAttribute('class', 'car_item item');
-            });
+            }
             var target = e.target;
             target.setAttribute('class', 'car_item item checked');
             this.checkedCar = car.id;
@@ -124,7 +127,8 @@ module.exports = {
                 shuttle_address: _this.address
             }).then(function (rets) {
                 _this.$api.process(rets, function (rets) {
-                    console.log(rets);
+                    Helper.toast('预约成功，请等待审核');
+                    _this.$router.push({ path: '/bespeakList' });
                 })
             })
         }
@@ -138,7 +142,7 @@ module.exports = {
             return '';
         }
     },
-    mounted:function () {
+    activated:function () {
         var _this = this;
         _this.dateValue = new moment(_this.startDate).format('YYYY-MM-DD');
         _this.$api.get('api/biz/car/list', {}).then(function (rets) {

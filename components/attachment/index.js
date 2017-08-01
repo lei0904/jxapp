@@ -148,6 +148,17 @@ var Utils = {
 
         select: function (preview) {
             if (Ces.Config.plugin) { //采用插件方式，调用原生方法，打开文件选择器，选择图片
+                Ces.JSBridge.callHandler('selectphoto', [] ,function (rets) {
+                    if (rets.status === 1) {
+                        console.log(rets);
+                        // _this.uploadAvatar(rets.data.original);
+                    } else {
+                        Cui.Toast({
+                            message: rets.message,
+                            position: 'bottom'
+                        });
+                    }
+                });
             } else {
                 document.getElementById('attachment-file-input').click();
             }

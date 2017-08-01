@@ -11,9 +11,9 @@
   },
   "config": {
     "px2rem": true,
-    "plugin": true,
+    "plugin": false,
     "debug": true,
-    "service": "native",
+    "service": "http",
     "ServiceEncrypt": true,
     "Server": {
       "defaultProtocol":"http",

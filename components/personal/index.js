@@ -15,7 +15,12 @@ module.exports = {
 
             accountId: '',
             avatar: '/jxapp/1.0.0/lib/images/avatar.png',
+
             name: '',
+            mobile: '',
+            status: '',
+            combo: '',
+
             invite: '',
             actions: [],
             money: 0,
@@ -28,11 +33,29 @@ module.exports = {
         _this.$api.LoginData.get(function (data) {
             var account = data['account'];
             _this.name = account.name;
+            _this.mobile = account.mobile;
             _this.invite = account.invite;
             if (account.avatar) {
                 _this.avatar = _this.$api.image_path(account.avatar);
             }
         });
+
+        _this.$api.get('api/crm/customer/info', {})
+            .then(function (rets) {
+                if (rets.data) {
+                    _this.status = {
+                        0:'未缴费',
+                        1:'科目一',
+                        2:'科目二',
+                        3:'科目三',
+                        4:'科目四'
+                    }[rets.data.status];
+                    _this.combo = rets.data.combo_name;
+                } else {
+                    _this.status = '未报名';
+                    _this.combo = '未报名';
+                }
+            })
     },
     created: function () {
         this.avatar_upload_url = this.$api.getUrl('api/crm/customer/avatar');

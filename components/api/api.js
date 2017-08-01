@@ -8,7 +8,7 @@ var Promise = Promise || require('es6-promise').Promise;
 
 var LoginData = {
     set: function (data, success, failed) {
-        if (Ces.Config.plugin) {
+        if (Ces.Config.service === 'native' && Ces.Config.plugin) { //开启本地访问，并设置使用插件方式
             Ces.JSBridge.callHandler('setLoginData', [0, data], function (d) {
                 if (d['status'] === 1) {
                     success && success();
@@ -47,14 +47,12 @@ var LoginData = {
 };
 
 Vue.http.interceptors.push(function(request, next) {
-    if (Ces.Config.debug) {
-        if (request.url.indexOf('api/login') > -1) {
-            LoginData.remove();
-        } else {
-            var data = LoginData.get();
-            if (data &&  data['auth_code']) {
-                request.headers.set('e-drive_auth_code', data['auth_code'])
-            }
+    if (request.url.indexOf('api/login') > -1) {
+        LoginData.remove();
+    } else {
+        var data = LoginData.get();
+        if (data &&  data['auth_code']) {
+            request.headers.set('e-drive_auth_code', data['auth_code'])
         }
     }
     next(function(response) {
@@ -172,25 +170,6 @@ Api.install = function (Vue) {
                         }, reject, autoLoading);
                     });
                 },
-
-                /*get: function (api, params, success, error, autoLoading) {
-                    CesVueHttp.get(api, params, function (data) {
-                        if (data['status'] === 'FORBIDDEN' || data['status'] === 'NOLOGIN') {
-                            _handlerAuthFailed(_this);
-                        } else {
-                            success && success(data)
-                        }
-                    }, error, autoLoading);
-                },*/
-                /*post: function (api, params, success, error, autoLoading) {
-                    CesVueHttp.post(api, params, function (data) {
-                        if (data['status'] === 'FORBIDDEN' || data['status'] === 'NOLOGIN') {
-                            _handlerAuthFailed(_this);
-                        } else {
-                            success && success(data)
-                        }
-                    }, error, autoLoading);
-                },*/
 
                 LoginData: LoginData
             }

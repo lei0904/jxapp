@@ -36,6 +36,7 @@ var JSBridge = function () {
      * 调用名为 [handler] 的native端处理器，并传递参数，同时设置回调处理逻辑
      */
     var _callHandler = function (handler, params, callback) {
+        console.log(WebViewJavascriptBridge);
         WebViewJavascriptBridge.callHandler(handler, params, callback);
     };
 
