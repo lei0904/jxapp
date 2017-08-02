@@ -1,0 +1,19 @@
+.static_module {
+    margin: 10px 0 20px;
+    background: #ffffff;
+    font-size: 24px;
+    padding: 15px 0;
+}
+.static_module_header{
+    color: #fd6319;
+    border-left:3px solid #fd6319;/*no*/
+    font-size: 32px;
+    padding: 0 10px;
+    height:60px;
+    line-height: 60px;
+}
+.static_module_content_item{
+    margin: 30px 0;
+    line-height: 60px;
+    padding: 0 20px;
+}

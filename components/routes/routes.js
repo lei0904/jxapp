@@ -18,6 +18,10 @@ var _success = require('success');
 var _comboDetail = require('comboDetail');
 var _bespeakList = require('bespeakList');
 var _shuttleList = require('shuttleList');
+var _promise = require('promise');
+var _notice = require('notice');
+var _problem = require('problem');
+var _process = require('process');
 
 
 var index = Vue.extend(_index);
@@ -34,6 +38,10 @@ var success = Vue.extend(_success);
 var comboDetail = Vue.extend(_comboDetail);
 var bespeakList = Vue.extend(_bespeakList);
 var shuttleList = Vue.extend(_shuttleList);
+var promise = Vue.extend(_promise);
+var notice = Vue.extend(_notice);
+var problem = Vue.extend(_problem);
+var process = Vue.extend(_process);
 
 
 var routes = [
@@ -218,7 +226,60 @@ var routes = [
             fullScreen:false,
             showToolBar:true
         }
+    },
+    {
+        path: '/promise',
+        component: promise,
+        meta: {
+            title: '服务承诺',
+            backable: true,
+            searchable: false,
+            showLogo:false,
+            value:'2',
+            fullScreen:false,
+            showToolBar:true
+        }
+    },
+    {
+        path: '/notice',
+        component: notice,
+        meta: {
+            title: '报名须知',
+            backable: true,
+            searchable: false,
+            showLogo:false,
+            value:'2',
+            fullScreen:false,
+            showToolBar:true
+        }
+    },
+    {
+        path: '/problem',
+        component: problem,
+        meta: {
+            title: '常见问题',
+            backable: true,
+            searchable: false,
+            showLogo:false,
+            value:'2',
+            fullScreen:false,
+            showToolBar:true
+        }
+    },
+    {
+        path: '/process',
+        component: process,
+        meta: {
+            title: '学车流程',
+            backable: true,
+            searchable: false,
+            showLogo:false,
+            value:'2',
+            fullScreen:false,
+            showToolBar:true
+        }
     }
+
 
 
 ];

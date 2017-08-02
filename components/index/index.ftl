@@ -25,9 +25,9 @@
         </div>
     </div>
     <div class="select-icon clearfix">
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
-        <div class="item"></div>
+        <router-link class="item" to="/promise"></router-link>
+        <router-link class="item" to="/process"></router-link>
+        <router-link class="item" to="/notice"></router-link>
+        <router-link class="item" to="/problem"></router-link>
     </div>
 </div>
