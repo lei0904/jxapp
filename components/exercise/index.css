@@ -12,8 +12,15 @@
     background: #fff;
     margin:0 0 140px 0;
 }
+
+.exercise .titles{
+    display: block;
+    padding-top: 20px;
+    text-align: center;
+}
 .exercise .exercise-history{
     background: #fff;
+    padding: 30px 0;
 
 }
 .exercise .practice{
@@ -23,8 +30,8 @@
 .exercise .exercise-title{
     width: 100%;
     text-align: center;
-    margin:auto;
     box-sizing: border-box;
+    margin: 10px 0;
 }
 .exercise .exercise-title .title-item{
     position: absolute;
@@ -35,13 +42,106 @@
 .exercise .exercise-model .exercise-item{
     display: inline-block;
     width: 40%;
-    height: 200px;
-    line-height: 200px;
+    margin:20px 0 10px 0;
+    height: 140px;
     position: relative;
+    padding: 8px 0  20px 0;
+}
+.exercise  .exercise-item:focus,
+.exercise  .exercise-item:active{
+    background: #f5f5f5;
 }
 .exercise .exercise-history .exercise-item{
     display: inline-block;
     width: 40%;
     height: 120px;
-    line-height: 120px;
+    padding-top:15px;
+}
+.exercise .exercise-history  .exercise-item span{
+    display: block;
+    padding-top: 20px;
+}
+.exercise .sxlx{
+    display: block;
+    background: url("../../views/lib/images/e01.png");
+    background-size: 70px 70px;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 70px;
+    top:20px
+}
+.exercise .zxlx{
+    display: block;
+    background: url("../../views/lib/images/e02.png");
+    background-size: 70px 70px;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 70px;
+    top:20px
+}
+.exercise .sjlx{
+    display: block;
+    background: url("../../views/lib/images/e03.png");
+    background-size: 70px 70px;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 70px;
+    top:20px
+}
+.exercise .mnlx{
+     display: block;
+     background: url("../../views/lib/images/e04.png");
+     background-size: 70px 70px;
+     background-position: center;
+     background-repeat: no-repeat;
+     width: 100%;
+     height: 70px;
+     top:20px
+ }
+
+.exercise .wdsc{
+    display: block;
+    background: url("../../views/lib/images/e05.png");
+    background-size: 50px 50px;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 50px;
+    top:20px
+}
+
+.exercise .wdct{
+    display: block;
+    background: url("../../views/lib/images/e06.png");
+    background-size: 50px 50px;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 50px;
+    top:20px
+}
+
+.exercise .dtjq{
+    display: block;
+    background: url("../../views/lib/images/e07.png");
+    background-size: 50px 50px;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 50px;
+    top:20px
+}
+
+.exercise .ksgz{
+    display: block;
+    background: url("../../views/lib/images/e08.png");
+    background-size: 50px 50px;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 50px;
+    top:20px
 }
