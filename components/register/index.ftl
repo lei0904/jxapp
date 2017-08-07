@@ -1,4 +1,4 @@
-<div>
+<div  class="register">
     <div class="register_head">
         <img src="../../views/lib/images/logo-main.png">
     </div>

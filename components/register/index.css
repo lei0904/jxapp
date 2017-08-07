@@ -1,3 +1,6 @@
+.register{
+    transform: translate3d(0, 0, 0);
+}
 .register_head{
     height: 400px;
     width: 100%;
