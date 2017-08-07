@@ -17,9 +17,9 @@
     "service": "http",
     "ServiceEncrypt": true,
     "Server": {
-      "defaultProtocol":"http",
-      "serverIp": "192.168.1.24",
-      "serverPort": "8080",
+      "defaultProtocol":"https",
+      "serverIp": "www.hxueche.cn",
+      "serverPort": "",
       "serverContext": "",
       "timeOut": 10000
     },
