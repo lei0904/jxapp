@@ -1,3 +1,5 @@
+var moment = require('../moment/moment.js');
+
 module.exports = {
     template: __inline('index.ftl'),
     data: function () {
@@ -24,12 +26,17 @@ module.exports = {
                 var s = item['t_start_time'];
                 var e = item['t_end_time'];
 
-                var start = new Date(d + " " + s);
+                var start_day = moment(d + " " + s);
+                var end_day = moment(d + " " + e);
+
+                var b = end_day.diff(start_day);
+                return (b / 3600000) + '时';
+                /*var start = new Date(d + " " + s);
                 var end = new Date(d + " " + e);
 
                 var b = end.getTime() - start.getTime();
 
-                return (b / 3600000) + '时';
+                return (b / 3600000) + '时';*/
             }
             return '0时';
         },
