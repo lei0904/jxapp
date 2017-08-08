@@ -6,7 +6,7 @@ module.exports = {
     template: __inline('index.ftl'),
     data: function () {
         return {
-            selected: '1',
+            selected: '1'
         }
     },
     methods: {
@@ -18,7 +18,8 @@ module.exports = {
                 this.$router.push({'path':'/examsDir'})
             }else if(obj == 1 || obj == 3 || obj == 4){
                 this.$router.push({path:'/exams'})
-            }else{
+            }
+            else if(obj ==5 || obj == 6){
                var localParams = JSON.parse(params);
                if( Collect.getQLength(localParams) >0){
                    this.$router.push({path:'/examsLocal',query:localParams})
@@ -34,6 +35,13 @@ module.exports = {
                        position: 'bottom'
                    });
                }
+           }
+           else if(obj == 7){
+                console.log("答题技巧");
+                this.$router.push({'path':'/examRules',query:obj});
+           }else {
+               console.log("考试规则");
+               this.$router.push({'path':'/examRules',query:obj});
            }
 
         }

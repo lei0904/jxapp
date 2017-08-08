@@ -47,11 +47,11 @@
                         </div>
                     </div>
                     <div class="exercise-title">
-                        <div class="exercise-item">
+                        <div class="exercise-item" @click="toPractice(7)">
                             <i class="dtjq"></i>
                             <span>答题技巧</span>
                         </div>
-                        <div class="exercise-item">
+                        <div class="exercise-item"  @click="toPractice(8)">
                             <i class="ksgz"></i>
                             <span>考试规则</span>
                         </div>
@@ -108,11 +108,11 @@
                         </div>
                     </div>
                     <div class="exercise-title">
-                        <div class="exercise-item">
+                        <div class="exercise-item" @click="toPractice(7)">
                             <i class="dtjq"></i>
                             <span>答题技巧</span>
                         </div>
-                        <div class="exercise-item">
+                        <div class="exercise-item" @click="toPractice(8)">
                             <i class="ksgz"></i>
                             <span>考试规则</span>
                         </div>

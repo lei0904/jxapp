@@ -1,0 +1,9 @@
+.subject{
+    margin: 20px 15px;
+    border: 1px solid #797979;
+    background: #fff;
+    border-radius: 5px;
+    padding:20px 15px;
+    font-size: 28px;
+    overflow: auto;
+}
