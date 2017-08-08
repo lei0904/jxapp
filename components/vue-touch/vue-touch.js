@@ -275,4 +275,3 @@
     }
 
 })));
-//# sourceMappingURL=vue-touch.js.map
