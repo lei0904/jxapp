@@ -186,8 +186,8 @@ var routes = [
             searchable: false,
             showLogo:false,
             value:'1',
-            fullScreen:true,
-            showToolBar:true
+            fullScreen:false,
+            showToolBar:false
         }
     },
     {
@@ -200,7 +200,7 @@ var routes = [
             showLogo:false,
             value:'1',
             fullScreen:false,
-            showToolBar:true
+            showToolBar:false
         }
     },
     {
@@ -213,7 +213,7 @@ var routes = [
             showLogo:false,
             value:'1',
             fullScreen:false,
-            showToolBar:true
+            showToolBar:false
         }
     },
     {
@@ -238,8 +238,8 @@ var routes = [
             searchable: false,
             showLogo:false,
             value:'2',
-            fullScreen:true,
-            showToolBar:true
+            fullScreen:false,
+            showToolBar:false
         }
     },
     {
@@ -251,8 +251,8 @@ var routes = [
             searchable: false,
             showLogo:false,
             value:'2',
-            fullScreen:true,
-            showToolBar:true
+            fullScreen:false,
+            showToolBar:false
         }
     },
     {
@@ -264,8 +264,8 @@ var routes = [
             searchable: false,
             showLogo:false,
             value:'2',
-            fullScreen:true,
-            showToolBar:true
+            fullScreen:false,
+            showToolBar:false
         }
     },
     {
@@ -277,8 +277,8 @@ var routes = [
             searchable: false,
             showLogo:false,
             value:'2',
-            fullScreen:true,
-            showToolBar:true
+            fullScreen:false,
+            showToolBar:false
         }
     },
     {
