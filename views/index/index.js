@@ -65,7 +65,7 @@ require.async(['ces',
                         value: '',
                         animate: "left-fade",
                         searchText: '',
-                        fullScreen: true,
+                        fullScreen: false,
                         showToolBar: false
                     }
                 },

@@ -184,7 +184,7 @@ var routes = [
             searchable: false,
             showLogo:false,
             value:'1',
-            fullScreen:false,
+            fullScreen:true,
             showToolBar:true
         }
     },
@@ -236,7 +236,7 @@ var routes = [
             searchable: false,
             showLogo:false,
             value:'2',
-            fullScreen:false,
+            fullScreen:true,
             showToolBar:true
         }
     },
@@ -249,7 +249,7 @@ var routes = [
             searchable: false,
             showLogo:false,
             value:'2',
-            fullScreen:false,
+            fullScreen:true,
             showToolBar:true
         }
     },
@@ -262,7 +262,7 @@ var routes = [
             searchable: false,
             showLogo:false,
             value:'2',
-            fullScreen:false,
+            fullScreen:true,
             showToolBar:true
         }
     },
@@ -275,7 +275,7 @@ var routes = [
             searchable: false,
             showLogo:false,
             value:'2',
-            fullScreen:false,
+            fullScreen:true,
             showToolBar:true
         }
     }
