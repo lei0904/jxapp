@@ -76,7 +76,7 @@ Ces.register = function(plugin) {
 };
 
 Ces.ready = function (callback) {
-    if (Ces.Config.plugin) {
+    if (!Ces.Config.plugin) {
         if (window.WebViewJavascriptBridge) {
             if (!Ces.__bridge__) {
                 WebViewJavascriptBridge.init(function () {

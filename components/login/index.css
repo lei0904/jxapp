@@ -2,7 +2,7 @@
 .login_bg {
     /*background: #fff;*/
     background: #efefef;
-    /*min-height: 100vh;*/
+    min-height: 100vh;
 }
 
 .login-form {
@@ -12,9 +12,9 @@
     background: url("../../views/lib/images/login-bg.png");
     background-size: 100% 100%;
     position: absolute;
-    top:50%;
+    top:20%;
     left:50%;
-    margin-top: -387px;
+    /*margin-top: -387px;*/
     margin-left: -340px;
     padding-top: 210px;
 }
