@@ -1,26 +1,24 @@
 #!/bin/sh
 
-echo 'deploy e-drive'
+echo 'deploy e-jxapp'
 
-#maven package
-mvn clean package -P product
+#delete www.zip
+rm -rf ./output/www.zip
+
+#ces package
+ces release -d publish
 
 #copy to server
-scp ./target/e-drive.war root@115.159.104.175:/root/e-drive.war
+scp ./output/www.zip root@115.159.104.175:/root/www.zip
 
 #connect to the sever
 ssh root@115.159.104.175 > /dev/null 2>&1 << eeooff
-#kill tomcat
-kill -9 `ps -ef | grep "apache-tomcat-8.5.16" | grep -v "grep" | awk '{print $2}'`
-#bak ueditor
-mv /root/apache-tomcat-8.5.16/webapps/ROOT/ueditor /root/data
-rm -rf /root/apache-tomcat-8.5.16/webapps/*
+rm -rf /root/jxapp/*
 #move the war
-mv /root/e-drive.war* /root/apache-tomcat-8.5.16/webapps/ROOT.war
-#tomcat start up
-sh /root/apache-tomcat-8.5.16/bin/startup.sh
-#mv ueditor
-mv /root/data/ueditor /root/apache-tomcat-8.5.16/webapps/ROOT
+mv /root/www.zip* /root/jxapp/www.zip
+#unzip www.zip
+cd /root/jxapp/
+unzip www.zip
 eeooff
 
-echo 'deploy e-drive finish'
+echo 'deploy jxapp finish'
