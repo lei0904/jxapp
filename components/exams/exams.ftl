@@ -20,7 +20,7 @@
                     <div v-if="list.mediacontent" class="img-content">
                         <img   v-if="list.mediatype == 1" :src="list.mediacontent" alt="">
 
-                        <video   v-if="list.mediatype == 2" :src="list.mediacontent"  controls  >
+                        <video   v-if="list.mediatype == 2" :src="list.mediacontent"  controls  webkit-playsinline>
                             您的浏览器不支持 HTML5 video 标签。
                         </video>
                     </div>

@@ -22,6 +22,7 @@ var _promise = require('promise');
 var _notice = require('notice');
 var _problem = require('problem');
 var _process = require('process');
+var _examRules = require('examRules');
 
 
 var index = Vue.extend(_index);
@@ -42,6 +43,7 @@ var promise = Vue.extend(_promise);
 var notice = Vue.extend(_notice);
 var problem = Vue.extend(_problem);
 var process = Vue.extend(_process);
+var examRules = Vue.extend(_examRules);
 
 
 var routes = [
@@ -278,10 +280,20 @@ var routes = [
             fullScreen:false,
             showToolBar:false
         }
+    },
+    {
+        path: '/examRules',
+        component: examRules,
+        meta: {
+            title: '考试规则',
+            backable: true,
+            searchable: false,
+            showLogo:false,
+            value:'2',
+            fullScreen:false,
+            showToolBar:true
+        }
     }
-
-
-
 ];
 
 module.exports = {
