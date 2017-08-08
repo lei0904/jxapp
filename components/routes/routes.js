@@ -185,7 +185,7 @@ var routes = [
             showLogo:false,
             value:'1',
             fullScreen:false,
-            showToolBar:true
+            showToolBar:false
         }
     },
     {
@@ -198,7 +198,7 @@ var routes = [
             showLogo:false,
             value:'1',
             fullScreen:false,
-            showToolBar:true
+            showToolBar:false
         }
     },
     {
@@ -211,7 +211,7 @@ var routes = [
             showLogo:false,
             value:'1',
             fullScreen:false,
-            showToolBar:true
+            showToolBar:false
         }
     },
     {
@@ -237,7 +237,7 @@ var routes = [
             showLogo:false,
             value:'2',
             fullScreen:false,
-            showToolBar:true
+            showToolBar:false
         }
     },
     {
@@ -250,7 +250,7 @@ var routes = [
             showLogo:false,
             value:'2',
             fullScreen:false,
-            showToolBar:true
+            showToolBar:false
         }
     },
     {
@@ -263,7 +263,7 @@ var routes = [
             showLogo:false,
             value:'2',
             fullScreen:false,
-            showToolBar:true
+            showToolBar:false
         }
     },
     {
@@ -276,7 +276,7 @@ var routes = [
             showLogo:false,
             value:'2',
             fullScreen:false,
-            showToolBar:true
+            showToolBar:false
         }
     }
 
