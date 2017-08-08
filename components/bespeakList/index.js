@@ -53,6 +53,9 @@ module.exports = {
     },
     activated: function () {
         var _this = this;
+        _this.trainee = {};
+        _this.success = [];
+        _this.pending = [];
         _this.$api.get('api/biz/bespeak/mine', {})
             .then(function (rets) {
                 _this.$api.process(rets, function (rets) {
@@ -64,8 +67,8 @@ module.exports = {
                         console.log(_this.pending);
                     } else {
                         _this.trainee = {};
-                        _this.success = {};
-                        _this.pending = {};
+                        _this.success = [];
+                        _this.pending = [];
                     }
                 });
             })

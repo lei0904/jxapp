@@ -122,7 +122,18 @@ Api.install = function (Vue) {
                         Cui.MessageBox.alert(rets.message);
                     };
                     failed = failed || function (rets) {
-                        Cui.MessageBox.alert(rets.message);
+                        var message = rets.message;
+                        if (!message) {
+                            var status = rets.status;
+                            message = {
+                                "NODATA": "暂无数据"
+                            }[status];
+                        }
+                        Cui.MessageBox.alert(message, {
+                            callback: function () {
+
+                            }
+                        });
                     };
 
                     if (rets['status'] === 'OK') {
