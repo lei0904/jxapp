@@ -6,7 +6,7 @@
 .combo_header{
     height: 65px;
     width: 100%;
-    font-size: 28px;/*no*/
+    font-size: 28px;/*px*/
     border-left: 5px solid #028bff;
     line-height: 65px;
     text-indent: 40px;
