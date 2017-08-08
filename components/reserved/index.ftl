@@ -9,7 +9,7 @@
     </div>
     <div class="time">
         <div class="normal_header">预约时间
-            <div class="dateClickItem" @click="open('picker2')" >{{dateValue || "请选择接送时间"}}
+            <div class="dateClickItem" >{{dateValue || "请选择接送时间"}}
             </div>
         </div>
         <div class="time_content">
