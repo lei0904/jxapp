@@ -276,8 +276,14 @@ var MessageBox = function(options, callback) {
         if (arguments[2]) {
             options.type = arguments[2];
         }
-    } else if (options.callback && !callback) {
-        callback = options.callback;
+    } else {
+        if (options.callback && !callback) {
+            callback = options.callback;
+        } else {
+            callback = function () {
+                
+            }
+        }
     }
 
     if (typeof Promise !== 'undefined') {
