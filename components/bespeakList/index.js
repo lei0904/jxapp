@@ -22,7 +22,8 @@ module.exports = {
         },
         time: function (item) {
             if (item) {
-                var d = item['t_date'];
+                return item['b_period'] + '时';
+                /*var d = item['t_date'];
                 var s = item['t_start_time'];
                 var e = item['t_end_time'];
 
@@ -30,7 +31,7 @@ module.exports = {
                 var end_day = moment(d + " " + e);
 
                 var b = end_day.diff(start_day);
-                return (b / 3600000) + '时';
+                return (b / 3600000) + '时';*/
                 /*var start = new Date(d + " " + s);
                 var end = new Date(d + " " + e);
 
