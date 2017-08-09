@@ -1,9 +1,14 @@
 .touchClass {
     height: 100%;
+    overflow: auto;
 }
 .exams{
     transform: translate3d(0, 0, 0);
     height: 100%;
+}
+.exams .question-content{
+    height: 100%;
+    overflow: auto;
 }
 .fold-enter-active, .fold-leave-active {
     transition: all .5s;
@@ -24,7 +29,7 @@
     display: inline-block;
     padding: 4px 5px;
     border-radius: 10px;
-    margin: 20px px;
+    margin: 20px;
 }
 
 .exams .next-btn-content{
