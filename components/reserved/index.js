@@ -91,6 +91,13 @@ module.exports = {
                 Helper.remove(_this.timetable, item.id)
                 Helper.removeClass(el, 'checked');
             } else {
+                var d = document.querySelectorAll('.checkItem');
+                for(var i = 0, l = d.length; i < l; i++) {
+                    var t = d[i];
+                    if(Helper.hasClass(t,'checked')){
+                        Helper.removeClass(t, 'checked');
+                    }
+                }
                 _this.timetable.push(item.id);
                 Helper.addClass(el, 'checked');
             }

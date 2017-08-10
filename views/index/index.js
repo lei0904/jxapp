@@ -89,7 +89,6 @@ require.async(['ces',
                             - this.$refs.title.clientHeight
                             - this.$refs.toolbar.clientHeight;
                     }
-
                 },
                 data: function () {
                     return d;
