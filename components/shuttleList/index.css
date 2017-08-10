@@ -42,3 +42,10 @@
     padding-top: 10px;
     padding-bottom: 10px;
 }
+.empty{
+    background: #f5f5f5;
+    font-size: 50px;/*px*/
+    text-align: center;
+    line-height: 300px;
+    height: 300px;
+}

@@ -6,7 +6,9 @@ module.exports = {
         return {
             trainee: {},
             success: [],
-            pending: []
+            pending: [],
+            emptyNow:false,
+            emptyPast:false
         }
     },
     methods: {
@@ -64,12 +66,20 @@ module.exports = {
                     if (data) {
                         _this.trainee = data.trainee;
                         _this.success = data.success;
+                        if (data.success.length == 0){
+                            _this.emptyPast = true;
+                        }
                         _this.pending = data.pending;
+                        if (data.pending.length == 0){
+                            _this.emptyNow = true;
+                        }
                         console.log(_this.pending);
                     } else {
                         _this.trainee = {};
                         _this.success = [];
                         _this.pending = [];
+                        _this.emptyPast = true;
+                        _this.emptyNow = true;
                     }
                 });
             })
