@@ -18,7 +18,7 @@
     "ServiceEncrypt": true,
     "Server": {
       "defaultProtocol":"https",
-      "serverIp": "www.hxueche.com",
+      "serverIp": "www.hxueche.cn",
       "serverPort": "",
       "serverContext": "",
       "timeOut": 10000

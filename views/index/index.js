@@ -24,12 +24,26 @@ require.async(['ces',
         init: function (account, role) {
             Vue.use(VueRouter);
 
+            var d = {
+                wrapperHeight: '',
+                backable: false,
+                searchable: false,
+                showLogo: true,
+                title: '预约学车',
+                value: '',
+                animate: "left-fade",
+                searchText: '',
+                fullScreen: false,
+                showToolBar: false
+            };
+
             var router = new VueRouter({
                 routes: Routes.routes
             });
 
             router.beforeEach(function (to, from, next) {
                 if (to.path === '/') {
+                    d.showToolBar = true;
                     next('/index');
                 } else {
                     if (app) {
@@ -55,19 +69,30 @@ require.async(['ces',
             var app = new Vue({
                 el: '#app',
                 router: router,
-                data: function () {
-                    return {
-                        wrapperHeight: '',
-                        backable: false,
-                        searchable: false,
-                        showLogo: true,
-                        title: '预约学车',
-                        value: '',
-                        animate: "left-fade",
-                        searchText: '',
-                        fullScreen: false,
-                        showToolBar: false
+                mounted: function () {
+                    if (!this.showToolBar &&
+                        (
+                            window.location.hash.indexOf('index') > -1 ||
+                            window.location.hash.indexOf('exercise') > -1 ||
+                            window.location.hash.indexOf('reserved') > -1 ||
+                            window.location.hash.indexOf('personal') > -1
+                        )) {
+                        this.showToolBar = true;
                     }
+
+                    if (this.showToolBar) {
+                        this.wrapperHeight = document.documentElement.clientHeight
+                            - this.$refs.title.clientHeight
+                            - this.$refs.toolbar.clientHeight + 100;
+                    } else {
+                        this.wrapperHeight = document.documentElement.clientHeight
+                            - this.$refs.title.clientHeight
+                            - this.$refs.toolbar.clientHeight;
+                    }
+
+                },
+                data: function () {
+                    return d;
                 },
                 methods: {
                     back: function () {
@@ -75,9 +100,7 @@ require.async(['ces',
                     }
                 },
                 updated: function () {
-                    this.wrapperHeight = document.documentElement.clientHeight
-                        - this.$refs.title.clientHeight
-                        - this.$refs.toolbar.clientHeight;
+
                 }
             }).$mount('#app');
         }
