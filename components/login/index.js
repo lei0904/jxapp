@@ -7,7 +7,7 @@ module.exports = {
         return {
             full: false,
             animate: "left-fade",
-            user: '13999999999',
+            user: '13365698927',
             password: '123456'
         }
     },
