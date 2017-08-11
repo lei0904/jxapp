@@ -1,0 +1,13 @@
+.highLightTitle{
+    font-size: 50px;/*px*/
+    text-align: center;
+    color: #2ac1dd;
+    background: #fff;
+    padding: 30px 0;
+}
+.subExtDate{
+    color: #b90a25;
+    background: #fff;
+    text-align: right;
+    padding: 0 30px 30px;
+}

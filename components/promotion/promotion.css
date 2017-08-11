@@ -1,0 +1,13 @@
+.promotion_content{
+    background: #fff;
+    padding: 10px 30px 50px;
+    font-size: 40px;/*px*/
+    text-indent: 50px;
+}
+.promotion_img{
+    background: #fff;
+    text-align: center;
+}
+.promotion_img img{
+    width: 700px;
+}

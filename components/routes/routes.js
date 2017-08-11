@@ -23,6 +23,9 @@ var _notice = require('notice');
 var _problem = require('problem');
 var _process = require('process');
 var _examRules = require('examRules');
+var _account = require('account');
+var _promotion = require('promotion');
+var _secure = require('secure');
 
 
 var index = Vue.extend(_index);
@@ -44,6 +47,9 @@ var notice = Vue.extend(_notice);
 var problem = Vue.extend(_problem);
 var process = Vue.extend(_process);
 var examRules = Vue.extend(_examRules);
+var account = Vue.extend(_account);
+var promotion = Vue.extend(_promotion);
+var secure = Vue.extend(_secure);
 
 
 var routes = [
@@ -292,6 +298,45 @@ var routes = [
             value:'2',
             fullScreen:false,
             showToolBar:true
+        }
+    },
+    {
+        path: '/account',
+        component: account,
+        meta: {
+            title: '惠学车介绍',
+            backable: true,
+            searchable: false,
+            showLogo:false,
+            value:'2',
+            fullScreen:false,
+            showToolBar:false
+        }
+    },
+    {
+        path: '/promotion',
+        component: promotion,
+        meta: {
+            title: '邀请返现',
+            backable: true,
+            searchable: false,
+            showLogo:false,
+            value:'2',
+            fullScreen:false,
+            showToolBar:false
+        }
+    },
+    {
+        path: '/secure',
+        component: secure,
+        meta: {
+            title: '教考保险',
+            backable: true,
+            searchable: false,
+            showLogo:false,
+            value:'2',
+            fullScreen:false,
+            showToolBar:false
         }
     }
 ];
