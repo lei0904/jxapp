@@ -24,6 +24,9 @@ module.exports = {
         },
         time: function (item) {
             if (item) {
+                if (item['b_status'] === 3) {
+                    return '已驳回'
+                }
                 return item['b_period'] + '时';
                 /*var d = item['t_date'];
                 var s = item['t_start_time'];

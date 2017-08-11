@@ -67,24 +67,38 @@ module.exports = {
                     return;
                 }
 
-                Ces.JSBridge.callHandler('jpush', [], function (rets) {
-                    if (rets && rets.status === 1 && rets.data) {
-                        var pushId = rets.data;
-                        _this.$data.pushId = pushId;
+                if (Ces.Config.plugin) {
+                    Ces.JSBridge.callHandler('jpush', [], function (rets) {
+                        if (rets && rets.status === 1 && rets.data) {
+                            var pushId = rets.data;
+                            _this.$data.pushId = pushId;
 
-                        _this.$api.post('api/register', JSON.parse(JSON.stringify(_this.$data)), false).then(function (rets) {
-                            _this.$api.process(rets, function (rets) {
-                                _this.$api.LoginData.set(rets.data, function () {
-                                    _this.$router.push({ path: '/index' });
-                                }, function () {
-                                    Cui.MessageBox.alert('系统异常，注册失败');
+                            _this.$api.post('api/register', JSON.parse(JSON.stringify(_this.$data)), false).then(function (rets) {
+                                _this.$api.process(rets, function (rets) {
+                                    _this.$api.LoginData.set(rets.data, function () {
+                                        _this.$router.push({path: '/index'});
+                                    }, function () {
+                                        Cui.MessageBox.alert('系统异常，注册失败');
+                                    });
                                 });
                             });
+                        } else {
+                            Cui.MessageBox.alert('系统异常，注册失败');
+                        }
+                    });
+                } else {
+                    _this.$data.pushId = '1104a897929c9173620';
+
+                    _this.$api.post('api/register', JSON.parse(JSON.stringify(_this.$data)), false).then(function (rets) {
+                        _this.$api.process(rets, function (rets) {
+                            _this.$api.LoginData.set(rets.data, function () {
+                                _this.$router.push({path: '/index'});
+                            }, function () {
+                                Cui.MessageBox.alert('系统异常，注册失败');
+                            });
                         });
-                    } else {
-                        Cui.MessageBox.alert('系统异常，注册失败');
-                    }
-                });
+                    });
+                }
             });
         }
     }
