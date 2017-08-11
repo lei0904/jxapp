@@ -98,7 +98,7 @@ module.exports = {
                         Helper.removeClass(t, 'checked');
                     }
                 }
-                _this.timetable.push(item.id);
+                _this.timetable = [item.id];
                 Helper.addClass(el, 'checked');
             }
         },

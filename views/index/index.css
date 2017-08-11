@@ -14,6 +14,7 @@
     top: 0;
     left:0;
     border-bottom: 1px solid #eeebe6;/*no*/
+    z-index: 2000;
 }
 .title .cui-searchbar-cancel{
     line-height: 0;
@@ -96,11 +97,11 @@
 .viewContent{
     width: 100%;
     background: #f5f5f5;
-    margin-bottom: 100px;
+    /*margin-bottom: 100px;*/
     overflow-y: scroll;
     position: absolute;
     top:90px;
-    padding-bottom: 100px;
+    /*padding-bottom: 100px;*/
     /*position: relative;*/
     height:100vh;
     transform: translate3d(0, 0, 0);
@@ -111,6 +112,6 @@
 }
 
 
-.viewContent > div {
-    margin-bottom: 150px;
-}
+/*.viewContent > div {*/
+    /*padding-bottom: 120px;*/
+/*}*/

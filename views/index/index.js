@@ -79,16 +79,6 @@ require.async(['ces',
                         )) {
                         this.showToolBar = true;
                     }
-
-                    if (this.showToolBar) {
-                        this.wrapperHeight = document.documentElement.clientHeight
-                            - this.$refs.title.clientHeight
-                            - this.$refs.toolbar.clientHeight + 100;
-                    } else {
-                        this.wrapperHeight = document.documentElement.clientHeight
-                            - this.$refs.title.clientHeight
-                            - this.$refs.toolbar.clientHeight;
-                    }
                 },
                 data: function () {
                     return d;
@@ -99,7 +89,9 @@ require.async(['ces',
                     }
                 },
                 updated: function () {
-
+                    this.wrapperHeight = document.documentElement.clientHeight
+                        - this.$refs.title.clientHeight
+                        - this.$refs.toolbar.clientHeight;
                 }
             }).$mount('#app');
         }
