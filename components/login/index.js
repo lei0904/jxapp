@@ -19,21 +19,30 @@ module.exports = {
                     _this.$validator.renderError();
                     return;
                 }
-                _this.$api.post('api/login', {
-                    mobile: _this.user,
-                    password: _this.password
-                }).then(function (rets) {
-                    if (rets.status !== 'OK') {
-                        Cui.Toast({
-                            message: rets.message,
-                            position: 'bottom'
+
+                Ces.JSBridge.callHandler('jpush', [], function (rets) {
+                    if (rets && rets.status === 1 && rets.data) {
+                        var pushId = rets.data;
+                        _this.$api.post('api/login', {
+                            mobile: _this.user,
+                            pushId: pushId,
+                            password: _this.password
+                        }).then(function (rets) {
+                            if (rets.status !== 'OK') {
+                                Cui.Toast({
+                                    message: rets.message,
+                                    position: 'bottom'
+                                });
+                            } else {
+                                _this.$api.LoginData.set(rets.data, function () {
+                                    _this.$router.push({ path: '/index' });
+                                }, function () {
+                                    Cui.MessageBox.alert('系统异常，登录失败');
+                                });
+                            }
                         });
                     } else {
-                        _this.$api.LoginData.set(rets.data, function () {
-                            _this.$router.push({ path: '/index' });
-                        }, function () {
-                            Cui.MessageBox.alert('系统异常，登录失败');
-                        });
+                        Cui.MessageBox.alert('系统异常，登录失败');
                     }
                 });
             });

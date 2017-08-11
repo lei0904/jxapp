@@ -12,7 +12,7 @@
   "config": {
     "pkg" : "com.hxueche",
     "px2rem": true,
-    "plugin": false,
+    "plugin": true,
     "debug": true,
     "service": "http",
     "ServiceEncrypt": true,

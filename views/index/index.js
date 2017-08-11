@@ -79,6 +79,10 @@ require.async(['ces',
                         )) {
                         this.showToolBar = true;
                     }
+
+                    if (window.location.hash.indexOf('login') > -1) {
+                        this.fullScreen = false;
+                    }
                 },
                 data: function () {
                     return d;
