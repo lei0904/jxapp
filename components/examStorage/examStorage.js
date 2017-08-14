@@ -49,7 +49,6 @@ var _sessionStorage = {
 };
 var _localStorage={
         localSetQ:function(question,params){
-            console.log("缓存题目");
             if(params.type == 1){//收藏
                 localKey ="subject-"+params.subject+"-"+params.type;
             }
@@ -58,7 +57,6 @@ var _localStorage={
             }
             var arrIndex = parseInt(question.virtualId) + 1;
             var localObj = JSON.parse(localStorage.getItem(localKey));
-                console.log("arrIndex==",arrIndex);
                 localObj.list.splice(arrIndex,1,question);
 
             console.log('localSetQ===',localObj);

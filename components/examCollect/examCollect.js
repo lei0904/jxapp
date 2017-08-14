@@ -7,9 +7,6 @@ var localKey="";
 var errorKey="";
 var collect ={
     setQ:function(question,params){
-
-        console.log("收藏问题");
-
         console.log(params);
         if(params.type != 6){//收藏
             localKey ="subject-"+params.subject+"-"+"5";
@@ -27,8 +24,6 @@ var collect ={
                 collectQ.list.push(strQ);
             }
         localStorage.setItem(localKey,JSON.stringify(collectQ));
-        console.log("====",JSON.parse(localStorage.getItem(localKey)))
-
     },
     setErrorQ:function(question,params){//设置错题
         localKey ="subject-"+params.subject+"-"+"6";
@@ -46,9 +41,7 @@ var collect ={
         }else{
             collectQ.list.push(strQ);
         }
-
         localStorage.setItem(localKey,JSON.stringify(collectQ));
-        console.log("====",JSON.parse(localStorage.getItem(localKey)))
     },
     getQLength:function(params){
         if(params.type != 6){//收藏
@@ -71,21 +64,15 @@ var collect ={
         }
         if(localStorage.hasOwnProperty(localKey)){
             var itemQ = JSON.parse(localStorage.getItem(localKey));
-
             if(itemQ.list.length > parseInt(indexId)){
                 console.log("返回收藏",itemQ.list[indexId]);
                 return JSON.parse(itemQ.list[indexId]);
             }else{
                 return -1;
             }
-        }else{
-            console.log('暂时没有收藏题目')
         }
-
     },
     removeQ:function(question,params){
-        console.log("取消收藏问题");
-
         if(params.type != 6){//收藏
             localKey ="subject-"+params.subject+"-"+"5";
         }else{
@@ -94,17 +81,12 @@ var collect ={
         var collectQ = JSON.parse(localStorage.getItem(localKey));
         var strQ  = JSON.stringify(question);
         var listQ = collectQ.list.indexOf(strQ);
-
         if(listQ != -1){
             collectQ.list.splice(strQ,1);
             localStorage.setItem(localKey,JSON.stringify(collectQ));
-            console.log("11111",JSON.parse(localStorage.getItem(localKey)))
         }
-
-
     },
     initCollectQ:function(){
-        console.log("初始化收藏");
         if(!localStorage.hasOwnProperty(localKey)){
             var collectQ = {
                 list:[]

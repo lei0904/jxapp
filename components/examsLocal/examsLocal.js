@@ -27,6 +27,7 @@ module.exports = {
             if(this.showStart){
                 this.showStart =false;
                 //todo  取消收藏此问题
+                console.log('removeQ====',this.qLength);
                 Collect.removeQ(this.list,this.localParams);
                 this.qLength =Collect.getQLength(this.localParams);
                 if(this.qLength>0){
@@ -36,7 +37,7 @@ module.exports = {
                         message: "没有收藏题目",
                         position: 'bottom'
                     });
-                    this.$route.push({'path':'/exercise'})
+                    this.$router.push({'path':'/exercise'})
                 }
                 this.showStart=true;
             }
@@ -47,11 +48,14 @@ module.exports = {
             }
         },
         nextAnswer:function(){
-                if( this.list.answer == this.checklist.sort().join(",") || this.list.answer == this.answer || this.explainShow ){
+                if( this.list.answer == this.checklist.sort().join(",") ||
+                    this.list.answer == this.answer || this.explainShow ){
                     this.answer ='';
                     this.checklist =[];
                   //  Collect.removeQ(this.list,this.localParams);
-                    if(this.qLength> this.indexId ){
+                    var seq = parseInt(this.indexId) + 1 ;
+                    console.log(this.qLength,seq)
+                    if(this.qLength> seq ){
                         this.indexId = this.indexId +1;
                         this.loadQ(this.indexId);
                         this.showStart=true;
@@ -63,7 +67,9 @@ module.exports = {
                             position: 'bottom'
                         });
                     }
-
+                    //正确删除
+                    Collect.removeQ(this.list,this.localParams);
+                    //this.$router.push({'path':'/exercise'})
                 }else{
                     this.explainShow =true;
                 }
@@ -80,7 +86,7 @@ module.exports = {
                         position: 'bottom'
                     });
             }
-        },
+        }
     },
     activated: function(){
         this.showStart=true;
@@ -88,7 +94,6 @@ module.exports = {
         this.indexId =this.localParams.questions ;
         this.qLength=0;
         this.qLength =Collect.getQLength(this.localParams);
-        console.log("======",this.localParams);
         this.loadQ(this.indexId);
     }
 };

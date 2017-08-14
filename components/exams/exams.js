@@ -45,7 +45,6 @@ module.exports = {
                     var index = parseInt(this.sessionParams.questions);
 
                     if( index <= this.arrLength && index >= 0){
-                        console.log("====index",index);
                        var returnList = Storage.local.localGetQ(this.sessionParams,index);
                         if(!returnList.question){
                             Cui.Toast({
@@ -135,7 +134,6 @@ module.exports = {
                     this.sessionParams.questions = Math.floor(this.mockSeq/this.totalAnswer);
                 }
                 this.mockSeq = this.sessionParams.questions;
-                console.log("this.mockSeq",this.mockSeq);
                 if(this.nextQuestionId >= 100){
                     if(this.answer != this.rightAnswer){
                         this.explainShow = true;
@@ -144,24 +142,20 @@ module.exports = {
                     }
                     this.$router.push({'path':'success','query':{score:this.score}});
                    // Cui.MessageBox('你的分数', this.score);
-                    console.log('score===',this.score)
                 }else{
-                    console.log("this.checklist==",this.checklist);
                     if( (this.answer == this.rightAnswer && this.list.optiontype != 2) ||
                         (this.checklist.sort().join(",") == this.rightAnswer && this.list.optiontype == 2) ){
                         this.score = this.score + 1;
-                        console.log("_ts.score ==",this.score)
                     }
-
                 }
             }
 
             //todo 缓存错题
-            if(this.answer != this.rightAnswer && this.list.optiontype != 2){
+            if(this.answer !='' && this.answer != this.rightAnswer && this.list.optiontype != 2){
                 Collect.setErrorQ(this.list,this.sessionParams)
             }
 
-            if(this.checklist.sort().join(",") != this.rightAnswer && this.list.optiontype == 2){
+            if(this.checklist.length>0 && this.checklist.sort().join(",") != this.rightAnswer && this.list.optiontype == 2){
                 var  errorList = this.list;
 
                 if(errorList.optiontype !=2){
@@ -206,7 +200,6 @@ module.exports = {
                     'chapterDesc': _ts.sessionParams.chapterDesc,
                     'start': _ts.sessionParams.start
                 }];
-            console.log('nativeRes==', _ts.sessionParams.questions);
              Ces.Plugins.nativeApi.questions(nativeRes,function (rets) {
                     _ts.list= rets.data;
                     if(rets.status == 1){
@@ -292,12 +285,13 @@ module.exports = {
                     if(ths.sessionParams.type == 1){
                         ths.arrLength = Storage.local.localQLength(ths.sessionParams);
                         ths.list = Storage.local.localGetQ(ths.sessionParams)
-                        console.log("storage===",this.list);
                         if(!ths.list.question){
                             ths.loadQuestion();
                         }else{
+                            var startSeq = parseInt(ths.arrLength) - 1;
+                           if (startSeq >= 0){
                             ths.rightAnswer = ths.list.answer;
-                            ths.sessionParams.questions = ths.list.virtualId ;
+                            ths.sessionParams.questions = startSeq;
                             var  indexId =  ths.sessionParams.questions;
                             console.log("=== ths.sessionParams.questions== ", indexId );
                             if(ths.list.chooseAnswer){
@@ -307,6 +301,7 @@ module.exports = {
                                     ths.checklist = ths.list.chooseAnswer
                                 }
                             }
+                           }
                         }
                     }else{
                         if(ths.sessionParams.type == 4 ){
