@@ -1,0 +1,22 @@
+#changePassword {
+    margin-top: 40px;
+}
+
+.bottom_but{
+    height: 162px;
+    position: relative;
+}
+.bottom_but .cui-button--primary{
+    width: 600px;
+    height: 88px;
+    line-height: 88px;
+    position: absolute;
+    left:50%;
+    margin-left: -300px;
+    margin-top: 60px;
+}
+.bottom_but .cui-button--primary *{
+    line-height: 1.173333rem;
+    vertical-align: initial;
+    font-weight: normal;
+}

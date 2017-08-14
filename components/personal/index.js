@@ -85,6 +85,12 @@ module.exports = {
         toShuttleList: function () {
             this.$router.push({path: '/shuttleList'});
         },
+        toChangeName: function () {
+            this.$router.push({path: '/changeName'});
+        },
+        toChangePassword: function () {
+            this.$router.push({path: '/changePassword'});
+        },
 
         selectPhoto: function () {
             this.$refs.au.select();

@@ -26,6 +26,8 @@ var _examRules = require('examRules');
 var _account = require('account');
 var _promotion = require('promotion');
 var _secure = require('secure');
+var _changeName = require('changeName');
+var _changePassword = require('changePassword');
 
 
 var index = Vue.extend(_index);
@@ -50,6 +52,8 @@ var examRules = Vue.extend(_examRules);
 var account = Vue.extend(_account);
 var promotion = Vue.extend(_promotion);
 var secure = Vue.extend(_secure);
+var changeName = Vue.extend(_changeName);
+var changePassword = Vue.extend(_changePassword);
 
 
 var routes = [
@@ -214,6 +218,32 @@ var routes = [
         component: shuttleList,
         meta: {
             title: '接送记录',
+            backable: true,
+            searchable: false,
+            showLogo:false,
+            value:'1',
+            fullScreen:false,
+            showToolBar:false
+        }
+    },
+    {
+        path: '/changeName',
+        component: changeName,
+        meta: {
+            title: '修改姓名',
+            backable: true,
+            searchable: false,
+            showLogo:false,
+            value:'1',
+            fullScreen:false,
+            showToolBar:false
+        }
+    },
+    {
+        path: '/changePassword',
+        component: changePassword,
+        meta: {
+            title: '修改密码',
             backable: true,
             searchable: false,
             showLogo:false,
