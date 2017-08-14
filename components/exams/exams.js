@@ -43,8 +43,8 @@ module.exports = {
                 if(this.sessionParams.questions >= 0 ){
                     this.sessionParams.questions  = this.sessionParams.questions - 1;
                     var index = parseInt(this.sessionParams.questions);
-
-                    if( index <= this.arrLength && index >= 0){
+                    this.arrLength = parseInt(Storage.local.localQLength(this.sessionParams)) - 1;
+                    if( index <= this.arrLength  && index >= 0){
                        var returnList = Storage.local.localGetQ(this.sessionParams,index);
                         if(!returnList.question){
                             Cui.Toast({
@@ -107,10 +107,12 @@ module.exports = {
                 }else{
                     this.list.chooseAnswer =this.checklist;
                 }
+                this.arrLength = parseInt(Storage.local.localQLength(this.sessionParams)) - 1;
                 this.list.virtualId = this.sessionParams.questions;
-                console.log('this.list.virtualId=',this.list.virtualId);
 
-                if(parseInt(this.list.virtualId) + 1 >= this.arrLength){
+                console.log(this.list.virtualId,this.arrLength);
+
+                if(parseInt(this.list.virtualId) > this.arrLength){
                     Storage.local.localSetQ(this.list,this.sessionParams);
                 }
                 this.sessionParams.questions =  this.list.virtualId + 1 ;
