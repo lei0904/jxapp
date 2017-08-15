@@ -85,6 +85,9 @@ module.exports = {
         toShuttleList: function () {
             this.$router.push({path: '/shuttleList'});
         },
+        toContact: function () {
+            this.$router.push({path: '/contact'});
+        },
         toChangeName: function () {
             this.$router.push({path: '/changeName'});
         },
@@ -97,6 +100,15 @@ module.exports = {
         },
         takePhoto: function () {
             this.$refs.au.take();
+        },
+        changeName:function () {
+            this.changeUserName = true;
+        },
+        confirmChange:function () {
+
+        },
+        goBack:function () {
+            this.changeUserName = false;
         }
     },
     mounted: function () {

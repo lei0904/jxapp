@@ -20,7 +20,7 @@
       "defaultProtocol":"https",
       "serverIp": "www.hxueche.cn",
       "serverPort": "",
-      "serverContext": "",
+      "serverContext": "e-drive",
       "timeOut": 10000
     },
     "test":"/jxapp/1.0.0/index/index.html",

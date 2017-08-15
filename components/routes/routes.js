@@ -26,6 +26,7 @@ var _examRules = require('examRules');
 var _account = require('account');
 var _promotion = require('promotion');
 var _secure = require('secure');
+var _contact = require('contact');
 var _changeName = require('changeName');
 var _changePassword = require('changePassword');
 
@@ -52,6 +53,7 @@ var examRules = Vue.extend(_examRules);
 var account = Vue.extend(_account);
 var promotion = Vue.extend(_promotion);
 var secure = Vue.extend(_secure);
+var contact = Vue.extend(_contact);
 var changeName = Vue.extend(_changeName);
 var changePassword = Vue.extend(_changePassword);
 
@@ -361,6 +363,19 @@ var routes = [
         component: secure,
         meta: {
             title: '教考保险',
+            backable: true,
+            searchable: false,
+            showLogo:false,
+            value:'2',
+            fullScreen:false,
+            showToolBar:false
+        }
+    },
+    {
+        path: '/contact',
+        component: contact,
+        meta: {
+            title: '联系客服',
             backable: true,
             searchable: false,
             showLogo:false,
