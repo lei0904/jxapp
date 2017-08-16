@@ -10,9 +10,9 @@
     "http-proxy": "1.11.1"
   },
   "config": {
-    "pkg" : "com.hxueche",
+    "pkg" : "com.studycar.manager",
     "px2rem": true,
-    "plugin": false,
+    "plugin": true,
     "debug": true,
     "service": "http",
     "ServiceEncrypt": true,
