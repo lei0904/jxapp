@@ -10,7 +10,7 @@
     "http-proxy": "1.11.1"
   },
   "config": {
-    "pkg" : "com.hxueche",
+    "pkg" : "com.studycar.manager",
     "px2rem": true,
     "plugin": false,
     "debug": true,
@@ -20,7 +20,7 @@
       "defaultProtocol":"https",
       "serverIp": "www.hxueche.cn",
       "serverPort": "",
-      "serverContext": "",
+      "serverContext": "e-drive",
       "timeOut": 10000
     },
     "test":"/jxapp/1.0.0/index/index.html",

@@ -8,12 +8,13 @@ Vue.use(VueResource);
 var Cui = require('cui');
 
 Vue.http.interceptors.push(function(request, next) {
-    if (request.autoLoading || typeof request.autoLoading === 'undefined') {
+    console.log(request.autoLoading);
+    if (request.autoLoading) {
         Cui.Indicator.open('加载中...');
     }
 
     next(function(response) {
-        if (request.autoLoading || typeof request.autoLoading === 'undefined') {
+        if (request.autoLoading) {
             Cui.Indicator.close();
         }
         return response;
@@ -78,7 +79,7 @@ var CesVueResource = (function () {
                     });
                     break;
                 case 'POST':
-                    Vue.http.post(url, qs.stringify(params)).then(function (response) {
+                    Vue.http.post(url, qs.stringify(params), options).then(function (response) {
                         success(response.body);
                     }, function (response) {
                         error(response);

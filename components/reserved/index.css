@@ -197,3 +197,14 @@
 .cui-popup{
     z-index: 9999;
 }
+.but_group{
+    padding: 30px 30px;
+}
+.but_group .cui-button{
+    width: 45%;
+    float: right;
+
+}
+.but_group .cui-button:first-child{
+    float: left;
+}

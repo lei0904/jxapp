@@ -6,7 +6,6 @@
             </cui-swipe-item>
         </cui-swipe>
     </div>
-    <div class="package-title">学车套餐</div>
     <div class="package">
         <div class="item" v-for="(combo, index) in combos" @click="toComboDetail(combo)">
             <div class="package_item_header clearfix">

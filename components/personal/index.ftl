@@ -14,12 +14,13 @@
         <cui-cell title="手机" :value="mobile" icon="back"></cui-cell>
         <cui-cell title="所选套餐" :value="combo" icon="back"></cui-cell>
         <cui-cell title="学车阶段" :value="status" icon="back"></cui-cell>
-
     </div>
+
     <cui-cell title="预约记录" icon="back" is-link @click.native="toBespeakList"></cui-cell>
     <cui-cell title="接送记录" icon="back" is-link @click.native="toShuttleList"></cui-cell>
     <cui-cell title="我的邀请码" :value="invite" icon="back"></cui-cell>
     <cui-cell title="修改密码" icon="back" is-link @click.native="toChangePassword"></cui-cell>
+    <cui-cell title="联系客服"  icon="back"  is-link @click.native="toContact"> </cui-cell>
 
     <div class="bottom_but">
         <cui-button type="primary" @click.native="logout">退出登录</cui-button>
