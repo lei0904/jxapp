@@ -12,7 +12,7 @@
   "config": {
     "pkg" : "com.studycar.manager",
     "px2rem": true,
-    "plugin": true,
+    "plugin": false,
     "debug": true,
     "service": "http",
     "ServiceEncrypt": true,

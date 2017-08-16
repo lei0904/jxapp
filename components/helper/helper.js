@@ -3,9 +3,15 @@ var Cui = require('cui');
 
 var openLink = function (link) {
     if (Ces.Config.plugin) { //启动插件
-        window.open(link);
+        if (link.startsWith('http')){
+            windows.location.href = link;
+        }
+        this.$router.push({ path: link });
     } else {
-        window.open(link);
+        if (link.startsWith('http')){
+            windows.location.href = link;
+        }
+        this.$router.push({ path: link });
     }
 };
 
