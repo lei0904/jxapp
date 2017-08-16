@@ -3,7 +3,7 @@ var Cui = require('cui');
 
 var openLink = function (link) {
     if (Ces.Config.plugin) { //启动插件
-
+        window.open(link);
     } else {
         window.open(link);
     }
