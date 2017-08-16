@@ -10,7 +10,9 @@ module.exports = {
     template: __inline('exams.ftl'),
     data: function () {
         return {
-            list:{},
+            list:{
+                options:[]
+            },
             options:[],
             answer:'',  //选择答案
             checklist:[], //多选题答案
@@ -42,8 +44,7 @@ module.exports = {
                 if(this.sessionParams.questions >= 0 ){
                     this.sessionParams.questions  = this.sessionParams.questions - 1;
                     var index = parseInt(this.sessionParams.questions);
-                    this.arrLength = parseInt(Storage.local.localQLength(this.sessionParams)) - 1;
-                    if( index <= this.arrLength  && index >= 0){
+                    if( index <= this.arrLength && index >= 0){
                        var returnList = Storage.local.localGetQ(this.sessionParams,index);
                         if(!returnList.question){
                             Cui.Toast({
@@ -94,13 +95,14 @@ module.exports = {
         nextAnswer:function(){
             var type =this.sessionParams.type;
             this.upQuestion =true;
+            console.log('this.checklist===',this.checklist);
 
             if(this.sessionParams.questions == -1){
                 this.sessionParams.questions = 0;
             }
             if(type == 1){
                 //缓存答案及题目
-                if(this.list.optiontype!=2){
+                if(this.list.options.type !=2){
                     this.list.chooseAnswer =this.answer;
                 }else{
                     this.list.chooseAnswer =this.checklist;
@@ -108,10 +110,13 @@ module.exports = {
                 this.arrLength = parseInt(Storage.local.localQLength(this.sessionParams)) - 1;
                 this.list.virtualId = this.sessionParams.questions;
 
+                console.log(this.list.virtualId,this.arrLength);
+
                 if(parseInt(this.list.virtualId) > this.arrLength){
                     Storage.local.localSetQ(this.list,this.sessionParams);
                 }
                 this.sessionParams.questions =  this.list.virtualId + 1 ;
+                console.log('this.sessionParams.questions=',this.sessionParams.questions);
             }
             else if(type == 2){
                 this.sessionParams.questions =  this.sessionParams.questions + 1;
@@ -162,7 +167,9 @@ module.exports = {
                 }
                 Collect.setErrorQ(errorList,this.sessionParams)
             }
+
             //todo 判断是否有下一题
+
             if(this.sessionParams.questions > this.totalAnswer
                 && this.sessionParams.type !=4){
                 Cui.Toast({
@@ -205,8 +212,7 @@ module.exports = {
                             item.value = j.toString();
                             item.label=j+"、"+_ts.list.answers[i];
                             options.push(item);
-                            _ts.options =options;
-                            console.log('====',_ts.list);
+                            _ts.list.options =options;
                         }
                         _ts.rightAnswer =  _ts.list.answer;
                         if(_ts.upQuestion){
@@ -246,8 +252,10 @@ module.exports = {
         }
     },
     activated: function(){
+
         var ths = this;
       //  Collect.initCollectQ();
+        console.log(this.list)
         ths.sessionParams =  JSON.parse(sessionStorage.getItem('topic'));
         sessionStorage.setItem("allAnswer",JSON.stringify({questionId:0,questions:0,allAnswerList:[]}));
         //模拟考试初始化步长
@@ -315,8 +323,5 @@ module.exports = {
                 }
             })
         }
-    },
-    created:function(){
-
     }
 };
