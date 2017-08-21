@@ -208,3 +208,8 @@
 .but_group .cui-button:first-child{
     float: left;
 }
+
+#reserved {
+    height: 100vh;
+    overflow-y: scroll;
+}
