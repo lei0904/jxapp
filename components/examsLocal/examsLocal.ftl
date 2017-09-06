@@ -23,10 +23,10 @@
                 </div>
                 <div class="answer">
                     <div  v-if="list.optiontype !=2 " >
-                        <cui-radio v-model="answer" :options='list.options' :key="list.options.value"></cui-radio>
+                        <cui-radio v-model="answer" :options='list.options' ></cui-radio>
                     </div>
                     <div v-else >
-                        <cui-checklist  v-model="checklist"  :options='list.options' :key="list.options.value"></cui-checklist>
+                        <cui-checklist  v-model="checklist"  :options='list.options'></cui-checklist>
                     </div>
                 </div>
                 <div class="explain" v-show="explainShow">
