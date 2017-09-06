@@ -149,7 +149,15 @@ module.exports = {
             return '';
         }
     },
+    deactivated: function () {
+        this.$refs['picker2'].close();
+        this.$refs['picker3'].close();
+        document.querySelector('.viewContent').style.overflowY = 'scroll';
+    },
     activated:function () {
+
+        document.querySelector('.viewContent').style.overflowY = 'hidden';
+
         var _this = this;
         _this.dateValue = new moment(_this.startDate).format('YYYY-MM-DD');
         _this.$api.get('api/biz/car/list', {}).then(function (rets) {
